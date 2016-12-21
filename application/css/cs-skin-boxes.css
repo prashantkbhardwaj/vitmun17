@@ -230,11 +230,13 @@ div.cs-skin-boxes:focus > span {
 }
 
 .cs-skin-boxes .cs-options li.color-f3e395 {
-	background-color: #f3e395;
+	background-image: url(../img/flags/in.png);
+	background-size: cover;
 }
 
 .cs-skin-boxes .cs-options li.color-f3ae73 {
-	background-color: #f3ae73;
+	background-image: url(../img/tick_square.png);
+	background-size: cover;
 }
 
 .cs-skin-boxes .cs-options li.color-da645a {

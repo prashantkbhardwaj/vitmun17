@@ -630,6 +630,7 @@ button.fs-continue,
 }
 
 /* Continue button and submit button */
+input[type=submit],
 button.fs-submit,
 button.fs-continue {
 	padding: 0.6em 1.5em;
@@ -870,7 +871,7 @@ input[type=text]::-ms-clear {
 	.fs-continue::after {
 		content: '';
 	}
-
+	input[type=submit],
 	button.fs-submit {
 		width: 100%;
 		font-size: 1.25em;
