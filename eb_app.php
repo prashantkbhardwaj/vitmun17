@@ -29,18 +29,16 @@
         $hotel = $_POST['hotel'];
         $q_back = $_POST['q_back'];
         $pro_pic = 1;
-        $target_dir = "img/";
+        $target_dir = "img/eb_pics/";
         $target_file = $target_dir . basename($_FILES["pro_pic"]["name"]);                
         $imageFileType = pathinfo($target_file,PATHINFO_EXTENSION);
-        move_uploaded_file($_FILES["pro_pic"]["tmp_name"],"img/ab1.jpg");     
+        move_uploaded_file($_FILES["pro_pic"]["tmp_name"],"img/eb_pics/$phno.jpg");
 
         $query = "INSERT INTO eb_apps (name, dob, job, school, phno, email, nodel, del_details, noeb, eb_details, sec_details, council_ch1, agenda1, agenda1_details,council_ch2, agenda2, agenda2_details, council_ch3, posit, eb_caps1, alt_post, eb_caps2, eb_caps3, hotel, q_back, pro_pic)";
         $query .= " VALUES ('{$name}', '{$dob}', '{$job}', '{$school}', '{$phno}', '{$email}', {$nodel}, '{$del_details}', {$noeb}, '{$eb_details}', '{$sec_details}', '{$council_ch1}', '{$agenda1}', '{$agenda1_details}','{$council_ch2}', '{$agenda2}', '{$agenda2_details}', '{$council_ch3}', '{$posit}', '{$eb_caps1}', '{$alt_post}', '{$eb_caps2}', '{$eb_caps3}', '{$hotel}', '{$q_back}', {$pro_pic})";
         $result = mysqli_query($conn, $query);
         if ($result) {
-            redirect_to("payment_select.php");
-        } else {
-            redirect_to("team.html");
+            redirect_to("eb_confirm.php");
         }
     }
 ?>
@@ -166,7 +164,7 @@
                         <h2 class="text-center">Application for the executive board</h2>
 
                         <div>
-                            <form role="form" action="eb_app.php" method="POST">
+                            <form role="form" action="eb_app.php" method="POST" enctype="multipart/form-data">
                                  <div class="form-group">
                                     <label>Name</label>
                                     <input type="text" style="color: white;" name="name" required class="form-control">
