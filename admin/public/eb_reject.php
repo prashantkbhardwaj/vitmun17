@@ -11,16 +11,6 @@ confirm_query($result);
 $title = mysqli_fetch_assoc($result);
 $email = $title['email'];
 $name = $title['name'];
-$allot_council = $title['allot_council'];
-$allot_post = $title['allot_post'];
-$allot_hotel = $title['allot_hotel'];
-if ($allot_hotel==1) {
-	$hotel_status = "Your request for accomodation has also been accepted. ";
-} elseif ($allot_hotel==2) {
-	$hotel_status = "Unfortunately your request for accomodation has not been accepted, we deeply regret for the inconvenience. ";
-} elseif ($allot_hotel==3) {
-	$hotel_status = "";
-}
 
 // registration bill html code starts
 
@@ -34,7 +24,7 @@ $content .= "<p> ";
 $content .= "<b>Dear ".ucfirst($name)."</b> ";
 $content .= "</p><br><br> ";
 $content .= "<p> ";
-$content .= "Congratulations! You have been selected for the Executive board of VITCMUN 2017 in the <b>".$allot_council."</b> as the <b>".$allot_post."</b>.". $hotel_status ." You will get a call from us very soon about the details.<br>We look forward to see you in the council. :) ";
+$content .= "We are really sorry to inform you that your application was rejected by our selection committee. We wish you all the best for your future. ";
 $content .= "</p><br><br> ";
 $content .= "<p> ";
 $content .= "<b>Regards<br>VITCMUN 2017 Team</b> ";

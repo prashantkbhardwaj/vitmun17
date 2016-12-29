@@ -18,14 +18,23 @@
     $eb = mysqli_fetch_assoc($result); 
     $y_exp = explode("-", $eb['dob']);
     $year = 2016 - $y_exp[0];
+    if ($eb['hotel']=="No") {
+        $view_hotel = "style='display:none;'";
+    } else {
+        $view_hotel = "";
+    }
 ?>
 <?php
     if (isset($_POST['submit'])) {
         $allot_council = $_POST['allot_council'];
         $allot_post = $_POST['allot_post'];
-        $allot_hotel = $_POST['allot_hotel'];
+        if ($eb['hotel']=="No") {
+            $allot_hotel = 3;
+        } else {
+            $allot_hotel = $_POST['allot_hotel'];
+        }        
 
-        $allot_query = "UPDATE eb_apps SET allot_council = '{$allot_council}', allot_post = '{$allot_post}', allot_hotel = '{$allot_hotel}', allot = 1 WHERE id = {$eb_id} LIMIT 1";
+        $allot_query = "UPDATE eb_apps SET allot_council = '{$allot_council}', allot_post = '{$allot_post}', allot_hotel = {$allot_hotel}, allot = 1 WHERE id = {$eb_id} LIMIT 1";
         $allot_result = mysqli_query($conn, $allot_query);
 
        if ($allot_result && mysqli_affected_rows($conn) == 1) {
@@ -407,7 +416,9 @@
                         <button onclick="javascript:htmltopdf();" type="button" class="btn btn-lg btn-primary">Download  <i class="fa fa-download"></i></button>
                     </div>
                     <div class="col-lg-4 text-center">
-                        <button type="button" class="btn btn-lg btn-danger">Reject  <i class="fa fa-close"></i></button>
+                        <a href="eb_reject.php?eb_id=<?php echo $eb_id; ?>">
+                            <button type="button" class="btn btn-lg btn-danger" onclick="return confirm('Are you sure you want to reject this application?');">Reject  <i class="fa fa-close"></i></button>
+                        </a>
                     </div>
                 </div><br><br><br>
     
@@ -447,11 +458,11 @@
                                     <option value="Vice-chairperson/Vice- president or equivalent">Vice-chairperson/Vice- president or equivalent</option>
                                 </select>
                             </div>
-                            <div class="form-group">
+                            <div <?php echo $view_hotel; ?> class="form-group">
                                 <label>Allot accomodation?</label>
                                 <select class="form-control" name="allot_hotel" required>
-                                    <option value="yes">Yes</option>
-                                    <option value="no">No</option>
+                                    <option value="1">Yes</option>
+                                    <option value="2">No</option>
                                 </select>
                             </div>
                             <input type="submit" name="submit" value="Submit and send" class="btn btn-lg btn-success">&nbsp; 
