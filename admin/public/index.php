@@ -10,6 +10,23 @@
     $name_title = mysqli_fetch_assoc($name_result);
     $first_name = explode(" ", $name_title['username']);
 ?>
+<?php
+    $count_query = "SELECT COUNT(id) FROM eb_apps";
+    $count_result = mysqli_query($conn, $count_query);
+    $count_eb = mysqli_fetch_array($count_result);
+    $total_eb = $count_eb[0];  
+?>
+<?php
+    $count_hotel_query = "SELECT COUNT(id) FROM eb_apps WHERE hotel = 'Yes'";
+    $count_hotel_result = mysqli_query($conn, $count_hotel_query);
+    $count_hotel_eb = mysqli_fetch_array($count_hotel_result);
+    $total_hotel_eb = $count_hotel_eb[0];  
+?>
+<?php
+    $query = "SELECT * FROM users";
+    $result = mysqli_query($conn, $query);
+    confirm_query($result);    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -140,12 +157,12 @@
                                         <i class="fa fa-black-tie fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
+                                        <div class="huge"><?php echo $total_eb; ?></div>
                                         <div>EB Applications</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="eb.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -184,7 +201,7 @@
                                         <i class="fa fa-hotel fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
+                                        <div class="huge"><?php echo $total_hotel_eb; ?></div>
                                         <div>Accomodations required</div>
                                     </div>
                                 </div>
@@ -213,18 +230,28 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>prashant</td>
-                                        <td>Super User</td>
-                                    </tr>
-                                    <tr>
-                                        <td>akanksha</td>
-                                        <td>Delegate affairs</td>
-                                    </tr>
-                                    <tr>
-                                        <td>anirudh</td>
-                                        <td>Hospitality</td>
-                                    </tr>
+                                <?php
+                                    while ($title_admin = mysqli_fetch_assoc($result)) { ?>
+                                       <tr>
+                                            <td><?php echo $title_admin['username']; ?></td>
+                                            <td>
+                                                <?php
+                                                    if ($title_admin['type']==1) {
+                                                        echo "Payment Admin";
+                                                    } elseif ($title_admin['type']==2) {
+                                                        echo "Delegate affairs";
+                                                    } elseif ($title_admin['type']==3) {
+                                                        echo "Hospitality";
+                                                    } elseif ($title_admin['type']==4) {
+                                                        echo "Super Admin";
+                                                    }                                                         
+                                                ?>
+                                                
+                                            </td>
+                                        </tr>  
+                                        <?php 
+                                    }
+                                ?>                                      
                                 </tbody>
                                 
                             </table>

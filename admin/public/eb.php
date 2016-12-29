@@ -11,9 +11,31 @@
     $first_name = explode(" ", $name_title['username']);
 ?>
 <?php
-    $query = "SELECT * FROM eb_apps";
+    $query = "SELECT * FROM eb_apps WHERE allot = 0 ORDER BY id DESC";
     $result = mysqli_query($conn, $query);
     confirm_query($result);    
+?>
+<?php
+    $accept_query = "SELECT * FROM eb_apps WHERE allot = 1 ORDER BY id DESC";
+    $accept_result = mysqli_query($conn, $accept_query);
+    confirm_query($accept_result);    
+?>
+<?php
+    if (isset($_GET['status'])) {
+        $status = $_GET['status'];
+    } else {
+        $status = "0";
+    }
+    if ($status == 1) {
+        $view_note = "";
+        $acct_note = '<span>Application accepted and email sent.</span>';
+    } elseif ($status == 2) {
+        $view_note = "";
+        $acct_note = '<span style="color:red;">Application rejected and email sent.</span>';
+    } else {
+        $view_note = "style='display:none;'";
+        $acct_note = "";
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -111,17 +133,48 @@
                         </ol>
                     </div>
                 </div>
-                <!-- /.row -->             
-                
+                <!-- /.row -->    
+                <div <?php echo $view_note; ?> class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i>  <strong><?php echo $acct_note; ?></strong> 
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-lg-6">
+                        <h2>Applied</h2>
+                    </div>
+                    <div class="col-lg-6">
+                        <h2>Accepted</h2>
+                    </div>
+                </div>
 
                <div class="row">
-                   <div class="col-lg-12">
+                   <div class="col-lg-6">
                        <div class="table-responisve">
-                        <table class="table table-bordered table-hover table-striped text-center">
+                        <table class="table table-bordered table-hover table-striped">
                         <?php
                             while ($title = mysqli_fetch_assoc($result)) { ?>
                                 <tr>
                                     <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title['id']); ?>"><?php echo $title['name']; ?></a></td>
+                                </tr>  
+                                <?php
+                            }
+                        ?>                                                      
+                        </table>
+                           
+                       </div>
+                   </div>
+                   <div class="col-lg-6">
+                       <div class="table-responisve">
+                        <table class="table table-bordered table-hover table-striped">
+                        <?php
+                            while ($title_accept = mysqli_fetch_assoc($accept_result)) { ?>
+                                <tr>
+                                    <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
                                 </tr>  
                                 <?php
                             }

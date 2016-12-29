@@ -60,5 +60,5 @@ if(!$mail->send()) {
    exit;
 } 
 
-	redirect_to("eb.php");
+	redirect_to("eb.php?status=2");
 ?>
