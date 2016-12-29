@@ -10,6 +10,30 @@
     $name_title = mysqli_fetch_assoc($name_result);
     $first_name = explode(" ", $name_title['username']);
 ?>
+<?php
+    $eb_id = $_GET['eb_id'];
+    $query = "SELECT * FROM eb_apps WHERE id = {$eb_id} LIMIT 1";
+    $result = mysqli_query($conn, $query);
+    confirm_query($result);  
+    $eb = mysqli_fetch_assoc($result); 
+    $y_exp = explode("-", $eb['dob']);
+    $year = 2016 - $y_exp[0];
+?>
+<?php
+    if (isset($_POST['submit'])) {
+        $allot_council = $_POST['allot_council'];
+        $allot_post = $_POST['allot_post'];
+        $allot_hotel = $_POST['allot_hotel'];
+
+        $allot_query = "UPDATE eb_apps SET allot_council = '{$allot_council}', allot_post = '{$allot_post}', allot_hotel = '{$allot_hotel}', allot = 1 WHERE id = {$eb_id} LIMIT 1";
+        $allot_result = mysqli_query($conn, $allot_query);
+
+       if ($allot_result && mysqli_affected_rows($conn) == 1) {
+
+            redirect_to("eb_mail.php?eb_id=$eb_id");
+        }  
+    }
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -114,35 +138,35 @@
                    <div class="row">
                        <div class="col-lg-12">
                             <center>
-                                <img src="../../img/eb_pics/9962416408.jpg" style="border-radius:50%; height:20%; width:20%;">
+                                <img src="../../img/eb_pics/<?php echo $eb['phno']; ?>.jpg" style="border-radius:50%; height:20%; width:20%;">
                             </center>
                        </div>
                    </div>
                     <!-- /.row -->      
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <h2>Prashant Bhardwaj</h2>
+                            <h2><?php echo $eb['name']; ?></h2>
                         </div>
                     </div>     
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <h4>21 Years</h4>
+                            <h4><?php echo $year; ?> years</h4>
                         </div>
                     </div>          
                     <div class="row">
                         <div class="col-lg-4">
-                            <b>Student</b>
+                            <b><?php echo $eb['job']; ?></b>
                         </div>
                         <div class="col-lg-4 text-center">
-                            <b>VIT Chennai</b>
+                            <b><?php echo $eb['school']; ?></b>
                         </div>
                         <div class="col-lg-4 text-center">
-                            <b>pkpbhardwaj729@gmail.com</b>
+                            <b><?php echo $eb['email']; ?></b>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <b>Ph. No: +91 9962416408</b>
+                            <b>Ph. No: +91 <?php echo $eb['phno']; ?></b>
                         </div>                    
                     </div><br>
                     <p>
@@ -153,7 +177,7 @@
                             <div class="col-lg-4">                          
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b>4</b>
+                                <b><?php echo $eb['nodel']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -165,12 +189,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['del_details']; ?>
                             </div>
                         </div>
                     </p><br>
@@ -182,7 +201,7 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b>3</b>
+                                <b><?php echo $eb['noeb']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -194,12 +213,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['eb_details']; ?> 
                             </div>
                         </div>
                     </p><br>
@@ -211,12 +225,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['sec_details']; ?>
                             </div>
                         </div>
                     </p><br>
@@ -228,7 +237,7 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b>United Nations Security Council</b>
+                                <b><?php echo $eb['council_ch1']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -240,12 +249,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['agenda1']; ?>
                             </div>
                         </div>
                     </p><br>
@@ -257,12 +261,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['agenda1_details']; ?>
                             </div>
                         </div>
                     </p><br>
@@ -274,7 +273,7 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b>United Nations General Assembly – Disarmament and International</b>
+                                <b><?php echo $eb['council_ch2']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -286,12 +285,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['agenda2']; ?>
                             </div>
                         </div>
                     </p><br>
@@ -303,12 +297,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['agenda2_details']; ?>
                             </div>
                         </div>
                     </p><br>
@@ -320,7 +309,7 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b>United Nations Human Rights Council</b>
+                                <b><?php echo $eb['council_ch3']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -332,7 +321,7 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b>Chairperson/President or equivalent</b>
+                                <b><?php echo $eb['posit']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -344,12 +333,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['eb_caps1']; ?>
                             </div>
                         </div>
                     </p><br>
@@ -361,7 +345,7 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b>Yes</b>
+                                <b><?php echo $eb['alt_post']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -373,12 +357,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['eb_caps2']; ?>
                             </div>
                         </div>
                     </p><br>
@@ -390,7 +369,7 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b>Yes</b>
+                                <b><?php echo $eb['eb_caps3']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -402,7 +381,7 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b>Yes</b>
+                                <b><?php echo $eb['hotel']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -414,12 +393,7 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                                tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
-                                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo
-                                consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse
-                                cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non
-                                proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                                <?php echo $eb['q_back']; ?>
                             </div>
                         </div>
                     </p><br><br><hr>
@@ -454,10 +428,10 @@
                 </div>
                 <div class="modal-body">
                     <p>                            
-                        <form action="eb_profile.php" method="post" role="form">
+                        <form action="eb_profile.php?eb_id=<?php echo $eb_id; ?>" method="post" role="form">
                             <div class="form-group">
                                 <label>Select council for this applicant</label>
-                                <select name="council_ch1" required class="form-control">
+                                <select name="allot_council" required class="form-control">
                                     <option value="United Nations Security Council">United Nations Security Council</option>
                                     <option value="United Nations General Assembly – Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                     <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
@@ -468,19 +442,19 @@
                             </div>
                             <div class="form-group">
                                 <label>Select post for this applicant</label>
-                                <select class="form-control">
-                                    <option>Chairperson/President or equivalent</option>
-                                    <option>Vice-chairperson/Vice- president or equivalent</option>
+                                <select class="form-control" name="allot_post" required>
+                                    <option value="Chairperson/President or equivalent">Chairperson/President or equivalent</option>
+                                    <option value="Vice-chairperson/Vice- president or equivalent">Vice-chairperson/Vice- president or equivalent</option>
                                 </select>
                             </div>
                             <div class="form-group">
                                 <label>Allot accomodation?</label>
-                                <select class="form-control">
-                                    <option>Yes</option>
-                                    <option>No</option>
+                                <select class="form-control" name="allot_hotel" required>
+                                    <option value="yes">Yes</option>
+                                    <option value="no">No</option>
                                 </select>
                             </div>
-                            <input type="submit" name="single" value="Submit and send" class="btn btn-lg btn-success">&nbsp; 
+                            <input type="submit" name="submit" value="Submit and send" class="btn btn-lg btn-success">&nbsp; 
                             <button type="reset" class="btn btn-lg btn-warning">Reset</button>
                         </form>                               
                     </p>

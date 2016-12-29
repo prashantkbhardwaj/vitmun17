@@ -10,6 +10,11 @@
     $name_title = mysqli_fetch_assoc($name_result);
     $first_name = explode(" ", $name_title['username']);
 ?>
+<?php
+    $query = "SELECT * FROM eb_apps";
+    $result = mysqli_query($conn, $query);
+    confirm_query($result);    
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -113,18 +118,14 @@
                    <div class="col-lg-12">
                        <div class="table-responisve">
                         <table class="table table-bordered table-hover table-striped text-center">
-                            <tr>
-                                <td><a href="#">Prashant Kumar Bhardwaj</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Prashant Kumar Bhardwaj</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Prashant Kumar Bhardwaj</a></td>
-                            </tr>
-                            <tr>
-                                <td><a href="#">Prashant Kumar Bhardwaj</a></td>
-                            </tr>
+                        <?php
+                            while ($title = mysqli_fetch_assoc($result)) { ?>
+                                <tr>
+                                    <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title['id']); ?>"><?php echo $title['name']; ?></a></td>
+                                </tr>  
+                                <?php
+                            }
+                        ?>                                                      
                         </table>
                            
                        </div>
