@@ -67,17 +67,6 @@ function find_all_admins() {
 	return $admin_set;
 }
 
-function find_all_drones() {
-	global $conn;
-
-	$query = "SELECT * ";
-	$query .= "FROM drones ";
-	$query .= "ORDER BY username ASC";
-	$drone_set = mysqli_query($conn, $query);
-	confirm_query($drone_set);
-	return $drone_set;
-}
-
 function find_admin_by_id($admin_id) {
 	global $conn;
 
@@ -91,24 +80,6 @@ function find_admin_by_id($admin_id) {
 	confirm_query($admin_set);
 	if ($admin = mysqli_fetch_assoc($admin_set)) {
 		return $admin;
-	} else {
-		return null;
-	}
-}
-
-function find_drone_by_id($drone_id) {
-	global $conn;
-
-	$safe_drone_id = mysqli_real_escape_string($conn, $drone_id);
-
-	$query = "SELECT * ";
-	$query .= "FROM drones ";
-	$query .= "WHERE id = {$safe_drone_id}";
-	$query .= "LIMIT 1";
-	$drone_set = mysqli_query($conn, $query);
-	confirm_query($drone_set);
-	if ($drone = mysqli_fetch_assoc($drone_set)) {
-		return $drone;
 	} else {
 		return null;
 	}
@@ -212,28 +183,11 @@ function attempt_admin_login($username, $password) {
 	}
 }
 
-function attempt_drone_login($username, $password) {
-	$drone = find_drone_by_username($username);
-	if ($drone) {
-		if (password_check($password, $drone["hashed_password"])) {
-			return $drone;
-		} else {
-			return false;
-		}
-	} else {
-		return false;
-	}
-}
-
 function logged_in() {
 	return isset($_SESSION['user_id']);
 }
 function admin_logged_in() {
 	return isset($_SESSION['admin_id']);
-}
-
-function drone_logged_in() {
-	return isset($_SESSION['drone_id']);
 }
 
 function confirm_logged_in() {
@@ -244,12 +198,6 @@ function confirm_logged_in() {
 function confirm_admin_logged_in() {
 	if (!admin_logged_in()) {
 		redirect_to("admin_login.php");
-	}
-}
-
-function confirm_drone_logged_in() {
-	if (!drone_logged_in()) {
-		redirect_to("drone_login.php");
 	}
 }
 

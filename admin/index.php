@@ -1,3 +1,39 @@
+<?php require_once("../includes/session.php");?>
+<?php require_once("../includes/db_connection.php");?>
+<?php require_once("../includes/functions.php");?>
+<?php require_once("../includes/validation_functions.php"); ?>
+<?php
+if (logged_in()) {
+    redirect_to ("public/index.php");
+}
+?>
+<?php
+$username = "";
+if (isset($_POST['submit'])) {
+
+    $required_fields = array("username", "password");
+    validate_presence($required_fields);
+    
+    if (empty($errors)) {
+
+        $username = $_POST['username'];     
+        $password = $_POST['password'];
+        $found_user = attempt_login($username, $password);
+
+        if ($found_user) {
+
+            $_SESSION["user_id"] = $found_user["id"];
+            $_SESSION["username"] = $found_user["username"];
+            redirect_to("public/index.php");
+        } else {
+            $_SESSION["message"] = "Username/password not found.";
+        }
+    }
+} else {
+
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -15,7 +51,7 @@
 		<style>
 			@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
 			body {
-				background: #563c55 url(images/blurred.jpg) no-repeat center top;
+				background: #563c55 url(images/admin_bg.jpg) no-repeat center top;
 				-webkit-background-size: cover;
 				-moz-background-size: cover;
 				background-size: cover;
@@ -42,14 +78,14 @@
 			</header>
 			
 			<section class="main">
-				<form class="form-3">
+				<form class="form-3" method="post" action="index.php">
 				    <p class="clearfix">
 				        <label for="login">Username</label>
-				        <input type="text" name="login" id="login" placeholder="Username">
+				        <input type="text" name="username" required id="login" placeholder="Username">
 				    </p>
 				    <p class="clearfix">
 				        <label for="password">Password</label>
-				        <input type="password" name="password" id="password" placeholder="Password"> 
+				        <input type="password" name="password" required id="password" placeholder="Password"> 
 				    </p>				   
 				    <p class="clearfix">
 				       <center> <input type="submit" name="submit" value="Sign in"></center>
@@ -60,3 +96,8 @@
         </div>
     </body>
 </html>
+<?php
+if (isset ($conn)){
+  mysqli_close($conn);
+}
+?>
