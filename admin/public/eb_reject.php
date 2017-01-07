@@ -11,6 +11,8 @@ confirm_query($result);
 $title = mysqli_fetch_assoc($result);
 $email = $title['email'];
 $name = $title['name'];
+$allot_query = "UPDATE eb_apps SET allot = 0 WHERE id = {$eb_id} LIMIT 1";
+$allot_result = mysqli_query($conn, $allot_query);
 
 // registration bill html code starts
 

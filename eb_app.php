@@ -45,11 +45,11 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VITC Inter MUN 2017 | EB Application</title>
+    <title>VITCMUN 2017 | EB Application</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="VIT chennai inter MUN applications" />
-    <meta name="keywords" content="VIT chennai, MUN, VIT chennai inter MUN" />
+    <meta name="description" content="VIT chennai MUN applications" />
+    <meta name="keywords" content="VIT chennai, MUN, VIT chennai MUN" />
     <meta name="author" content="Prashant Bhardwaj" />
     <link rel="shortcut icon" href="img/favicon.ico">
 
@@ -130,15 +130,15 @@
                       <div class="collapse navbar-collapse" id="navbar">
 
                         <ul class="nav navbar-nav navbar-right">
-                          <li >
-                           <a href="#splash-image-wrap">Home</a>
+                        <li >
+                           <a href="index.html">Home</a>
                        </li>
-                       <li><a href="#page-section">VITCMUN</a></li>
+                       <li><a href="index.html#intro">VITCMUN</a></li>
 
-                       <li><a href="#news">Committees</a></li>
+                       <li><a href="index.html#council">Committees</a></li>
                        <li><a href="team.html">Teams</a></li>                      
                       
-                       <li><a href="#contact">Contact Us </a></li>
+                       <li><a href="index.html#contact">Contact Us </a></li>
                        
                    </ul>
 
@@ -339,7 +339,38 @@ day?</label>
 </section>
 <section>
 
-    
+    <div class="l-contactus-section l-section">
+
+        <div class="container">
+
+
+            <div id="contact" class="row">
+
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+
+                    <h6>Contact Us</h6>
+
+                    <ul>
+                        <li class="opacity"><img src="img/marker.png" alt="marker image" />VIT UNIVERSITY , Chennai , TN</li>
+                         <li class="opacity"><img src="img/phone.png" alt="phone image" />+91 9176472987, +91 9962416408</li>
+                        <li class="opacity"><img src="img/mail.png" alt="mail image"/> vitmun2017@gmail.com</li>
+                        <li class="opacity"><img src="img/magnifier.png" alt="magnifier image"/> www.vitcmun.com</li>
+                    </ul>
+
+                </div><!-- col-lg-5 -->
+
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 form-wrapper opacity">
+                    <center><br>
+                        <img style="height:100%; width:40%;" src="img/VITCMUN2017.png">
+                    </center>
+                </div><!-- col-lg-7 -->
+
+            </div><!-- row -->
+
+
+
+        </div><!-- container -->
+
 
         <div class="l-copyright text-center">
 
@@ -351,8 +382,12 @@ day?</label>
                     <a href="#"><i class="fa fa-linkedin"></i></a>
                     <a href="#"><i class="fa fa-github"></i></a>
                 </div><!--m-social-icons-->
+
+
             </div><!-- container -->
+
         </div><!-- l-copyright -->
+
     </div><!-- l-contactus-section -->
 
 </section>
