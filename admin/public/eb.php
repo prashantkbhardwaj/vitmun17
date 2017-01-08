@@ -143,45 +143,59 @@
                     </div>
                 </div>
 
-                <div class="row">
-                    <div class="col-lg-6">
-                        <h2>Applied</h2>
-                    </div>
-                    <div class="col-lg-6">
-                        <h2>Accepted</h2>
-                    </div>
-                </div>
-
                <div class="row">
-                   <div class="col-lg-6">
-                       <div class="table-responisve">
-                        <table class="table table-bordered table-hover table-striped">
-                        <?php
-                            while ($title = mysqli_fetch_assoc($result)) { ?>
-                                <tr>
-                                    <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title['id']); ?>"><?php echo $title['name']; ?></a></td>
-                                </tr>  
-                                <?php
-                            }
-                        ?>                                                      
-                        </table>
-                           
-                       </div>
-                   </div>
-                   <div class="col-lg-6">
-                       <div class="table-responisve">
-                        <table class="table table-bordered table-hover table-striped">
-                        <?php
-                            while ($title_accept = mysqli_fetch_assoc($accept_result)) { ?>
-                                <tr>
-                                    <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
-                                </tr>  
-                                <?php
-                            }
-                        ?>                                                      
-                        </table>
-                           
-                       </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-hourglass-start"></i> Applied</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responisve">
+                                    <table class="table table-bordered table-hover table-striped">
+                                    <?php
+                                        while ($title = mysqli_fetch_assoc($result)) { ?>
+                                            <tr>
+                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title['id']); ?>"><?php echo $title['name']; ?></a></td>
+                                            </tr>  
+                                            <?php
+                                        }
+                                    ?>                                                      
+                                    </table>                                       
+                                </div>
+                            </div>
+                        </div>                       
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-check-square"></i> Accepted</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responisve">
+                                    <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Alloted Council</th>
+                                                <th>Alloted Post</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                    <?php
+                                        while ($title_accept = mysqli_fetch_assoc($accept_result)) { ?>
+                                            <tr>
+                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
+                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
+                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_post']; ?></a></td>
+                                            </tr>  
+                                            <?php
+                                        }
+                                    ?> 
+                                        </tbody>                                                     
+                                    </table>                           
+                                </div>
+                            </div>
+                        </div>                       
                    </div>
                </div>
                 <!-- /.row -->                     

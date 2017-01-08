@@ -23,6 +23,13 @@
     } else {
         $view_hotel = "";
     }
+    if ($eb['allot']==1) {
+        $view_buttons = "style='display:none;'";
+        $view_status = "<span style='color:green;'><strong><i class='fa fa-check-square'></i>  Selected Applicant</strong></span>";
+    } else {
+        $view_buttons = "";
+        $view_status = "<i class='fa fa-dashboard'></i> Click on the accept or reject button at the bottom of the profile to accept or reject the applicant and notify him/her via mail automatically.";
+    }
 ?>
 <?php
     if (isset($_POST['submit'])) {
@@ -135,7 +142,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Click on the accept or reject button at the bottom of the profile to accept or reject the applicant and notify him/her via mail automatically. 
+                                <?php echo $view_status; ?> 
                             </li>
                         </ol>
                     </div>
@@ -409,13 +416,13 @@
                </div>
 
                 <div class="row">
-                    <div class="col-lg-4 text-center">
+                    <div <?php echo $view_buttons; ?> class="col-lg-4 text-center">
                         <button data-toggle="modal" data-target="#choice" type="button" class="btn btn-lg btn-success">Accept  <i class="fa fa-check"></i></button>
                     </div>
                     <div class="col-lg-4 text-center">
                         <button onclick="javascript:htmltopdf();" type="button" class="btn btn-lg btn-primary">Download  <i class="fa fa-download"></i></button>
                     </div>
-                    <div class="col-lg-4 text-center">
+                    <div <?php echo $view_buttons; ?> class="col-lg-4 text-center">
                         <a href="eb_reject.php?eb_id=<?php echo $eb_id; ?>">
                             <button type="button" class="btn btn-lg btn-danger" onclick="return confirm('Are you sure you want to reject this application?');">Reject  <i class="fa fa-close"></i></button>
                         </a>
@@ -465,7 +472,7 @@
                                     <option value="2">No</option>
                                 </select>
                             </div>
-                            <input type="submit" name="submit" value="Submit and send" class="btn btn-lg btn-success">&nbsp; 
+                            <input type="submit" name="submit" value="Submit and send" onclick="return confirm('Are you sure you want to accept this application?');" class="btn btn-lg btn-success">&nbsp; 
                             <button type="reset" class="btn btn-lg btn-warning">Reset</button>
                         </form>                               
                     </p>
