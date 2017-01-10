@@ -99,8 +99,28 @@
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Others</a>
-                    </li>                   
+                        <a href="javascript:;" data-toggle="collapse" data-target="#council"><i class="fa fa-fw fa-bank"></i> Councils <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="council" class="collapse">
+                            <li>
+                                <a href="council.php?eb_id=001">UNGA SC</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=002">UNGA DISEC</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=003">UN HRC</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=004">IAEA</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=005">OSCE</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=006">TLC</a>
+                            </li>
+                        </ul>
+                    </li>                             
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -118,7 +138,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Dashboard
+                                <i class="fa fa-info-circle"></i> Dashboard
                             </li>
                         </ol>
                     </div>

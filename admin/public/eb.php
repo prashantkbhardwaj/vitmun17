@@ -109,8 +109,28 @@
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-edit"></i> Others</a>
-                    </li>                   
+                        <a href="javascript:;" data-toggle="collapse" data-target="#council"><i class="fa fa-fw fa-bank"></i> Councils <i class="fa fa-fw fa-caret-down"></i></a>
+                        <ul id="council" class="collapse">
+                            <li>
+                                <a href="council.php?eb_id=001">UNGA SC</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=002">UNGA DISEC</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=003">UN HRC</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=004">IAEA</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=005">OSCE</a>
+                            </li>
+                            <li>
+                                <a href="council.php?eb_id=006">TLC</a>
+                            </li>
+                        </ul>
+                    </li>                          
                 </ul>
             </div>
             <!-- /.navbar-collapse -->
@@ -128,7 +148,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-dashboard"></i> Click on the applicant's name to view his/her profile. 
+                                <i class="fa fa-info-circle"></i> Click on the applicant's name to view his/her profile. 
                             </li>
                         </ol>
                     </div>
@@ -185,7 +205,7 @@
                                         while ($title_accept = mysqli_fetch_assoc($accept_result)) { ?>
                                             <tr>
                                                 <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
-                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
+                                                <td><a href="council.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
                                                 <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_post']; ?></a></td>
                                             </tr>  
                                             <?php
