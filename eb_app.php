@@ -136,7 +136,7 @@
                        <li><a href="index.html#intro">VITCMUN</a></li>
 
                        <li><a href="index.html#council">Committees</a></li>
-                       <li><a href="team.html">Teams</a></li>                      
+                       <li><a href="team.html">Team</a></li>                      
                       
                        <li><a href="index.html#contact">Contact Us </a></li>
                        

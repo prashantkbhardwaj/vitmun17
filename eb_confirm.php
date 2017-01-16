@@ -91,7 +91,7 @@
                        <li><a href="#page-section">VITCMUN</a></li>
 
                        <li><a href="#news">Committees</a></li>
-                       <li><a href="team.html">Teams</a></li>                      
+                       <li><a href="team.html">Team</a></li>                      
                       
                        <li><a href="#contact">Contact Us </a></li>
                        
