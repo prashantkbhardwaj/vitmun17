@@ -161,7 +161,7 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12"><br>
-                        <h2 class="text-center">Application for the executive board</h2>
+                        <h2 class="text-center">Executive Board Application</h2>
 
                         <div>
                             <form role="form" action="eb_app.php" method="POST" enctype="multipart/form-data">
@@ -174,7 +174,7 @@
                                     <input type="date" style="color: white;" name="dob" required class="form-control">
                                 </div>
                                 <div class="form-group">
-                                    <label>Occupation (curent)</label>
+                                    <label>Current occupation</label>
                                     <input type="text" style="color: white;" name="job" required class="form-control">
                                 </div>
                                 <div class="form-group">
@@ -351,10 +351,12 @@ day?</label>
                     <h6>Contact Us</h6>
 
                     <ul>
-                        <li class="opacity"><img src="img/marker.png" alt="marker image" />VIT UNIVERSITY , Chennai , TN</li>
+                        <li class="opacity">
+                            <span style="display:block;">The Debate Society VIT UNIVERSITY , Chennai Campus, Vandalur-Kellambakkam Road, Chennai, Tamil Nadu 600048</span>
+                        </li>
                          <li class="opacity"><img src="img/phone.png" alt="phone image" />+91 9176472987, +91 9962416408</li>
                         <li class="opacity"><img src="img/mail.png" alt="mail image"/> vitmun2017@gmail.com</li>
-                        <li class="opacity"><img src="img/magnifier.png" alt="magnifier image"/> www.vitcmun.com</li>
+                        <li class="opacity"><img src="img/magnifier.png" alt="magnifier image"/> facebook.com/vitcmun</li>
                     </ul>
 
                 </div><!-- col-lg-5 -->
@@ -376,11 +378,9 @@ day?</label>
 
             <div class="container">
                 <div class="m-social-icons">            
-                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.facebook.com/groups/1495550694059659/?ref=br_tf"><i class="fa fa-facebook"></i></a>
                     <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-github"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>                    
                 </div><!--m-social-icons-->
 
 
@@ -417,9 +417,6 @@ day?</label>
 
 <!-- nice scroll -->
 <script src="inc/nice-scroll/jquery.nicescroll.min.js" ></script>
-
-<!-- google maps -->
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 
 <!-- Magnific Popup core JS file -->
 <script src="inc/magnific/dist/jquery.magnific-popup.js"></script> 

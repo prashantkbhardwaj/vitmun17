@@ -145,24 +145,58 @@
 </section>
 <section>
 
-    
+    <div class="l-contactus-section l-section">
+
+        <div class="container">
+
+
+            <div id="contact" class="row">
+
+                <div class="col-lg-5 col-md-5 col-sm-5 col-xs-12">
+
+                    <h6>Contact Us</h6>
+
+                    <ul>
+                        <li class="opacity">
+                            <span style="display:block;">The Debate Society VIT UNIVERSITY , Chennai Campus, Vandalur-Kellambakkam Road, Chennai, Tamil Nadu 600048</span>
+                        </li>
+                         <li class="opacity"><img src="img/phone.png" alt="phone image" />+91 9176472987, +91 9962416408</li>
+                        <li class="opacity"><img src="img/mail.png" alt="mail image"/> vitmun2017@gmail.com</li>
+                        <li class="opacity"><img src="img/magnifier.png" alt="magnifier image"/> facebook.com/vitcmun</li>
+                    </ul>
+
+                </div><!-- col-lg-5 -->
+
+                <div class="col-lg-7 col-md-7 col-sm-7 col-xs-12 form-wrapper opacity">
+                    <center><br>
+                        <img style="height:100%; width:40%;" src="img/VITCMUN2017.png">
+                    </center>
+                </div><!-- col-lg-7 -->
+
+            </div><!-- row -->
+
+
+
+        </div><!-- container -->
+
 
         <div class="l-copyright text-center">
 
             <div class="container">
                 <div class="m-social-icons">            
-                    <a href="#"><i class="fa fa-facebook"></i></a>
+                    <a href="https://www.facebook.com/groups/1495550694059659/?ref=br_tf"><i class="fa fa-facebook"></i></a>
                     <a href="#"><i class="fa fa-twitter"></i></a>
-                    <a href="#"><i class="fa fa-dribbble"></i></a>
-                    <a href="#"><i class="fa fa-linkedin"></i></a>
-                    <a href="#"><i class="fa fa-github"></i></a>
+                    <a href="#"><i class="fa fa-instagram"></i></a>                    
                 </div><!--m-social-icons-->
+
+
             </div><!-- container -->
+
         </div><!-- l-copyright -->
+
     </div><!-- l-contactus-section -->
 
 </section>
-
 </div><!-- l-content-wrap -->
 
 </div><!-- l-wrapper -->
@@ -188,9 +222,6 @@
 
 <!-- nice scroll -->
 <script src="inc/nice-scroll/jquery.nicescroll.min.js" ></script>
-
-<!-- google maps -->
-<script src="https://maps.googleapis.com/maps/api/js?sensor=false" type="text/javascript"></script>
 
 <!-- Magnific Popup core JS file -->
 <script src="inc/magnific/dist/jquery.magnific-popup.js"></script> 
