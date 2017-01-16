@@ -26,9 +26,19 @@
     if ($eb['allot']==1) {
         $view_buttons = "style='display:none;'";
         $view_status = "<span style='color:green;'><strong><i class='fa fa-check-square'></i>  Selected Applicant</strong></span>";
-    } else {
+        $view_short = "style='display:none;'";
+        $view_reject = "style='display:none;'";
+    } elseif ($eb['allot']==2) {
+        $view_short = "style='display:none;'";
         $view_buttons = "";
-        $view_status = "<i class='fa fa-info-circle'></i> Click on the accept or reject button at the bottom of the profile to accept or reject the applicant and notify him/her via mail automatically.";
+        $view_status = "<span style='color:#FF6347;'><strong><i class='fa fa-hourglass-half'></i>  Shortlisted Applicant</strong></span>";
+        $view_reject = "";
+    }
+     else {
+        $view_buttons = "style='display:none;'";
+        $view_short = "";
+        $view_status = "<i class='fa fa-info-circle'></i> Click on the shortlist or reject button at the bottom of the profile to shortlist or reject the applicant and notify him/her via mail automatically.";
+        $view_reject = "";
     }
 ?>
 <?php
@@ -439,10 +449,15 @@
                     <div <?php echo $view_buttons; ?> class="col-lg-4 text-center">
                         <button data-toggle="modal" data-target="#choice" type="button" class="btn btn-lg btn-success">Accept  <i class="fa fa-check"></i></button>
                     </div>
+                    <div <?php echo $view_short;?> class="col-lg-4 text-center">
+                        <a href="eb_shortlist.php?eb_id=<?php echo $eb_id; ?>">
+                            <button  type="button" class="btn btn-lg btn-info" onclick="return confirm('Are you sure you want to shortlist this application?');">Shortlist  <i class="fa fa-check"></i></button>
+                        </a>
+                    </div>
                     <div class="col-lg-4 text-center">
                         <button onclick="javascript:htmltopdf();" type="button" class="btn btn-lg btn-primary">Download  <i class="fa fa-download"></i></button>
                     </div>
-                    <div <?php echo $view_buttons; ?> class="col-lg-4 text-center">
+                    <div <?php echo $view_reject; ?> class="col-lg-4 text-center">
                         <a href="eb_reject.php?eb_id=<?php echo $eb_id; ?>">
                             <button type="button" class="btn btn-lg btn-danger" onclick="return confirm('Are you sure you want to reject this application?');">Reject  <i class="fa fa-close"></i></button>
                         </a>

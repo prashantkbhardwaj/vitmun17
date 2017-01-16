@@ -14,6 +14,10 @@
     $query = "SELECT * FROM eb_apps WHERE allot = 0 ORDER BY id DESC";
     $result = mysqli_query($conn, $query);
     confirm_query($result);    
+
+    $short_query = "SELECT * FROM eb_apps WHERE allot = 2 ORDER BY id DESC";
+    $short_result = mysqli_query($conn, $short_query);
+    confirm_query($short_result);    
 ?>
 <?php
     $accept_query = "SELECT * FROM eb_apps WHERE allot = 1 ORDER BY id DESC";
@@ -32,6 +36,10 @@
     } elseif ($status == 2) {
         $view_note = "";
         $acct_note = '<span style="color:red;">Application rejected and email sent.</span>';
+    } elseif ($status == 3) {
+        } elseif ($status == 2) {
+        $view_note = "";
+        $acct_note = '<span style="color:#FF6347;">Application shortlisted and email sent.</span>';
     } else {
         $view_note = "style='display:none;'";
         $acct_note = "";
@@ -186,37 +194,60 @@
                         </div>                       
                     </div>
                     <div class="col-lg-6">
-                        <div class="panel panel-green">
+                        <div class="panel panel-yellow">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-check-square"></i> Accepted</h3>
+                                <h3 class="panel-title"><i class="fa fa-hourglass-half"></i> Shortlisted</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responisve">
                                     <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Alloted Council</th>
-                                                <th>Alloted Post</th>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
                                     <?php
-                                        while ($title_accept = mysqli_fetch_assoc($accept_result)) { ?>
+                                        while ($short_title = mysqli_fetch_assoc($short_result)) { ?>
                                             <tr>
-                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
-                                                <td><a href="council.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
-                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_post']; ?></a></td>
+                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($short_title['id']); ?>"><?php echo $short_title['name']; ?></a></td>
                                             </tr>  
                                             <?php
                                         }
-                                    ?> 
-                                        </tbody>                                                     
-                                    </table>                           
+                                    ?>                                                      
+                                    </table>                                       
                                 </div>
                             </div>
-                        </div>                       
-                   </div>
+                        </div>     
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-12">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title text-center"><i class="fa fa-check-square"></i> Accepted</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responisve">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Alloted Council</th>
+                                                    <th>Alloted Post</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                        <?php
+                                            while ($title_accept = mysqli_fetch_assoc($accept_result)) { ?>
+                                                <tr>
+                                                    <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
+                                                    <td><a href="council.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
+                                                    <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_post']; ?></a></td>
+                                                </tr>  
+                                                <?php
+                                            }
+                                        ?> 
+                                            </tbody>                                                     
+                                        </table>                           
+                                    </div>
+                                </div>
+                            </div>                       
+                        </div>
+                    </div>
                </div>
                 <!-- /.row -->                     
 
