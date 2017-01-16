@@ -143,10 +143,10 @@
 
                     <ul>
                         <li class="opacity">
-                            <span style="display:block;">The Debate Society VIT UNIVERSITY , Chennai Campus, Vandalur-Kellambakkam Road, Chennai, Tamil Nadu 600048</span>
+                            <span style="display:block;">The Debate Society VIT UNIVERSITY , Chennai Campus, Vandalur-Kelambakkam Road, Chennai, Tamil Nadu 600048</span>
                         </li>
                          <li class="opacity"><img src="img/phone.png" alt="phone image" />+91 9176472987, +91 9962416408</li>
-                        <li class="opacity"><img src="img/mail.png" alt="mail image"/> vitmun2017@gmail.com</li>
+                        <li class="opacity"><img src="img/mail.png" alt="mail image"/> vitcmun2017@gmail.com</li>
                         <li class="opacity"><img src="img/magnifier.png" alt="magnifier image"/> facebook.com/vitcmun</li>
                     </ul>
 
