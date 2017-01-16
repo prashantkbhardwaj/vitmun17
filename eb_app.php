@@ -213,7 +213,7 @@ format given below.</label>
                                     <textarea style="color: white;" placeholder="No. – Name – Institution – Position" class="form-control" rows="3" name="sec_details" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>State of your council of first preference:</label>
+                                    <label>State your first preference of council:</label>
                                     <select style="color: white;" name="council_ch1" required class="form-control">
                                         <option value="United Nations Security Council">United Nations Security Council</option>
                                         <option value="United Nations General Assembly – Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
@@ -234,7 +234,7 @@ discussed.</label>
                                     <textarea style="color: white;" class="form-control" rows="3" name="agenda1_details" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>State of your council of second preference:</label>
+                                    <label>State your second prefernce of council:</label>
                                     <select style="color: white;" name="council_ch2" required class="form-control">
                                         <option value="United Nations Security Council">United Nations Security Council</option>
                                         <option value="United Nations General Assembly – Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
@@ -254,7 +254,7 @@ discussed.</label>
                                     <textarea style="color: white;" class="form-control" rows="3" name="agenda2_details" required></textarea>
                                 </div>
                                 <div class="form-group">
-                                    <label>State of your council of third preference:</label>
+                                    <label>State your third prefernce of council:</label>
                                     <select style="color: white;" name="council_ch3" required class="form-control">
                                         <option value="United Nations Security Council">United Nations Security Council</option>
                                         <option value="United Nations General Assembly – Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
