@@ -39,6 +39,9 @@
         $result = mysqli_query($conn, $query);
         if ($result) {
             redirect_to("eb_confirm.php");
+            $stsc = "";
+        } else {
+            $stsc = "Something went wrong! Please try again and see that you are using Google Chrome for this application. In case of any technical failure or for any technical assistance, please call 9962416408.";
         }
     }
 ?>
@@ -162,7 +165,7 @@
                 <div class="row">
                     <div class="col-lg-12"><br>
                         <h2 class="text-center">Executive Board Application</h2>
-
+                            <h5 style="color:red;"><?php echo $stsc; ?></h5>
                         <div>
                             <form role="form" action="eb_app.php" method="POST" enctype="multipart/form-data">
                                  <div class="form-group">
@@ -317,9 +320,9 @@ day?</label>
                                 </div>
                                 <div class="form-group">
                                     <label>Upload your picture.</label>
-                                    <input type="file" style="color: white;" class="form-control" name="pro_pic" required>
+                                    <input type="file" id="myFile" style="color: white;" class="form-control" name="pro_pic" required>
                                 </div><br>
-                                <input type="submit" class="btn btn-success col-lg-12" value="Submit" name="submit">
+                                <input type="submit" id="btt" class="btn btn-success col-lg-12" value="Submit" name="submit">
                             </form>             
                         </div>
 
@@ -435,6 +438,18 @@ day?</label>
 
 <!-- script calling -->
 <script src="inc/js/common.js"></script>        
+<script type="text/javascript">
+    $('#myFile').bind('change', function() {
+        //this.files[0].size gets the size of your file.
+        var sz = (this.files[0].size);
+        if (sz>300000) {
+            alert('File size too large, please upload an image of size less than or equal to 300 Kilobytes.');
+            document.getElementById("btt").disabled = true;
+        } else {
+            document.getElementById("btt").disabled = false;
+        }
+    });
+</script>
 
 </body>   
 </html>
