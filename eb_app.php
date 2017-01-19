@@ -3,31 +3,31 @@
 <?php require_once("includes/functions.php");?>
 <?php
     if (isset($_POST['submit'])) {
-        $name = $_POST['name'];
-        $dob = $_POST['dob'];
-        $job = $_POST['job'];
-        $school = $_POST['school'];
-        $phno = $_POST['phno'];
-        $email = $_POST['email'];
-        $nodel = $_POST['nodel'];
-        $del_details = $_POST['del_details'];
-        $noeb = $_POST['noeb'];
-        $eb_details = $_POST['eb_details'];
-        $sec_details = $_POST['sec_details'];
-        $council_ch1 = $_POST['council_ch1'];
-        $agenda1 = $_POST['agenda1'];
-        $agenda1_details = $_POST['agenda1_details'];
-        $council_ch2 = $_POST['council_ch2'];
-        $agenda2 = $_POST['agenda2'];
-        $agenda2_details = $_POST['agenda2_details'];
-        $council_ch3 = $_POST['council_ch3'];
-        $posit = $_POST['posit'];
-        $eb_caps1 = $_POST['eb_caps1'];
-        $alt_post = $_POST['alt_post'];
-        $eb_caps2 = $_POST['eb_caps2'];
-        $eb_caps3 = $_POST['eb_caps3'];
-        $hotel = $_POST['hotel'];
-        $q_back = $_POST['q_back'];
+        $name = mysqli_real_escape_string($conn, htmlspecialchars($_POST['name']));
+        $dob = mysqli_real_escape_string($conn, htmlspecialchars($_POST['dob']));
+        $job = mysqli_real_escape_string($conn, htmlspecialchars($_POST['job']));
+        $school = mysqli_real_escape_string($conn, htmlspecialchars($_POST['school']));
+        $phno = mysqli_real_escape_string($conn, htmlspecialchars($_POST['phno']));
+        $email = mysqli_real_escape_string($conn, htmlspecialchars($_POST['email']));
+        $nodel = mysqli_real_escape_string($conn, htmlspecialchars($_POST['nodel']));
+        $del_details = mysqli_real_escape_string($conn, htmlspecialchars($_POST['del_details']));
+        $noeb = mysqli_real_escape_string($conn, htmlspecialchars($_POST['noeb']));
+        $eb_details = mysqli_real_escape_string($conn, htmlspecialchars($_POST['eb_details']));
+        $sec_details = mysqli_real_escape_string($conn, htmlspecialchars($_POST['sec_details']));
+        $council_ch1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch1']));
+        $agenda1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['agenda1']));
+        $agenda1_details = mysqli_real_escape_string($conn, htmlspecialchars($_POST['agenda1_details']));
+        $council_ch2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch2']));
+        $agenda2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['agenda2']));
+        $agenda2_details = mysqli_real_escape_string($conn, htmlspecialchars($_POST['agenda2_details']));
+        $council_ch3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch3']));
+        $posit = mysqli_real_escape_string($conn, htmlspecialchars($_POST['posit']));
+        $eb_caps1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['eb_caps1']));
+        $alt_post = mysqli_real_escape_string($conn, htmlspecialchars($_POST['alt_post']));
+        $eb_caps2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['eb_caps2']));
+        $eb_caps3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['eb_caps3']));
+        $hotel = mysqli_real_escape_string($conn, htmlspecialchars($_POST['hotel']));
+        $q_back = mysqli_real_escape_string($conn, htmlspecialchars($_POST['q_back']));
         $pro_pic = 1;
         $target_dir = "img/eb_pics/";
         $target_file = $target_dir . basename($_FILES["pro_pic"]["name"]);                
@@ -166,6 +166,7 @@
                     <div class="col-lg-12"><br>
                         <h2 class="text-center">Executive Board Application</h2>
                             <h5 style="color:red;"><?php echo $stsc; ?></h5>
+                            <center><h6 style="color:red;"><strong>Please do not use FireFox to fill this application.</strong></h6></center>
                         <div>
                             <form role="form" action="eb_app.php" method="POST" enctype="multipart/form-data">
                                  <div class="form-group">
