@@ -36,8 +36,7 @@
     } elseif ($status == 2) {
         $view_note = "";
         $acct_note = '<span style="color:red;">Application rejected and email sent.</span>';
-    } elseif ($status == 3) {
-        } elseif ($status == 2) {
+    } elseif ($status == 3) {        
         $view_note = "";
         $acct_note = '<span style="color:#FF6347;">Application shortlisted and email sent.</span>';
     } else {
