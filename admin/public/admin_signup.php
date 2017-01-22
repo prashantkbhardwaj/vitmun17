@@ -3,21 +3,20 @@
 <?php require_once("../../includes/functions.php"); ?>
 <?php require_once("../../includes/validation_functions.php"); ?>
 <?php confirm_logged_in(); ?>
+
 <?php
-	$current_user = $_SESSION["username"];
+    $current_user = $_SESSION["username"];
+    $name_query = "SELECT * FROM admins WHERE username = '{$current_user}' LIMIT 1";
+    $name_result = mysqli_query($conn, $name_query);
+    confirm_query($name_result);
+    $name_title = mysqli_fetch_assoc($name_result);    
+?>
+
+<?php
 	if ($current_user!=="prashant") {
 		redirect_to('e404.php');
 	}
 ?>
-
-<?php
-   /* $current_user = $_SESSION["username"];
-    $name_query = "SELECT * FROM admins WHERE username = '{$current_user}' LIMIT 1";
-    $name_result = mysqli_query($conn, $name_query);
-    confirm_query($name_result);
-    $name_title = mysqli_fetch_assoc($name_result);    */
-?>
-
 
 <?php
 if(isset($_POST['submit'])){
