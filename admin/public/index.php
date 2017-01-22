@@ -238,7 +238,7 @@
                 </div>
                 <!-- /.row -->
 
-                <div class="row">
+                <div class="row" id="admins">
                     <div class="col-lg-12">
                         <center><h2>Admin List</h2></center>
                         <div class="table-responsive">
