@@ -18,6 +18,10 @@
     $short_query = "SELECT * FROM eb_apps WHERE allot = 2 ORDER BY id DESC";
     $short_result = mysqli_query($conn, $short_query);
     confirm_query($short_result);    
+
+    $reject_query = "SELECT * FROM eb_apps WHERE allot = 3 ORDER BY id DESC";
+    $reject_result = mysqli_query($conn, $reject_query);
+    confirm_query($reject_result);    
 ?>
 <?php
     $accept_query = "SELECT * FROM eb_apps WHERE allot = 1 ORDER BY id DESC";
@@ -171,7 +175,7 @@
                 </div>
 
                <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-hourglass-start"></i> Applied</h3>
@@ -192,7 +196,7 @@
                             </div>
                         </div>                       
                     </div>
-                    <div class="col-lg-6">
+                    <div class="col-lg-4">
                         <div class="panel panel-yellow">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-hourglass-half"></i> Shortlisted</h3>
@@ -204,6 +208,27 @@
                                         while ($short_title = mysqli_fetch_assoc($short_result)) { ?>
                                             <tr>
                                                 <td><a href="eb_profile.php?eb_id=<?php echo urlencode($short_title['id']); ?>"><?php echo $short_title['name']; ?></a></td>
+                                            </tr>  
+                                            <?php
+                                        }
+                                    ?>                                                      
+                                    </table>                                       
+                                </div>
+                            </div>
+                        </div>     
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <h3 class="panel-title"><i class="fa fa-close"></i> Rejected</h3>
+                            </div>
+                            <div class="panel-body">
+                                <div class="table-responisve">
+                                    <table class="table table-bordered table-hover table-striped">
+                                    <?php
+                                        while ($reject_title = mysqli_fetch_assoc($reject_result)) { ?>
+                                            <tr>
+                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($reject_title['id']); ?>"><?php echo $reject_title['name']; ?></a></td>
                                             </tr>  
                                             <?php
                                         }
