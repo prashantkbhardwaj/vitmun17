@@ -9,6 +9,8 @@
     confirm_query($name_result);
     $name_title = mysqli_fetch_assoc($name_result);
     $first_name = explode(" ", $name_title['username']);
+
+    $user_type = $name_title['type'];
 ?>
 <?php
     $eb_id = $_GET['eb_id'];
@@ -43,6 +45,11 @@
         $view_short = "";
         $view_status = "<i class='fa fa-info-circle'></i> Click on the shortlist or reject button at the bottom of the profile to shortlist or reject the applicant and notify him/her via mail automatically.";
         $view_reject = "";
+    }
+    if ($user_type==4) {
+        $view_action = "";
+    } else {
+        $view_action = "style='display:none;'";
     }
 ?>
 <?php
@@ -449,7 +456,7 @@
                     </p><br><br><hr>
                </div>
 
-                <div class="row">
+                <div <?php echo $view_action; ?> class="row">
                     <div <?php echo $view_buttons; ?> class="col-lg-4 text-center">
                         <button data-toggle="modal" data-target="#choice" type="button" class="btn btn-lg btn-success">Accept  <i class="fa fa-check"></i></button>
                     </div>

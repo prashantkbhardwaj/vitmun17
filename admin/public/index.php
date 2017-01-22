@@ -264,7 +264,9 @@
                                                         echo "Hospitality";
                                                     } elseif ($title_admin['type']==4) {
                                                         echo "Super Admin";
-                                                    }                                                         
+                                                    } elseif ($title_admin['type']==5) {
+                                                        echo "Viewer Admin";
+                                                    }                                                        
                                                 ?>
                                                 
                                             </td>

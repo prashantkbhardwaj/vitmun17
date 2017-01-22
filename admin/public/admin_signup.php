@@ -73,6 +73,7 @@ if(isset($_POST['submit'])){
 		   						<option value="2">Delegate Affairs Admin</option>
 		   						<option value="3">Hospitality Admin</option>
 		   						<option value="4">Super Admin</option>
+		   						<option value="5">Viewer Admin</option>
 		   					</select>
 		   				</td>
 		   			</tr>
