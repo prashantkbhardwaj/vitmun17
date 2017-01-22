@@ -3,6 +3,12 @@
 <?php require_once("../../includes/functions.php"); ?>
 <?php require_once("../../includes/validation_functions.php"); ?>
 <?php confirm_logged_in(); ?>
+<?php
+	$current_user = $_SESSION["username"];
+	if ($current_user!=="prashant") {
+		redirect_to('e404.php');
+	}
+?>
 
 <?php
    /* $current_user = $_SESSION["username"];
