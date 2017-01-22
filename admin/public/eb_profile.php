@@ -62,7 +62,7 @@
             $allot_hotel = $_POST['allot_hotel'];
         }        
 
-        $allot_query = "UPDATE eb_apps SET allot_council = '{$allot_council}', allot_post = '{$allot_post}', allot_hotel = {$allot_hotel}, allot = 1 WHERE id = {$eb_id} LIMIT 1";
+        $allot_query = "UPDATE eb_apps SET allot_council = '{$allot_council}', allot_post = '{$allot_post}', allot_hotel = {$allot_hotel}, allot = 1, action_by = '{$current_user}' WHERE id = {$eb_id} LIMIT 1";
         $allot_result = mysqli_query($conn, $allot_query);
 
        if ($allot_result && mysqli_affected_rows($conn) == 1) {

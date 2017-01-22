@@ -4,14 +4,14 @@
 <?php confirm_logged_in(); ?>
 <?php 
 $eb_id = $_GET["eb_id"];
-
+$current_user = $_SESSION["username"];
 $query = "SELECT * FROM eb_apps WHERE id = {$eb_id} LIMIT 1";
 $result = mysqli_query($conn, $query);
 confirm_query($result);
 $title = mysqli_fetch_assoc($result);
 $email = $title['email'];
 $name = $title['name'];
-$allot_query = "UPDATE eb_apps SET allot = 2 WHERE id = {$eb_id} LIMIT 1";
+$allot_query = "UPDATE eb_apps SET allot = 2, action_by = '{$current_user}' WHERE id = {$eb_id} LIMIT 1";
 $allot_result = mysqli_query($conn, $allot_query);
 
 // registration bill html code starts

@@ -204,14 +204,23 @@
                             <div class="panel-body">
                                 <div class="table-responisve">
                                     <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Shortlisted By</th>                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                     <?php
                                         while ($short_title = mysqli_fetch_assoc($short_result)) { ?>
                                             <tr>
                                                 <td><a href="eb_profile.php?eb_id=<?php echo urlencode($short_title['id']); ?>"><?php echo $short_title['name']; ?></a></td>
+                                                <td><?php echo $short_title['action_by']; ?></td>
                                             </tr>  
                                             <?php
                                         }
-                                    ?>                                                      
+                                    ?>   
+                                        </tbody>                                                   
                                     </table>                                       
                                 </div>
                             </div>
@@ -225,14 +234,23 @@
                             <div class="panel-body">
                                 <div class="table-responisve">
                                     <table class="table table-bordered table-hover table-striped">
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Rejected By</th>                                                
+                                            </tr>
+                                        </thead>
+                                        <tbody>
                                     <?php
                                         while ($reject_title = mysqli_fetch_assoc($reject_result)) { ?>
                                             <tr>
                                                 <td><a href="eb_profile.php?eb_id=<?php echo urlencode($reject_title['id']); ?>"><?php echo $reject_title['name']; ?></a></td>
+                                                <td><?php echo $reject_title['action_by']; ?></td>
                                             </tr>  
                                             <?php
                                         }
-                                    ?>                                                      
+                                    ?>    
+                                        </tbody>                                                  
                                     </table>                                       
                                 </div>
                             </div>
@@ -252,6 +270,7 @@
                                                     <th>Name</th>
                                                     <th>Alloted Council</th>
                                                     <th>Alloted Post</th>
+                                                    <th>Alloted By</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -261,6 +280,7 @@
                                                     <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
                                                     <td><a href="council.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
                                                     <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_post']; ?></a></td>
+                                                    <td><?php echo $title_accept['action_by']; ?></td>
                                                 </tr>  
                                                 <?php
                                             }
