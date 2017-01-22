@@ -33,8 +33,12 @@
         $view_buttons = "";
         $view_status = "<span style='color:#FF6347;'><strong><i class='fa fa-hourglass-half'></i>  Shortlisted Applicant</strong></span>";
         $view_reject = "";
-    }
-     else {
+    } elseif ($eb['allot']==3) {
+        $view_buttons = "style='display:none;'";
+        $view_status = "<span style='color:red;'><strong><i class='fa fa-close'></i>  Rejected Applicant</strong></span>";
+        $view_short = "style='display:none;'";
+        $view_reject = "style='display:none;'";
+    } else {
         $view_buttons = "style='display:none;'";
         $view_short = "";
         $view_status = "<i class='fa fa-info-circle'></i> Click on the shortlist or reject button at the bottom of the profile to shortlist or reject the applicant and notify him/her via mail automatically.";
