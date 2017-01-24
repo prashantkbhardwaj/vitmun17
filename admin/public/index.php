@@ -27,6 +27,11 @@
     $result = mysqli_query($conn, $query);
     confirm_query($result);    
 ?>
+<?php
+    $agenda_query = "SELECT * FROM councils WHERE agenda = ''";
+    $agenda_result = mysqli_query($conn, $agenda_query);
+    confirm_query($agenda_result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -143,8 +148,7 @@
                         </ol>
                     </div>
                 </div>
-                <!-- /.row -->             
-                
+                <!-- /.row -->            
 
                 <div class="row">
                     <div class="col-lg-3 col-md-6">
@@ -237,7 +241,20 @@
                     </div>
                 </div>
                 <!-- /.row -->
-
+                <?php
+                    while ($agenda_list = mysqli_fetch_assoc($agenda_result)) { ?>
+                        <div class="row">
+                            <div class="col-lg-12">
+                                <div class="alert alert-info alert-dismissable">
+                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                                    <i class="fa fa-info-circle"></i>  <?php echo "Agenda for ".$agenda_list['name']." not entered. Click <a href='council.php?eb_id=00".$agenda_list['id']."'><strong>here</strong></a> to update it."; ?>
+                                </div>
+                            </div>
+                        </div>    
+                        <?php
+                    }
+                ?>
+                            
                 <div class="row" id="admins">
                     <div class="col-lg-12">
                         <center><h2>Admin List</h2></center>

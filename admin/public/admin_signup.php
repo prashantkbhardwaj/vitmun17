@@ -6,7 +6,7 @@
 
 <?php
     $current_user = $_SESSION["username"];
-    $name_query = "SELECT * FROM admins WHERE username = '{$current_user}' LIMIT 1";
+    $name_query = "SELECT * FROM users WHERE username = '{$current_user}' LIMIT 1";
     $name_result = mysqli_query($conn, $name_query);
     confirm_query($name_result);
     $name_title = mysqli_fetch_assoc($name_result);    

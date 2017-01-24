@@ -497,7 +497,7 @@
                                 <label>Select council for this applicant</label>
                                 <select name="allot_council" required class="form-control">
                                     <option value="United Nations Security Council">United Nations Security Council</option>
-                                    <option value="United Nations General Assembly – Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
+                                    <option value="United Nations General Assembly Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                     <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
                                     <option value="International Atomic Energy Agency">International Atomic Energy Agency</option>
                                     <option value="Organisation for Security and Cooperation in Europe">Organisation for Security &amp; Cooperation in Europe</option>

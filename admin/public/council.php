@@ -9,6 +9,15 @@
     confirm_query($name_result);
     $name_title = mysqli_fetch_assoc($name_result);
     $first_name = explode(" ", $name_title['username']);
+    $user_type = $name_title['type'];
+
+    if ($user_type==4) {
+        $view_fill = "";
+        $view_notFill = "style='display:none;'>";
+    } else {
+        $view_fill = "style='display:none;'>";
+        $view_notFill = "";
+    }
 ?>
 <?php
     $count_query = "SELECT COUNT(id) FROM eb_apps";
@@ -32,7 +41,7 @@
     if ($eb_id == 001) {
         $council = "United Nations Security Council";
     } elseif ($eb_id == 002) {
-        $council = "United Nations General Assembly – Disarmament and International Security Council";
+        $council = "United Nations General Assembly Disarmament and International Security Council";
     } elseif ($eb_id == 003) {
         $council = "United Nations Human Rights Council";
     } elseif ($eb_id == 004) {
@@ -58,7 +67,7 @@
     if ($council =="United Nations Security Council") {
         $abb = "UNGA SC";
         $logo = "SC";
-    } elseif ($council =="United Nations General Assembly – Disarmament and International Security Council") {
+    } elseif ($council =="United Nations General Assembly Disarmament and International Security Council") {
         $abb = "UNGA DISEC";
         $logo = "DISEC";
     } elseif ($council =="United Nations Human Rights Council") {
@@ -73,6 +82,26 @@
     } elseif ($council =="The Trilateral Commission") {
         $abb = "TLC";
         $logo = "Trilateral";
+    }
+?>
+<?php
+    $agenda_query = "SELECT * FROM councils WHERE name = '{$council}' LIMIT 1";
+    $agenda_result = mysqli_query($conn, $agenda_query);
+    confirm_query($agenda_result);
+    $agenda_list = mysqli_fetch_assoc($agenda_result);
+    if ($agenda_list['agenda']=='') {
+        $view_agenda = "<span style='color:red;'>Not Updated</span>, click <a href='#'' data-toggle='modal' data-target='#agendaform' >here</a> to update.";
+    } else {
+        $view_agenda = $agenda_list['agenda'];
+    }
+?>
+<?php
+    if (isset($_POST['submit'])) {
+        $agenda_fill = mysqli_real_escape_string($conn, htmlspecialchars($_POST['agenda_fill']));
+        $fill_query = "UPDATE councils SET agenda = '{$agenda_fill}' WHERE name = '{$council}'";
+        $fill_result = mysqli_query($conn, $fill_query);
+        confirm_query($fill_result);
+        redirect_to("council.php?eb_id=$eb_id");
     }
 ?>
 <!DOCTYPE html>
@@ -190,7 +219,7 @@
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
-                                <i class="fa fa-info-circle"></i> Details about this council.
+                                <i class="fa fa-info-circle"></i> Agenda: <strong><?php echo $view_agenda; ?></strong>
                             </li>
                         </ol>
                     </div>
@@ -239,6 +268,7 @@
                                     <div class="col-xs-9 text-right">
                                         <div class="huge">0</div>
                                         <div>Accomodated</div>
+                                        <div>Required: 24</div>
                                     </div>
                                 </div>
                             </div>                            
@@ -413,6 +443,30 @@
 
     </div>
     <!-- /#wrapper -->
+    <div class="modal fade" id="agendaform" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Enter the agenda here</h4>
+                </div>
+                <div class="modal-body">
+                    <div <?php echo $view_notFill; ?>>
+                        <h3><i class="fa fa-exclamation-triangle"></i> You are not authorized to enter the agenda.</h3>
+                    </div>
+                    <div <?php echo $view_fill; ?>>                            
+                        <form action="council.php?eb_id=<?php echo $eb_id; ?>" method="post" role="form">
+                            <div class="form-group">
+                                <label>Agenda for <?php echo $council; ?></label>
+                                <textarea class="form-control" name="agenda_fill" required></textarea>                                     
+                            </div>                             
+                            <input type="submit" name="submit" value="Submit" class="btn btn-lg btn-success">
+                        </form>                               
+                    </div>
+                </div>               
+            </div>          
+        </div>
+    </div> <!-- end of modal -->
 
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
