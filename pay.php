@@ -2,7 +2,7 @@
 
 $ch = curl_init();
 
-curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/payment-requests/');
+curl_setopt($ch, CURLOPT_URL, 'https://test.instamojo.com/api/1.1/');
 curl_setopt($ch, CURLOPT_HEADER, FALSE);
 curl_setopt($ch, CURLOPT_RETURNTRANSFER, TRUE);
 curl_setopt($ch, CURLOPT_FOLLOWLOCATION, TRUE);
