@@ -21,8 +21,8 @@ try {
         "send_sms" => true,
         "email" => $email,
         'allow_repeated_payments' => false,
-        "redirect_url" => "http://vitcmun.com/instapayment-master/thankyou.php",
-        "webhook" => "http://vitcmun.com/instapayment-master/webhook.php"
+        "redirect_url" => "http://127.0.0.1/instapayment-master/thankyou.php",
+        "webhook" => "http://127.0.0.1/instapayment-master/webhook.php"
         ));
     //print_r($response);
 

@@ -6,9 +6,9 @@ class Instamojo {
     const version = '1.1';
 
     protected $curl;
-    protected $endpoint = 'https://www.instamojo.com/api/1.1/';
-    protected $api_key = null;
-    protected $auth_token = null;
+    protected $endpoint = 'https://test.instamojo.com/api/1.1/';
+    protected $api_key = '4922a2e827541b7519cb91ca421c0664';
+    protected $auth_token = 'b0ba18008adeeaa5ef7500117744a3b1';
 
     /**
     * @param string $api_key
