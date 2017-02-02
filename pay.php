@@ -12,13 +12,13 @@ curl_setopt($ch, CURLOPT_HTTPHEADER,
 $payload = Array(
     'purpose' => 'FIFA 16',
     'amount' => '2500',
-    'phone' => '9999999999',
+    'phone' => '9962416408',
     'buyer_name' => 'John Doe',
-    'redirect_url' => 'http://www.vitcmun.com/eb_confirm.php',
+    'redirect_url' => 'http://127.0.0.1/vitmun17/eb_confirm.php',
     'send_email' => true,
     'webhook' => '',
     'send_sms' => true,
-    'email' => '',
+    'email' => 'pkpbhardwaj729@gmail.com',
     'allow_repeated_payments' => false
 );
 curl_setopt($ch, CURLOPT_POST, true);
