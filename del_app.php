@@ -48,7 +48,7 @@
         $query .= " VALUES ('{$name}', '{$dob}', {$grad_year}, '{$school}', {$in_out}, '{$phno}', '{$email}', {$nodel}, '{$del_details}', {$noeb}, '{$eb_details}', '{$hometown}', '{$council_ch1}', '{$sex}', '{$country1_council1}', '{$country2_council1}', '{$country3_council1}', '{$country1_council2}', '{$council_ch2}', '{$country2_council2}', '{$country3_council2}', '{$country1_council3}', '{$country2_council3}', '{$country3_council3}', '{$gain}',  '{$council_ch3}', '{$hotel}')";
         $result = mysqli_query($conn, $query);
         if ($result) {
-            redirect_to("payment_select.php");
+            redirect_to("del_confirm.php");
             $stsc = "";
         } else {
             $stsc = "Something went wrong! Please try again and see that you are using Google Chrome for this application. In case of any technical failure or for any technical assistance, please call 9962416408.";
