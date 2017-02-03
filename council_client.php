@@ -156,14 +156,19 @@
                         </div><hr>
                         <div class="row">
                             <div class="col-lg-12">
-                                <p style="text-align:justify;">
-                                    <strong>
-                                        <?php echo $list['write_up']; ?>
-                                    </strong>
+                                <p style="text-align:justify;">                                    
+                                        <?php echo $list['write_up']; ?>                                    
                                 </p>
                             </div>
                         </div><hr>
                         <div class="row">
+                            <div class="col-lg-12 text-center">
+                                <a href="media/<?php echo $cid; ?>.pdf">
+                                    <button class="btn btn-primary">Download the country list for this council</button>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="row"><hr><br>
                             <div class="col-lg-12 text-center">
                                 <h3>Executive Board</h3>
                             </div>

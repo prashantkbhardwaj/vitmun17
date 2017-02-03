@@ -14,19 +14,90 @@
         $eb_details = mysqli_real_escape_string($conn, htmlspecialchars($_POST['eb_details']));
         $hometown = mysqli_real_escape_string($conn, htmlspecialchars($_POST['hometown']));
         $council_ch1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch1']));
-        $sex = mysqli_real_escape_string($conn, htmlspecialchars($_POST['sex']));
-        $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council1']));
-        $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council1']));
-        $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council1']));
-        $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council2']));
-        $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council2']));
-        $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council2']));
-        $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council3']));
-        $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council3']));
-        $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council3']));
+        if ($_POST['council_ch1']=="United Nations Security Council") {
+            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council11']));
+            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council11']));
+            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council11']));
+        } elseif ($_POST['council_ch1']=="United Nations General Assembly Disarmament and International Security Council") {
+            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council12']));
+            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council12']));
+            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council12']));
+        } elseif ($_POST['council_ch1']=="United Nations Human Rights Council") {
+            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council13']));
+            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council13']));
+            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council13']));
+        } elseif ($_POST['council_ch1']=="International Atomic Energy Agency") {
+            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council14']));
+            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council14']));
+            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council14']));
+        } elseif ($_POST['council_ch1']=="Organisation for Security and Cooperation in Europe") {
+            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council15']));
+            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council15']));
+            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council15']));
+        } elseif ($_POST['council_ch1']=="The Trilateral Commission") {
+            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council16']));
+            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council16']));
+            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council16']));
+        }
+
         $council_ch2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch2']));
+        if ($_POST['council_ch2']=="United Nations Security Council") {
+            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council21']));
+            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council21']));
+            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council21']));
+        } elseif ($_POST['council_ch2']=="United Nations General Assembly Disarmament and International Security Council") {
+            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council22']));
+            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council22']));
+            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council22']));
+        } elseif ($_POST['council_ch2']=="United Nations Human Rights Council") {
+            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council23']));
+            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council23']));
+            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council23']));
+        } elseif ($_POST['council_ch2']=="International Atomic Energy Agency") {
+            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council24']));
+            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council24']));
+            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council24']));
+        } elseif ($_POST['council_ch2']=="Organisation for Security and Cooperation in Europe") {
+            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council25']));
+            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council25']));
+            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council25']));
+        } elseif ($_POST['council_ch2']=="The Trilateral Commission") {
+            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council26']));
+            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council26']));
+            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council26']));
+        }
+
+        $council_ch3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch3']));  
+
+        if ($_POST['council_ch3']=="United Nations Security Council") {
+            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council31']));
+            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council31']));
+            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council31']));
+        } elseif ($_POST['council_ch3']=="United Nations General Assembly Disarmament and International Security Council") {
+            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council32']));
+            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council32']));
+            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council32']));
+        } elseif ($_POST['council_ch3']=="United Nations Human Rights Council") {
+            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council33']));
+            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council33']));
+            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council33']));
+        } elseif ($_POST['council_ch3']=="International Atomic Energy Agency") {
+            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council34']));
+            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council34']));
+            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council34']));
+        } elseif ($_POST['council_ch3']=="Organisation for Security and Cooperation in Europe") {
+            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council35']));
+            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council35']));
+            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council35']));
+        } elseif ($_POST['council_ch3']=="The Trilateral Commission") {
+            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council36']));
+            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council36']));
+            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council36']));
+        }
+
+        $sex = mysqli_real_escape_string($conn, htmlspecialchars($_POST['sex']));
         $gain = mysqli_real_escape_string($conn, htmlspecialchars($_POST['gain']));        
-        $council_ch3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch3']));        
+              
         $hotel = mysqli_real_escape_string($conn, htmlspecialchars($_POST['hotel']));
         $school_select = $_POST['school_select'];
         if ($school_select=="VITC") {
@@ -4072,7 +4143,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of third preference</label>
-                                        <select onchange="toggleDisabilitycouncil33(this);" name="country1_council33" class="council33ch form-control">
+                                        <select onchange="toggleDisabilitycouncil33(this);" name="country2_council33" class="council33ch form-control">
                                             <option disabled selected>Choose your option</option>
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
@@ -4137,7 +4208,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of third preference</label>
-                                        <select onchange="toggleDisabilitycouncil33(this);" name="country1_council33" class="council33ch form-control">
+                                        <select onchange="toggleDisabilitycouncil33(this);" name="country3_council33" class="council33ch form-control">
                                             <option disabled selected>Choose your option</option>
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
@@ -4284,7 +4355,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of third preference</label>
-                                        <select onchange="toggleDisabilitycouncil34(this);" name="country1_council34" class="council34ch form-control">
+                                        <select onchange="toggleDisabilitycouncil34(this);" name="country2_council34" class="council34ch form-control">
                                             <option disabled selected>Choose your option</option>
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Algeria">Algeria</option>
@@ -4364,7 +4435,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of third preference</label>
-                                        <select onchange="toggleDisabilitycouncil34(this);" name="country1_council34" class="council34ch form-control">
+                                        <select onchange="toggleDisabilitycouncil34(this);" name="country3_council34" class="council34ch form-control">
                                             <option disabled selected>Choose your option</option>
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Algeria">Algeria</option>
@@ -4520,7 +4591,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
-                                        <select onchange="toggleDisabilitycouncil35(this);" name="country1_council35" class="council35ch form-control">
+                                        <select onchange="toggleDisabilitycouncil35(this);" name="country2_council35" class="council35ch form-control">
                                             <option disabled selected>Choose your option</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -4594,7 +4665,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
-                                        <select onchange="toggleDisabilitycouncil35(this);" name="country1_council35" class="council35ch form-control">
+                                        <select onchange="toggleDisabilitycouncil35(this);" name="country3_council35" class="council35ch form-control">
                                             <option disabled selected>Choose your option</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -4728,7 +4799,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of third preference</label>
-                                        <select onchange="toggleDisabilitycouncil36(this);" name="country1_council36" class="council36ch form-control">
+                                        <select onchange="toggleDisabilitycouncil36(this);" name="country2_council36" class="council36ch form-control">
                                             <option disabled selected>Choose your option</option>
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
@@ -4786,7 +4857,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of third preference</label>
-                                        <select onchange="toggleDisabilitycouncil36(this);" name="country1_council36" class="council36ch form-control">
+                                        <select onchange="toggleDisabilitycouncil36(this);" name="country3_council36" class="council36ch form-control">
                                             <option disabled selected>Choose your option</option>
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
