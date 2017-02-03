@@ -8,6 +8,25 @@
     confirm_query($result);
     $list = mysqli_fetch_assoc($result);
 ?>
+<?php
+    if ($cid == 1) {
+        $council = "United Nations Security Council";
+    } elseif ($cid == 2) {
+        $council = "United Nations General Assembly Disarmament and International Security Council";
+    } elseif ($cid == 3) {
+        $council = "United Nations Human Rights Council";
+    } elseif ($cid == 4) {
+        $council = "International Atomic Energy Agency";
+    } elseif ($cid == 5) {
+        $council = "Organisation for Security and Cooperation in Europe";
+    } elseif ($cid == 6) {
+        $council = "The Trilateral Commission";
+    }
+    $query_eb = "SELECT * FROM eb_apps WHERE allot = 1 AND allot_council = '{$council}' ";
+    $result_eb = mysqli_query($conn, $query_eb);
+    confirm_query($result_eb);
+    
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -150,21 +169,17 @@
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-lg-4 text-center">
-                                <img src="img/pkb.jpg" class="team-member-image">
-                                <h5>Prashant Bhardwaj</h5>
-                                <h6>Chairperson</h6>
-                            </div>
-                            <div class="col-lg-4 text-center">
-                                <img src="img/pkb.jpg" class="team-member-image">
-                                <h5>Prashant Bhardwaj</h5>
-                                <h6>Chairperson</h6>
-                            </div>
-                            <div class="col-lg-4 text-center">
-                                <img src="img/pkb.jpg" class="team-member-image">
-                                <h5>Prashant Bhardwaj</h5>
-                                <h6>Chairperson</h6>
-                            </div>
+                            <?php 
+                                while ($eb_list = mysqli_fetch_assoc($result_eb)) { ?>
+                                    <div class="col-lg-4 text-center">
+                                        <img src="img/eb_pics/<?php echo $eb_list['phno']; ?>.jpg" class="team-member-image">
+                                        <h5><?php echo $eb_list['name']; ?></h5>
+                                        <h6><?php echo $eb_list['allot_post']; ?></h6>
+                                    </div> 
+                                    <?php
+                                }
+                            ?>
+                                                       
                         </div>
 
                     </div><!-- col-lg-12 -->
