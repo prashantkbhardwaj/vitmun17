@@ -25,6 +25,11 @@
     $query_eb = "SELECT * FROM eb_apps WHERE allot = 1 AND allot_council = '{$council}' ";
     $result_eb = mysqli_query($conn, $query_eb);
     confirm_query($result_eb);
+    if ($cid==6) {
+        $bttn_text = "character";
+    } else {
+        $bttn_text = "country";
+    }
     
 ?>
 <!DOCTYPE html>
@@ -164,7 +169,7 @@
                         <div class="row">
                             <div class="col-lg-12 text-center">
                                 <a href="media/<?php echo $cid; ?>.pdf">
-                                    <button class="btn btn-primary">Download the country list for this council</button>
+                                    <button class="btn btn-primary">Download the <?php echo $bttn_text; ?> list for this council</button>
                                 </a>
                             </div>
                         </div>
