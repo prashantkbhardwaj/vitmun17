@@ -203,7 +203,10 @@
                         </h1>
                         <ol class="breadcrumb text-center">
                             <li>
-                                <i class="fa fa-info-circle"></i> Please use <strong>Google Chrome</strong> to fill this application. Let the page load completely before you start filling the application.
+                                <i class="fa fa-info-circle"></i>
+                                    <span style="color:#f44822;">
+                                        Please use <strong>Google Chrome</strong> to fill this application. Let the page load completely before you start filling the application.
+                                    </span> 
                             </li>                            
                         </ol>
                         <span style="color:red;"><h3 class="text-center"><?php echo $stsc; ?></h3></span>
