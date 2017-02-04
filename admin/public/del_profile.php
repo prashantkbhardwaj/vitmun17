@@ -14,7 +14,7 @@
 ?>
 <?php
     $del_id = $_GET['del_id'];
-    $query = "SELECT * FROM del_apps WHERE id = {$del_id} LIMIT 1";
+    $query = "SELECT * FROM delegates WHERE id = {$del_id} LIMIT 1";
     $result = mysqli_query($conn, $query);
     confirm_query($result);  
     $del = mysqli_fetch_assoc($result); 
@@ -27,23 +27,15 @@
     }
     if ($del['allot']==1) {
         $view_buttons = "style='display:none;'";
-        $view_status = "<span style='color:green;'><strong><i class='fa fa-check-square'></i>  Selected Applicant</strong></span>";
-        $view_short = "style='display:none;'";
+        $view_status = "<span style='color:green;'><strong><i class='fa fa-check-square'></i>  Selected Applicant</strong></span>";        
         $view_reject = "style='display:none;'";
     } elseif ($del['allot']==2) {
-        $view_short = "style='display:none;'";
-        $view_buttons = "";
-        $view_status = "<span style='color:#FF6347;'><strong><i class='fa fa-hourglass-half'></i>  Shortlisted Applicant</strong></span>";
-        $view_reject = "";
-    } elseif ($del['allot']==3) {
         $view_buttons = "style='display:none;'";
         $view_status = "<span style='color:red;'><strong><i class='fa fa-close'></i>  Rejected Applicant</strong></span>";
-        $view_short = "style='display:none;'";
         $view_reject = "style='display:none;'";
     } else {
-        $view_buttons = "style='display:none;'";
-        $view_short = "";
-        $view_status = "<i class='fa fa-info-circle'></i> Click on the shortlist or reject button at the bottom of the profile to shortlist or reject the applicant and notify him/her via mail automatically.";
+        $view_buttons = "";        
+        $view_status = "<i class='fa fa-info-circle'></i> Click on the accept or reject button at the bottom of the profile to accept or reject the applicant and notify him/her via mail automatically.";
         $view_reject = "";
     }
     if ($user_type==4) {
@@ -53,21 +45,63 @@
     }
 ?>
 <?php
+    $country_list_unsc_query = "SELECT country FROM country_list WHERE council_code = 'unsc' AND allot = 0";
+    $country_list_unsc_result = mysqli_query($conn, $country_list_unsc_query);
+    confirm_query($country_list_unsc_result);
+
+    $country_list_disec_query = "SELECT country FROM country_list WHERE council_code = 'disec' AND allot = 0";
+    $country_list_disec_result = mysqli_query($conn, $country_list_disec_query);
+    confirm_query($country_list_disec_result);
+
+    $country_list_unhrc_query = "SELECT country FROM country_list WHERE council_code = 'unhrc' AND allot = 0";
+    $country_list_unhrc_result = mysqli_query($conn, $country_list_unhrc_query);
+    confirm_query($country_list_unhrc_result);
+
+    $country_list_iaea_query = "SELECT country FROM country_list WHERE council_code = 'iaea' AND allot = 0";
+    $country_list_iaea_result = mysqli_query($conn, $country_list_iaea_query);
+    confirm_query($country_list_iaea_result);
+
+    $country_list_osce_query = "SELECT country FROM country_list WHERE council_code = 'osce' AND allot = 0";
+    $country_list_osce_result = mysqli_query($conn, $country_list_osce_query);
+    confirm_query($country_list_osce_result);
+
+    $country_list_tll_query = "SELECT country FROM country_list WHERE council_code = 'tll' AND allot = 0";
+    $country_list_tll_result = mysqli_query($conn, $country_list_tll_query);
+    confirm_query($country_list_tll_result);
+?>
+<?php
     if (isset($_POST['submit'])) {
         $allot_council = $_POST['allot_council'];
-        $allot_country = $_POST['allot_country'];
-        if ($del['hotel']=="No") {
-            $allot_hotel = 3;
-        } else {
-            $allot_hotel = $_POST['allot_hotel'];
-        }        
+        if ($_POST['allot_council']=="United Nations Security Council") {
+            $allot_country = $_POST['allot_country1'];
+            $council_update = "unsc";
+        } elseif ($_POST['allot_council']=="United Nations General Assembly Disarmament and International Security Council") {
+            $allot_country = $_POST['allot_country2'];
+            $council_update = "disec";
+        } elseif ($_POST['allot_council']=="United Nations Human Rights Council") {
+            $allot_country = $_POST['allot_country3'];
+            $council_update = "unhrc";
+        } elseif ($_POST['allot_council']=="International Atomic Energy Agency") {
+            $allot_country = $_POST['allot_country4'];
+            $council_update = "iaea";
+        } elseif ($_POST['allot_council']=="Organisation for Security and Cooperation in Europe") {
+            $allot_country = $_POST['allot_country5'];
+            $council_update = "osce";
+        } elseif ($_POST['allot_council']=="The Trilateral Commission") {
+            $allot_country = $_POST['allot_country6'];
+            $council_update = "tll";
+        }      
+               
 
-        $allot_query = "UPDATE delegates SET allot_council = '{$allot_council}', allot_country = '{$allot_country}', allot_hotel = {$allot_hotel}, allot = 1, action_by = '{$current_user}' WHERE id = {$del_id} LIMIT 1";
+        $allot_query = "UPDATE delegates SET allot_council = '{$allot_council}', allot_country = '{$allot_country}', allot = 1, action_by = '{$current_user}' WHERE id = {$del_id} LIMIT 1";
         $allot_result = mysqli_query($conn, $allot_query);
+
+        $update_country_list = "UPDATE country_list SET allot = 1 WHERE council_code = '{$council_update}' LIMIT 1";
+        $update_country_result = mysqli_query($conn, $update_country_list);
 
        if ($allot_result && mysqli_affected_rows($conn) == 1) {
 
-            redirect_to("eb_mail.php?eb_id=$eb_id");
+            //redirect_to("eb_mail.php?eb_id=$eb_id");
         }  
     }
 ?>
@@ -195,7 +229,7 @@
                    <div class="row">
                        <div class="col-lg-12">
                             <center>
-                                <img src="../../img/del_pics/<?php echo $eb['phno']; ?>.jpg" style="border-radius:50%; height:20%; width:20%;">
+                                <img src="../../img/del_pics/<?php echo $del['phno']; ?>.jpg" style="border-radius:50%; height:20%; width:20%;">
                             </center>
                        </div>
                    </div>
@@ -212,20 +246,30 @@
                     </div>          
                     <div class="row">
                         <div class="col-lg-4">
-                            <b><?php echo $eb['job']; ?></b>
+                            <b><?php echo $del['sex']; ?></b>
                         </div>
                         <div class="col-lg-4 text-center">
-                            <b><?php echo $eb['school']; ?></b>
+                            <b><?php echo $del['school']; ?></b>
                         </div>
                         <div class="col-lg-4 text-center">
-                            <b><?php echo $eb['email']; ?></b>
+                            <b><?php echo $del['email']; ?></b>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <b>Ph. No: +91 <?php echo $eb['phno']; ?></b>
+                            <b>Ph. No: +91 <?php echo $del['phno']; ?></b>
                         </div>                    
-                    </div><br>
+                    </div>
+                    <div class="row">
+                        <div class="col-lg-4">
+                            <b>Year of Graduation <?php echo $del['grad_year']; ?></b>
+                        </div> 
+                        <div class="col-lg-4 text-center">
+                        </div>           
+                        <div class="col-lg-4 text-center">
+                            <b>City of current residence <?php echo $del['hometown']; ?></b>
+                        </div>                    
+                    </div><br><hr>
                     <p>
                         <div class="row">
                             <div class="col-lg-4">
@@ -234,7 +278,7 @@
                             <div class="col-lg-4">                          
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b><?php echo $eb['nodel']; ?></b>
+                                <b><?php echo $del['nodel']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -246,10 +290,10 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['del_details']; ?>
+                                <?php echo $del['del_details']; ?>
                             </div>
                         </div>
-                    </p><br>
+                    </p><br><hr>
                     <p>
                         <div class="row">
                             <div class="col-lg-4">
@@ -258,7 +302,7 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b><?php echo $eb['noeb']; ?></b>
+                                <b><?php echo $del['noeb']; ?></b>
                             </div>
                         </div>
                     </p><br>
@@ -270,22 +314,10 @@
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['eb_details']; ?> 
+                                <?php echo $del['eb_details']; ?> 
                             </div>
                         </div>
-                    </p><br>
-                    <p>
-                        <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <b>List of Model UN conferences attended as a member of the Secretariat</b> 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['sec_details']; ?>
-                            </div>
-                        </div>
-                    </p><br>
+                    </p><br>  <hr>                  
                     <p>
                         <div class="row">
                             <div class="col-lg-4">
@@ -294,34 +326,50 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b><?php echo $eb['council_ch1']; ?></b>
+                                <b><?php echo $del['council_ch1']; ?></b>
                             </div>
                         </div>
                     </p><br>
+
                     <p>
                         <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <b>Suggestion of two agendas I would like to see discussed in this council</b> 
+                            <div class="col-lg-4">
+                                <b>1st choice of country for council of first preference</b>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['agenda1']; ?>
+                            <div class="col-lg-4">                            
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <b><?php echo $del['country1_council1']; ?></b>
                             </div>
                         </div>
                     </p><br>
+
                     <p>
                         <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <b>Explaination of any one of these agendas and my reasons as to why I think it must be discussed.</b> 
+                            <div class="col-lg-4">
+                                <b>2nd choice of country for council of first preference</b>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['agenda1_details']; ?>
+                            <div class="col-lg-4">                            
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <b><?php echo $del['country2_council1']; ?></b>
                             </div>
                         </div>
                     </p><br>
+
+                    <p>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <b>3rd choice of country for council of first preference</b>
+                            </div>
+                            <div class="col-lg-4">                            
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <b><?php echo $del['country3_council1']; ?></b>
+                            </div>
+                        </div>
+                    </p><br><hr>
+                    
                     <p>
                         <div class="row">
                             <div class="col-lg-4">
@@ -330,34 +378,50 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b><?php echo $eb['council_ch2']; ?></b>
+                                <b><?php echo $del['council_ch2']; ?></b>
                             </div>
                         </div>
                     </p><br>
+
                     <p>
                         <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <b>Suggestion of two agendas I would like to see discussed in this council</b> 
+                            <div class="col-lg-4">
+                                <b>1st choice of country for council of second preference</b>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['agenda2']; ?>
+                            <div class="col-lg-4">                            
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <b><?php echo $del['country1_council2']; ?></b>
                             </div>
                         </div>
                     </p><br>
+
                     <p>
                         <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <b>Explaination of any one of these agendas and my reasons as to why I think it must be discussed.</b> 
+                            <div class="col-lg-4">
+                                <b>2nd choice of country for council of second preference</b>
                             </div>
-                        </div>
-                        <div class="row">
-                            <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['agenda2_details']; ?>
+                            <div class="col-lg-4">                            
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <b><?php echo $del['country2_council2']; ?></b>
                             </div>
                         </div>
                     </p><br>
+
+                    <p>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <b>3rd choice of country for council of second preference</b>
+                            </div>
+                            <div class="col-lg-4">                            
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <b><?php echo $del['country3_council2']; ?></b>
+                            </div>
+                        </div>
+                    </p><br><hr>
+                    
                     <p>
                         <div class="row">
                             <div class="col-lg-4">
@@ -366,70 +430,62 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b><?php echo $eb['council_ch3']; ?></b>
+                                <b><?php echo $del['council_ch3']; ?></b>
                             </div>
                         </div>
-                    </p><br>
+                    </p><br>   
+
                     <p>
                         <div class="row">
                             <div class="col-lg-4">
-                                <b>Post I would you like to apply for</b>
+                                <b>1st choice of country for council of third preference</b>
                             </div>
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b><?php echo $eb['posit']; ?></b>
+                                <b><?php echo $del['country1_council3']; ?></b>
                             </div>
                         </div>
-                    </p><br>
+                    </p><br>   
+
+                    <p>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <b>2nd choice of country for council of third preference</b>
+                            </div>
+                            <div class="col-lg-4">                            
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <b><?php echo $del['country2_council3']; ?></b>
+                            </div>
+                        </div>
+                    </p><br>   
+                    <p>
+                        <div class="row">
+                            <div class="col-lg-4">
+                                <b>3rd choice of country for council of third preference</b>
+                            </div>
+                            <div class="col-lg-4">                            
+                            </div>
+                            <div class="col-lg-4 text-center">
+                                <b><?php echo $del['country3_council3']; ?></b>
+                            </div>
+                        </div>
+                    </p><br><hr>
+                    
                     <p>
                         <div class="row">
                             <div class="col-lg-12 text-center">
-                                <b>Explaination of why I think I merit the post I applied for and what will I do in my capacity to ensure a high standard of debate and moderation.</b> 
+                                <b>What do I hope to gain by taking part in VITCMUN 2017?</b> 
                             </div>
                         </div>
                         <div class="row">
                             <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['eb_caps1']; ?>
+                                <?php echo $del['gain']; ?> 
                             </div>
                         </div>
-                    </p><br>
-                    <p>
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <b>If not given Chairperson/President or an equivalent post, would I be open to taking up Vice-chairperson/Vice-president or an equivalent post?</b>
-                            </div>
-                            <div class="col-lg-4">                            
-                            </div>
-                            <div class="col-lg-4 text-center">
-                                <b><?php echo $eb['alt_post']; ?></b>
-                            </div>
-                        </div>
-                    </p><br>
-                    <p>
-                        <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <b>A brief outline of my judging criteria. (Includes list of particular parameters I look at when there are tied scores).</b> 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['eb_caps2']; ?>
-                            </div>
-                        </div>
-                    </p><br>
-                    <p>
-                        <div class="row">
-                            <div class="col-lg-4">
-                                <b>Will I be willing to share my grading sheets with the Secretariat at the end of each day? </b>
-                            </div>
-                            <div class="col-lg-4">                            
-                            </div>
-                            <div class="col-lg-4 text-center">
-                                <b><?php echo $eb['eb_caps3']; ?></b>
-                            </div>
-                        </div>
-                    </p><br>
+                    </p><br> <hr>              
+                    
                     <p>
                         <div class="row">
                             <div class="col-lg-4">
@@ -438,33 +494,17 @@
                             <div class="col-lg-4">                            
                             </div>
                             <div class="col-lg-4 text-center">
-                                <b><?php echo $eb['hotel']; ?></b>
+                                <b><?php echo $del['hotel']; ?></b>
                             </div>
                         </div>
                     </p><br>
-                    <p>
-                        <div class="row">
-                            <div class="col-lg-12 text-center">
-                                <b>Any other queries for you (the oraganizers) at this time</b> 
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div style="text-align:justify;" class="col-lg-12">
-                                <?php echo $eb['q_back']; ?>
-                            </div>
-                        </div>
-                    </p><br><br><hr>
+                    <br><hr>
                </div>
 
                 <div <?php echo $view_action; ?> class="row">
                     <div <?php echo $view_buttons; ?> class="col-lg-4 text-center">
                         <button data-toggle="modal" data-target="#choice" type="button" class="btn btn-lg btn-success">Accept  <i class="fa fa-check"></i></button>
-                    </div>
-                    <div <?php echo $view_short;?> class="col-lg-4 text-center">
-                        <a href="eb_shortlist.php?eb_id=<?php echo $eb_id; ?>">
-                            <button  type="button" class="btn btn-lg btn-info" onclick="return confirm('Are you sure you want to shortlist this application?');">Shortlist  <i class="fa fa-check"></i></button>
-                        </a>
-                    </div>
+                    </div>                    
                     <div class="col-lg-4 text-center">
                         <button onclick="javascript:htmltopdf();" type="button" class="btn btn-lg btn-primary">Download  <i class="fa fa-download"></i></button>
                     </div>
@@ -492,10 +532,10 @@
                 </div>
                 <div class="modal-body">
                     <p>                            
-                        <form action="eb_profile.php?eb_id=<?php echo $eb_id; ?>" method="post" role="form">
+                        <form action="del_profile.php?del_id=<?php echo $del_id; ?>" method="post" role="form">
                             <div class="form-group">
                                 <label>Select council for this applicant</label>
-                                <select name="allot_council" required class="form-control">
+                                <select id="cl" onchange="country_allot();" name="allot_council" required class="form-control">
                                     <option value="United Nations Security Council">United Nations Security Council</option>
                                     <option value="United Nations General Assembly Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                     <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
@@ -504,20 +544,97 @@
                                     <option value="The Trilateral Commission">The Trilateral Commission</option>
                                 </select>
                             </div>
-                            <div class="form-group">
-                                <label>Select post for this applicant</label>
-                                <select class="form-control" name="allot_post" required>
-                                    <option value="Chairperson/President or equivalent">Chairperson/President or equivalent</option>
-                                    <option value="Vice-chairperson/Vice- president or equivalent">Vice-chairperson/Vice- president or equivalent</option>
-                                </select>
-                            </div>
-                            <div <?php echo $view_hotel; ?> class="form-group">
-                                <label>Allot accomodation?</label>
-                                <select class="form-control" name="allot_hotel" required>
-                                    <option value="1">Yes</option>
-                                    <option value="2">No</option>
-                                </select>
-                            </div>
+                            <div id="unsc" style="display:none;">
+                                <div class="form-group">
+                                    <label>Select country for this applicant</label>
+                                    <select class="form-control" name="allot_post1" required>
+                                        <?php
+                                            while ($unsc_list = mysqli_fetch_assoc($country_list_unsc_result)) { ?>
+                                                <option value="<?php echo $unsc_list['country']; ?>"><?php echo $unsc_list['country']; ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>  
+                            </div>   
+                            <div id="unsc" style="display:none;">
+                                <div class="form-group">
+                                    <label>Select country for this applicant</label>
+                                    <select class="form-control" name="allot_country1" required>
+                                        <?php
+                                            while ($unsc_list = mysqli_fetch_assoc($country_list_unsc_result)) { ?>
+                                                <option value="<?php echo $unsc_list['country']; ?>"><?php echo $unsc_list['country']; ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>  
+                            </div>   
+                            <div id="disec" style="display:none;">
+                                <div class="form-group">
+                                    <label>Select country for this applicant</label>
+                                    <select class="form-control" name="allot_country2" required>
+                                        <?php
+                                            while ($disec_list = mysqli_fetch_assoc($country_list_disec_result)) { ?>
+                                                <option value="<?php echo $disec_list['country']; ?>"><?php echo $disec_list['country']; ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>  
+                            </div>   
+                            <div id="unhrc" style="display:none;">
+                                <div class="form-group">
+                                    <label>Select country for this applicant</label>
+                                    <select class="form-control" name="allot_country3" required>
+                                        <?php
+                                            while ($unhrc_list = mysqli_fetch_assoc($country_list_unhrc_result)) { ?>
+                                                <option value="<?php echo $unhrc_list['country']; ?>"><?php echo $unhrc_list['country']; ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>  
+                            </div>   
+                            <div id="iaea" style="display:none;">
+                                <div class="form-group">
+                                    <label>Select country for this applicant</label>
+                                    <select class="form-control" name="allot_country4" required>
+                                        <?php
+                                            while ($iaea_list = mysqli_fetch_assoc($country_list_iaea_result)) { ?>
+                                                <option value="<?php echo $iaea_list['country']; ?>"><?php echo $iaea_list['country']; ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>  
+                            </div>   
+                            <div id="osce" style="display:none;">
+                                <div class="form-group">
+                                    <label>Select country for this applicant</label>
+                                    <select class="form-control" name="allot_country5" required>
+                                        <?php
+                                            while ($osce_list = mysqli_fetch_assoc($country_list_osce_result)) { ?>
+                                                <option value="<?php echo $osce_list['country']; ?>"><?php echo $osce_list['country']; ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>  
+                            </div>    
+                            <div id="tll" style="display:none;">
+                                <div class="form-group">
+                                    <label>Select country for this applicant</label>
+                                    <select class="form-control" name="allot_country6" required>
+                                        <?php
+                                            while ($tll_list = mysqli_fetch_assoc($country_list_tll_result)) { ?>
+                                                <option value="<?php echo $tll_list['country']; ?>"><?php echo $tll_list['country']; ?></option>
+                                                <?php
+                                            }
+                                        ?>
+                                    </select>
+                                </div>  
+                            </div>                          
                             <input type="submit" name="submit" value="Submit and send" onclick="return confirm('Are you sure you want to accept this application?');" class="btn btn-lg btn-success">&nbsp; 
                             <button type="reset" class="btn btn-lg btn-warning">Reset</button>
                         </form>                               
@@ -568,7 +685,61 @@
             }, margins);
     }
     </script>
-
+    <script type="text/javascript">
+        function country_allot(){
+            var cl = document.getElementById("cl").value;
+            if (cl=="United Nations Security Council") {
+                document.getElementById("unsc").style.display = "initial";                
+                document.getElementById("disec").style.display = "none";
+                document.getElementById("unhrc").style.display = "none";
+                document.getElementById("iaea").style.display = "none";
+                document.getElementById("osce").style.display = "none";
+                document.getElementById("tll").style.display = "none";                
+            } else if(cl=="United Nations General Assembly Disarmament and International Security Council") {
+                document.getElementById("unsc").style.display = "none";                
+                document.getElementById("disec").style.display = "initial";
+                document.getElementById("unhrc").style.display = "none";
+                document.getElementById("iaea").style.display = "none";
+                document.getElementById("osce").style.display = "none";
+                document.getElementById("tll").style.display = "none"; 
+            } else if (cl=="United Nations Human Rights Council") {
+                document.getElementById("unsc").style.display = "none";                
+                document.getElementById("disec").style.display = "none";
+                document.getElementById("unhrc").style.display = "initial";
+                document.getElementById("iaea").style.display = "none";
+                document.getElementById("osce").style.display = "none";
+                document.getElementById("tll").style.display = "none"; 
+            } else if (cl=="International Atomic Energy Agency") {
+                document.getElementById("unsc").style.display = "none";                
+                document.getElementById("disec").style.display = "none";
+                document.getElementById("unhrc").style.display = "none";
+                document.getElementById("iaea").style.display = "initial";
+                document.getElementById("osce").style.display = "none";
+                document.getElementById("tll").style.display = "none"; 
+            } else if (cl=="Organisation for Security and Cooperation in Europe") {
+                document.getElementById("unsc").style.display = "none";                
+                document.getElementById("disec").style.display = "none";
+                document.getElementById("unhrc").style.display = "none";
+                document.getElementById("iaea").style.display = "none";
+                document.getElementById("osce").style.display = "initial";
+                document.getElementById("tll").style.display = "none"; 
+            } else if (cl=="The Trilateral Commission") {
+                document.getElementById("unsc").style.display = "none";                
+                document.getElementById("disec").style.display = "none";
+                document.getElementById("unhrc").style.display = "none";
+                document.getElementById("iaea").style.display = "none";
+                document.getElementById("osce").style.display = "none";
+                document.getElementById("tll").style.display = "initial"; 
+            } else {
+                document.getElementById("unsc").style.display = "none";                
+                document.getElementById("disec").style.display = "none";
+                document.getElementById("unhrc").style.display = "none";
+                document.getElementById("iaea").style.display = "none";
+                document.getElementById("osce").style.display = "none";
+                document.getElementById("tll").style.display = "none"; 
+            }     
+        }
+    </script>
 </body>
 
 </html>

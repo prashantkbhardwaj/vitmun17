@@ -13,86 +13,86 @@
         $noeb = mysqli_real_escape_string($conn, htmlspecialchars($_POST['noeb']));
         $eb_details = mysqli_real_escape_string($conn, htmlspecialchars($_POST['eb_details']));
         $hometown = mysqli_real_escape_string($conn, htmlspecialchars($_POST['hometown']));
-        $council_ch1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch1']));
+        $council_ch1 = $_POST['council_ch1'];
         if ($_POST['council_ch1']=="United Nations Security Council") {
-            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council11']));
-            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council11']));
-            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council11']));
+            $country1_council1 = $_POST['country1_council11'];
+            $country2_council1 = $_POST['country2_council11'];
+            $country3_council1 = $_POST['country3_council11'];
         } elseif ($_POST['council_ch1']=="United Nations General Assembly Disarmament and International Security Council") {
-            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council12']));
-            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council12']));
-            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council12']));
+            $country1_council1 = $_POST['country1_council12'];
+            $country2_council1 = $_POST['country2_council12'];
+            $country3_council1 = $_POST['country3_council12'];
         } elseif ($_POST['council_ch1']=="United Nations Human Rights Council") {
-            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council13']));
-            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council13']));
-            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council13']));
+            $country1_council1 = $_POST['country1_council13'];
+            $country2_council1 = $_POST['country2_council13'];
+            $country3_council1 = $_POST['country3_council13'];
         } elseif ($_POST['council_ch1']=="International Atomic Energy Agency") {
-            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council14']));
-            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council14']));
-            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council14']));
+            $country1_council1 = $_POST['country1_council14'];
+            $country2_council1 = $_POST['country2_council14'];
+            $country3_council1 = $_POST['country3_council14'];
         } elseif ($_POST['council_ch1']=="Organisation for Security and Cooperation in Europe") {
-            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council15']));
-            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council15']));
-            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council15']));
+            $country1_council1 = $_POST['country1_council15'];
+            $country2_council1 = $_POST['country2_council15'];
+            $country3_council1 = $_POST['country3_council15'];
         } elseif ($_POST['council_ch1']=="The Trilateral Commission") {
-            $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council16']));
-            $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council16']));
-            $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council16']));
+            $country1_council1 = $_POST['country1_council16'];
+            $country2_council1 = $_POST['country2_council16'];
+            $country3_council1 = $_POST['country3_council16'];
         } 
 
-        $council_ch2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch2']));
+        $council_ch2 = $_POST['council_ch2'];
         if ($_POST['council_ch2']=="United Nations Security Council") {
-            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council21']));
-            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council21']));
-            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council21']));
+            $country1_council2 = $_POST['country1_council21'];
+            $country2_council2 = $_POST['country2_council21'];
+            $country3_council2 = $_POST['country3_council21'];
         } elseif ($_POST['council_ch2']=="United Nations General Assembly Disarmament and International Security Council") {
-            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council22']));
-            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council22']));
-            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council22']));
+            $country1_council2 = $_POST['country1_council22'];
+            $country2_council2 = $_POST['country2_council22'];
+            $country3_council2 = $_POST['country3_council22'];
         } elseif ($_POST['council_ch2']=="United Nations Human Rights Council") {
-            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council23']));
-            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council23']));
-            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council23']));
+            $country1_council2 = $_POST['country1_council23'];
+            $country2_council2 = $_POST['country2_council23'];
+            $country3_council2 = $_POST['country3_council23'];
         } elseif ($_POST['council_ch2']=="International Atomic Energy Agency") {
-            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council24']));
-            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council24']));
-            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council24']));
+            $country1_council2 = $_POST['country1_council24'];
+            $country2_council2 = $_POST['country2_council24'];
+            $country3_council2 = $_POST['country3_council24'];
         } elseif ($_POST['council_ch2']=="Organisation for Security and Cooperation in Europe") {
-            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council25']));
-            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council25']));
-            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council25']));
+            $country1_council2 = $_POST['country1_council25'];
+            $country2_council2 = $_POST['country2_council25'];
+            $country3_council2 = $_POST['country3_council25'];
         } elseif ($_POST['council_ch2']=="The Trilateral Commission") {
-            $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council26']));
-            $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council26']));
-            $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council26']));
+            $country1_council2 = $_POST['country1_council26'];
+            $country2_council2 = $_POST['country2_council26'];
+            $country3_council2 = $_POST['country3_council26'];
         } 
 
-        $council_ch3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch3']));  
+        $council_ch3 = $_POST['council_ch3'];  
 
         if ($_POST['council_ch3']=="United Nations Security Council") {
-            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council31']));
-            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council31']));
-            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council31']));
+            $country1_council3 = $_POST['country1_council31'];
+            $country2_council3 = $_POST['country2_council31'];
+            $country3_council3 = $_POST['country3_council31'];
         } elseif ($_POST['council_ch3']=="United Nations General Assembly Disarmament and International Security Council") {
-            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council32']));
-            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council32']));
-            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council32']));
+            $country1_council3 = $_POST['country1_council32'];
+            $country2_council3 = $_POST['country2_council32'];
+            $country3_council3 = $_POST['country3_council32'];
         } elseif ($_POST['council_ch3']=="United Nations Human Rights Council") {
-            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council33']));
-            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council33']));
-            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council33']));
+            $country1_council3 = $_POST['country1_council33'];
+            $country2_council3 = $_POST['country2_council33'];
+            $country3_council3 = $_POST['country3_council33'];
         } elseif ($_POST['council_ch3']=="International Atomic Energy Agency") {
-            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council34']));
-            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council34']));
-            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council34']));
+            $country1_council3 = $_POST['country1_council34'];
+            $country2_council3 = $_POST['country2_council34'];
+            $country3_council3 = $_POST['country3_council34'];
         } elseif ($_POST['council_ch3']=="Organisation for Security and Cooperation in Europe") {
-            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council35']));
-            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council35']));
-            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council35']));
+            $country1_council3 = $_POST['country1_council35'];
+            $country2_council3 = $_POST['country2_council35'];
+            $country3_council3 = $_POST['country3_council35'];
         } elseif ($_POST['council_ch3']=="The Trilateral Commission") {
-            $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council36']));
-            $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council36']));
-            $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council36']));
+            $country1_council3 = $_POST['country1_council36'];
+            $country2_council3 = $_POST['country2_council36'];
+            $country3_council3 = $_POST['country3_council36'];
         } 
 
         $sex = mysqli_real_escape_string($conn, htmlspecialchars($_POST['sex']));
