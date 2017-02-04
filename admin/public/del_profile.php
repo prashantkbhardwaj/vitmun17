@@ -96,7 +96,7 @@
         $allot_query = "UPDATE delegates SET allot_council = '{$allot_council}', allot_country = '{$allot_country}', allot = 1, action_by = '{$current_user}' WHERE id = {$del_id} LIMIT 1";
         $allot_result = mysqli_query($conn, $allot_query);
 
-        $country_update = htmlspecialchars_decode($allot_country);
+        $country_update = htmlentities($allot_country);
 
         $update_country_list = "UPDATE country_list SET allot = 1 WHERE council_code = '{$council_update}' AND country = '{$country_update}' LIMIT 1";
         $update_country_result = mysqli_query($conn, $update_country_list);
