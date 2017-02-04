@@ -509,7 +509,7 @@
                         <button onclick="javascript:htmltopdf();" type="button" class="btn btn-lg btn-primary">Download  <i class="fa fa-download"></i></button>
                     </div>
                     <div <?php echo $view_reject; ?> class="col-lg-4 text-center">
-                        <a href="eb_reject.php?eb_id=<?php echo $eb_id; ?>">
+                        <a href="del_reject.php?del_id=<?php echo $del_id; ?>">
                             <button type="button" class="btn btn-lg btn-danger" onclick="return confirm('Are you sure you want to reject this application?');">Reject  <i class="fa fa-close"></i></button>
                         </a>
                     </div>
