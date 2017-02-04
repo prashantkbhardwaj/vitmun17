@@ -13,29 +13,29 @@
     $user_type = $name_title['type'];
 ?>
 <?php
-    $eb_id = $_GET['eb_id'];
-    $query = "SELECT * FROM eb_apps WHERE id = {$eb_id} LIMIT 1";
+    $del_id = $_GET['del_id'];
+    $query = "SELECT * FROM del_apps WHERE id = {$del_id} LIMIT 1";
     $result = mysqli_query($conn, $query);
     confirm_query($result);  
-    $eb = mysqli_fetch_assoc($result); 
-    $y_exp = explode("-", $eb['dob']);
-    $year = 2016 - $y_exp[0];
-    if ($eb['hotel']=="No") {
+    $del = mysqli_fetch_assoc($result); 
+    $y_exp = explode("/", $del['dob']);
+    $year = 2016 - $y_exp[2];
+    if ($del['hotel']=="No") {
         $view_hotel = "style='display:none;'";
     } else {
         $view_hotel = "";
     }
-    if ($eb['allot']==1) {
+    if ($del['allot']==1) {
         $view_buttons = "style='display:none;'";
         $view_status = "<span style='color:green;'><strong><i class='fa fa-check-square'></i>  Selected Applicant</strong></span>";
         $view_short = "style='display:none;'";
         $view_reject = "style='display:none;'";
-    } elseif ($eb['allot']==2) {
+    } elseif ($del['allot']==2) {
         $view_short = "style='display:none;'";
         $view_buttons = "";
         $view_status = "<span style='color:#FF6347;'><strong><i class='fa fa-hourglass-half'></i>  Shortlisted Applicant</strong></span>";
         $view_reject = "";
-    } elseif ($eb['allot']==3) {
+    } elseif ($del['allot']==3) {
         $view_buttons = "style='display:none;'";
         $view_status = "<span style='color:red;'><strong><i class='fa fa-close'></i>  Rejected Applicant</strong></span>";
         $view_short = "style='display:none;'";
@@ -55,14 +55,14 @@
 <?php
     if (isset($_POST['submit'])) {
         $allot_council = $_POST['allot_council'];
-        $allot_post = $_POST['allot_post'];
-        if ($eb['hotel']=="No") {
+        $allot_country = $_POST['allot_country'];
+        if ($del['hotel']=="No") {
             $allot_hotel = 3;
         } else {
             $allot_hotel = $_POST['allot_hotel'];
         }        
 
-        $allot_query = "UPDATE eb_apps SET allot_council = '{$allot_council}', allot_post = '{$allot_post}', allot_hotel = {$allot_hotel}, allot = 1, action_by = '{$current_user}' WHERE id = {$eb_id} LIMIT 1";
+        $allot_query = "UPDATE delegates SET allot_council = '{$allot_council}', allot_country = '{$allot_country}', allot_hotel = {$allot_hotel}, allot = 1, action_by = '{$current_user}' WHERE id = {$del_id} LIMIT 1";
         $allot_result = mysqli_query($conn, $allot_query);
 
        if ($allot_result && mysqli_affected_rows($conn) == 1) {
@@ -137,10 +137,10 @@
                     <li>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="#"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
                     </li>
-                    <li class="active">
+                    <li>
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
                     </li>
                     <li>
@@ -195,14 +195,14 @@
                    <div class="row">
                        <div class="col-lg-12">
                             <center>
-                                <img src="../../img/eb_pics/<?php echo $eb['phno']; ?>.jpg" style="border-radius:50%; height:20%; width:20%;">
+                                <img src="../../img/del_pics/<?php echo $eb['phno']; ?>.jpg" style="border-radius:50%; height:20%; width:20%;">
                             </center>
                        </div>
                    </div>
                     <!-- /.row -->      
                     <div class="row">
                         <div class="col-lg-12 text-center">
-                            <h2><?php echo $eb['name']; ?></h2>
+                            <h2><?php echo $del['name']; ?></h2>
                         </div>
                     </div>     
                     <div class="row">
