@@ -225,3 +225,11 @@ ul.alert-dropdown {
 .panel-yellow > a:hover {
     color: #df8a13;
 }
+.team-member-image {
+    margin-bottom: 20px;
+    width: 85%;
+    border: 8px solid #fff;
+    border-radius: 50%;
+    -webkit-border-radius: 50%;
+    -moz-border-radius: 50%;
+}
