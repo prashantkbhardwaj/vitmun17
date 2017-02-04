@@ -27,7 +27,7 @@
     }
     if ($del['allot']==1) {
         $view_buttons = "style='display:none;'";
-        $view_status = "<span style='color:green;'><strong><i class='fa fa-check-square'></i>  Selected Applicant</strong></span>";        
+        $view_status = "<span style='color:green;'><strong><i class='fa fa-check-square'></i>  Selected applicant for ".$del['allot_council']." as ".$del['allot_country']."</strong></span>";        
         $view_reject = "style='display:none;'";
     } elseif ($del['allot']==2) {
         $view_buttons = "style='display:none;'";
@@ -99,9 +99,9 @@
         $update_country_list = "UPDATE country_list SET allot = 1 WHERE council_code = '{$council_update}' LIMIT 1";
         $update_country_result = mysqli_query($conn, $update_country_list);
 
-       if ($allot_result && mysqli_affected_rows($conn) == 1) {
+       if ($allot_result && mysqli_affected_rows($conn) == 1  && $update_country_result) {
 
-            //redirect_to("eb_mail.php?eb_id=$eb_id");
+            redirect_to("del_mail.php?del_id=$del_id");
         }  
     }
 ?>
@@ -172,7 +172,7 @@
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li class="active">
-                        <a href="#"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
+                        <a href="del.php"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
                     </li>
                     <li>
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
@@ -544,23 +544,11 @@
                                     <option value="The Trilateral Commission">The Trilateral Commission</option>
                                 </select>
                             </div>
+                            
                             <div id="unsc" style="display:none;">
                                 <div class="form-group">
                                     <label>Select country for this applicant</label>
-                                    <select class="form-control" name="allot_post1" required>
-                                        <?php
-                                            while ($unsc_list = mysqli_fetch_assoc($country_list_unsc_result)) { ?>
-                                                <option value="<?php echo $unsc_list['country']; ?>"><?php echo $unsc_list['country']; ?></option>
-                                                <?php
-                                            }
-                                        ?>
-                                    </select>
-                                </div>  
-                            </div>   
-                            <div id="unsc" style="display:none;">
-                                <div class="form-group">
-                                    <label>Select country for this applicant</label>
-                                    <select class="form-control" name="allot_country1" required>
+                                    <select class="form-control" name="allot_country1">
                                         <?php
                                             while ($unsc_list = mysqli_fetch_assoc($country_list_unsc_result)) { ?>
                                                 <option value="<?php echo $unsc_list['country']; ?>"><?php echo $unsc_list['country']; ?></option>
@@ -573,7 +561,7 @@
                             <div id="disec" style="display:none;">
                                 <div class="form-group">
                                     <label>Select country for this applicant</label>
-                                    <select class="form-control" name="allot_country2" required>
+                                    <select class="form-control" name="allot_country2">
                                         <?php
                                             while ($disec_list = mysqli_fetch_assoc($country_list_disec_result)) { ?>
                                                 <option value="<?php echo $disec_list['country']; ?>"><?php echo $disec_list['country']; ?></option>
@@ -586,7 +574,7 @@
                             <div id="unhrc" style="display:none;">
                                 <div class="form-group">
                                     <label>Select country for this applicant</label>
-                                    <select class="form-control" name="allot_country3" required>
+                                    <select class="form-control" name="allot_country3">
                                         <?php
                                             while ($unhrc_list = mysqli_fetch_assoc($country_list_unhrc_result)) { ?>
                                                 <option value="<?php echo $unhrc_list['country']; ?>"><?php echo $unhrc_list['country']; ?></option>
@@ -599,7 +587,7 @@
                             <div id="iaea" style="display:none;">
                                 <div class="form-group">
                                     <label>Select country for this applicant</label>
-                                    <select class="form-control" name="allot_country4" required>
+                                    <select class="form-control" name="allot_country4">
                                         <?php
                                             while ($iaea_list = mysqli_fetch_assoc($country_list_iaea_result)) { ?>
                                                 <option value="<?php echo $iaea_list['country']; ?>"><?php echo $iaea_list['country']; ?></option>
@@ -612,7 +600,7 @@
                             <div id="osce" style="display:none;">
                                 <div class="form-group">
                                     <label>Select country for this applicant</label>
-                                    <select class="form-control" name="allot_country5" required>
+                                    <select class="form-control" name="allot_country5">
                                         <?php
                                             while ($osce_list = mysqli_fetch_assoc($country_list_osce_result)) { ?>
                                                 <option value="<?php echo $osce_list['country']; ?>"><?php echo $osce_list['country']; ?></option>
@@ -625,7 +613,7 @@
                             <div id="tll" style="display:none;">
                                 <div class="form-group">
                                     <label>Select country for this applicant</label>
-                                    <select class="form-control" name="allot_country6" required>
+                                    <select class="form-control" name="allot_country6">
                                         <?php
                                             while ($tll_list = mysqli_fetch_assoc($country_list_tll_result)) { ?>
                                                 <option value="<?php echo $tll_list['country']; ?>"><?php echo $tll_list['country']; ?></option>

@@ -11,20 +11,16 @@
     $first_name = explode(" ", $name_title['username']);
 ?>
 <?php
-    $query = "SELECT * FROM eb_apps WHERE allot = 0 ORDER BY id DESC";
+    $query = "SELECT * FROM delegates WHERE allot = 0 ORDER BY id DESC";
     $result = mysqli_query($conn, $query);
-    confirm_query($result);    
+    confirm_query($result); 
 
-    $short_query = "SELECT * FROM eb_apps WHERE allot = 2 ORDER BY id DESC";
-    $short_result = mysqli_query($conn, $short_query);
-    confirm_query($short_result);    
-
-    $reject_query = "SELECT * FROM eb_apps WHERE allot = 3 ORDER BY id DESC";
+    $reject_query = "SELECT * FROM delegates WHERE allot = 2 ORDER BY id DESC";
     $reject_result = mysqli_query($conn, $reject_query);
     confirm_query($reject_result);    
 ?>
 <?php
-    $accept_query = "SELECT * FROM eb_apps WHERE allot = 1 ORDER BY id DESC";
+    $accept_query = "SELECT * FROM delegates WHERE allot = 1 ORDER BY id DESC";
     $accept_result = mysqli_query($conn, $accept_query);
     confirm_query($accept_result);    
 ?>
@@ -40,9 +36,6 @@
     } elseif ($status == 2) {
         $view_note = "";
         $acct_note = '<span style="color:red;">Application rejected and email sent.</span>';
-    } elseif ($status == 3) {        
-        $view_note = "";
-        $acct_note = '<span style="color:#FF6347;">Application shortlisted and email sent.</span>';
     } else {
         $view_note = "style='display:none;'";
         $acct_note = "";
@@ -113,10 +106,10 @@
                     <li>
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li>
+                    <li class="active">
                         <a href="del.php"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
                     </li>
                     <li>
@@ -155,7 +148,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Executive Board <small>Applications and profiles</small>
+                            Delegates <small>Applications and profiles</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
@@ -175,7 +168,7 @@
                 </div>
 
                <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-hourglass-start"></i> Applied</h3>
@@ -186,7 +179,7 @@
                                     <?php
                                         while ($title = mysqli_fetch_assoc($result)) { ?>
                                             <tr>
-                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title['id']); ?>"><?php echo $title['name']; ?></a></td>
+                                                <td><a href="del_profile.php?del_id=<?php echo urlencode($title['id']); ?>"><?php echo $title['name']; ?></a></td>
                                             </tr>  
                                             <?php
                                         }
@@ -196,37 +189,8 @@
                             </div>
                         </div>                       
                     </div>
-                    <div class="col-lg-4">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-hourglass-half"></i> Shortlisted</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responisve">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Shortlisted By</th>                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                    <?php
-                                        while ($short_title = mysqli_fetch_assoc($short_result)) { ?>
-                                            <tr>
-                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($short_title['id']); ?>"><?php echo $short_title['name']; ?></a></td>
-                                                <td><a href="index.php#admins"><?php echo $short_title['action_by']; ?></a></td>
-                                            </tr>  
-                                            <?php
-                                        }
-                                    ?>   
-                                        </tbody>                                                   
-                                    </table>                                       
-                                </div>
-                            </div>
-                        </div>     
-                    </div>
-                    <div class="col-lg-4">
+                    
+                    <div class="col-lg-6">
                         <div class="panel panel-red">
                             <div class="panel-heading">
                                 <h3 class="panel-title"><i class="fa fa-close"></i> Rejected</h3>
@@ -244,7 +208,7 @@
                                     <?php
                                         while ($reject_title = mysqli_fetch_assoc($reject_result)) { ?>
                                             <tr>
-                                                <td><a href="eb_profile.php?eb_id=<?php echo urlencode($reject_title['id']); ?>"><?php echo $reject_title['name']; ?></a></td>
+                                                <td><a href="del_profile.php?del_id=<?php echo urlencode($reject_title['id']); ?>"><?php echo $reject_title['name']; ?></a></td>
                                                 <td><a href="index.php#admins"><?php echo $reject_title['action_by']; ?></a></td>
                                             </tr>  
                                             <?php
@@ -269,7 +233,7 @@
                                                 <tr>
                                                     <th>Name</th>
                                                     <th>Alloted Council</th>
-                                                    <th>Alloted Post</th>
+                                                    <th>Alloted Country</th>
                                                     <th>Alloted By</th>
                                                 </tr>
                                             </thead>
@@ -277,9 +241,9 @@
                                         <?php
                                             while ($title_accept = mysqli_fetch_assoc($accept_result)) { ?>
                                                 <tr>
-                                                    <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
-                                                    <td><a href="council.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
-                                                    <td><a href="eb_profile.php?eb_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_post']; ?></a></td>
+                                                    <td><a href="del_profile.php?del_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
+                                                    <td><a href="council.php?del_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
+                                                    <td><a href="del_profile.php?del_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_country']; ?></a></td>
                                                     <td><a href="index.php#admins"><?php echo $title_accept['action_by']; ?></a></td>
                                                 </tr>  
                                                 <?php

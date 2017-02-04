@@ -98,7 +98,7 @@
                         <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
+                        <a href="del.php"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
                     </li>
                     <li>
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
