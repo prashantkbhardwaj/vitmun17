@@ -38,6 +38,10 @@
             $country1_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council16']));
             $country2_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council16']));
             $country3_council1 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council16']));
+        } else {
+            $country1_council1 = "";
+            $country2_council1 = "";
+            $country3_council1 = "";
         }
 
         $council_ch2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch2']));
@@ -65,6 +69,10 @@
             $country1_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council26']));
             $country2_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council26']));
             $country3_council2 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council26']));
+        } else {
+            $country1_council2 = "";
+            $country2_council2 = "";
+            $country3_council2 = "";
         }
 
         $council_ch3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['council_ch3']));  
@@ -93,6 +101,10 @@
             $country1_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country1_council36']));
             $country2_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country2_council36']));
             $country3_council3 = mysqli_real_escape_string($conn, htmlspecialchars($_POST['country3_council36']));
+        } else {
+            $country1_council3 = "";
+            $country2_council3 = "";
+            $country3_council3 = "";
         }
 
         $sex = mysqli_real_escape_string($conn, htmlspecialchars($_POST['sex']));
