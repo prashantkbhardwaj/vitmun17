@@ -15,12 +15,29 @@
     $count_result = mysqli_query($conn, $count_query);
     $count_eb = mysqli_fetch_array($count_result);
     $total_eb = $count_eb[0];  
+
+    $count_query_del = "SELECT COUNT(id) FROM delegates";
+    $count_result_del = mysqli_query($conn, $count_query_del);
+    $count_del = mysqli_fetch_array($count_result_del);
+    $total_del = $count_del[0];  
+
+    $count_query_del_ext = "SELECT COUNT(id) FROM delegates WHERE in_out = 1";
+    $count_result_del_ext = mysqli_query($conn, $count_query_del_ext);
+    $count_del_ext = mysqli_fetch_array($count_result_del_ext);
+    $total_del_ext = $count_del_ext[0];  
 ?>
 <?php
     $count_hotel_query = "SELECT COUNT(id) FROM eb_apps WHERE hotel = 'Yes'";
     $count_hotel_result = mysqli_query($conn, $count_hotel_query);
     $count_hotel_eb = mysqli_fetch_array($count_hotel_result);
     $total_hotel_eb = $count_hotel_eb[0];  
+
+    $count_hotel_query_del = "SELECT COUNT(id) FROM delegates WHERE hotel = 'Yes'";
+    $count_hotel_result_del = mysqli_query($conn, $count_hotel_query_del);
+    $count_hotel_del = mysqli_fetch_array($count_hotel_result_del);
+    $total_hotel_del = $count_hotel_del[0];  
+
+    $total_hotel = $total_hotel_eb + $total_hotel_del;
 ?>
 <?php
     $query = "SELECT * FROM users";
@@ -159,12 +176,12 @@
                                         <i class="fa fa-file-text fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
+                                        <div class="huge"><?php echo $total_del; ?></div>
                                         <div>Delegate applications</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="del.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -181,12 +198,12 @@
                                         <i class="fa fa-black-tie fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $total_eb; ?></div>
-                                        <div>EB Applications</div>
+                                        <div class="huge"><?php echo $total_del_ext; ?></div>
+                                        <div>External delegates</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="eb.php">
+                            <a href="del.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -225,7 +242,7 @@
                                         <i class="fa fa-hotel fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $total_hotel_eb; ?></div>
+                                        <div class="huge"><?php echo $total_hotel; ?></div>
                                         <div>Accomodations required</div>
                                     </div>
                                 </div>

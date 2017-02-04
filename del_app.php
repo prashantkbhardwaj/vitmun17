@@ -302,7 +302,7 @@
                                         <option value="United Nations General Assembly Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                         <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
                                         <option value="International Atomic Energy Agency">International Atomic Energy Agency</option>
-                                        <option value="Organisation for Security and Cooperation in Europe">Organisation for Security & Cooperation in Europe</option>
+                                        <option value="Organisation for Security and Cooperation in Europe">Organisation for Security and Cooperation in Europe</option>
                                         <option value="The Trilateral Commission">The Trilateral Commission</option>
                                     </select>
                                 </div>
@@ -1007,7 +1007,7 @@
                                             <option value="BANGLADESH">BANGLADESH</option>
                                             <option value="BELGIUM">BELGIUM</option>
                                             <option value="BOLIVIA">BOLIVIA</option>
-                                            <option value="BOSNIA & HERZEGOVINA">BOSNIA & HERZEGOVINA</option>
+                                            <option value="BOSNIA AND HERZEGOVINA">BOSNIA and HERZEGOVINA</option>
                                             <option value="BOTSWANA">BOTSWANA</option> 
                                             <option value="BRAZIL">BRAZIL</option>
                                             <option value="BURUNDI">BURUNDI</option>
@@ -1072,7 +1072,7 @@
                                             <option value="BANGLADESH">BANGLADESH</option>
                                             <option value="BELGIUM">BELGIUM</option>
                                             <option value="BOLIVIA">BOLIVIA</option>
-                                            <option value="BOSNIA & HERZEGOVINA">BOSNIA & HERZEGOVINA</option>
+                                            <option value="BOSNIA and HERZEGOVINA">BOSNIA and HERZEGOVINA</option>
                                             <option value="BOTSWANA">BOTSWANA</option> 
                                             <option value="BRAZIL">BRAZIL</option>
                                             <option value="BURUNDI">BURUNDI</option>
@@ -1137,7 +1137,7 @@
                                             <option value="BANGLADESH">BANGLADESH</option>
                                             <option value="BELGIUM">BELGIUM</option>
                                             <option value="BOLIVIA">BOLIVIA</option>
-                                            <option value="BOSNIA & HERZEGOVINA">BOSNIA & HERZEGOVINA</option>
+                                            <option value="BOSNIA and HERZEGOVINA">BOSNIA and HERZEGOVINA</option>
                                             <option value="BOTSWANA">BOTSWANA</option> 
                                             <option value="BRAZIL">BRAZIL</option>
                                             <option value="BURUNDI">BURUNDI</option>
@@ -1846,7 +1846,7 @@
                                         <option value="United Nations General Assembly Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                         <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
                                         <option value="International Atomic Energy Agency">International Atomic Energy Agency</option>
-                                        <option value="Organisation for Security and Cooperation in Europe">Organisation for Security & Cooperation in Europe</option>
+                                        <option value="Organisation for Security and Cooperation in Europe">Organisation for Security and Cooperation in Europe</option>
                                         <option value="The Trilateral Commission">The Trilateral Commission</option>
                                     </select>
                                 </div>
@@ -2551,7 +2551,7 @@
                                             <option value="BANGLADESH">BANGLADESH</option>
                                             <option value="BELGIUM">BELGIUM</option>
                                             <option value="BOLIVIA">BOLIVIA</option>
-                                            <option value="BOSNIA & HERZEGOVINA">BOSNIA & HERZEGOVINA</option>
+                                            <option value="BOSNIA and HERZEGOVINA">BOSNIA and HERZEGOVINA</option>
                                             <option value="BOTSWANA">BOTSWANA</option> 
                                             <option value="BRAZIL">BRAZIL</option>
                                             <option value="BURUNDI">BURUNDI</option>
@@ -2616,7 +2616,7 @@
                                             <option value="BANGLADESH">BANGLADESH</option>
                                             <option value="BELGIUM">BELGIUM</option>
                                             <option value="BOLIVIA">BOLIVIA</option>
-                                            <option value="BOSNIA & HERZEGOVINA">BOSNIA & HERZEGOVINA</option>
+                                            <option value="BOSNIA and HERZEGOVINA">BOSNIA and HERZEGOVINA</option>
                                             <option value="BOTSWANA">BOTSWANA</option> 
                                             <option value="BRAZIL">BRAZIL</option>
                                             <option value="BURUNDI">BURUNDI</option>
@@ -2681,7 +2681,7 @@
                                             <option value="BANGLADESH">BANGLADESH</option>
                                             <option value="BELGIUM">BELGIUM</option>
                                             <option value="BOLIVIA">BOLIVIA</option>
-                                            <option value="BOSNIA & HERZEGOVINA">BOSNIA & HERZEGOVINA</option>
+                                            <option value="BOSNIA and HERZEGOVINA">BOSNIA and HERZEGOVINA</option>
                                             <option value="BOTSWANA">BOTSWANA</option> 
                                             <option value="BRAZIL">BRAZIL</option>
                                             <option value="BURUNDI">BURUNDI</option>
@@ -3390,7 +3390,7 @@
                                         <option value="United Nations General Assembly Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                         <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
                                         <option value="International Atomic Energy Agency">International Atomic Energy Agency</option>
-                                        <option value="Organisation for Security and Cooperation in Europe">Organisation for Security & Cooperation in Europe</option>
+                                        <option value="Organisation for Security and Cooperation in Europe">Organisation for Security and Cooperation in Europe</option>
                                         <option value="The Trilateral Commission">The Trilateral Commission</option>
                                     </select>
                                 </div>
@@ -4095,7 +4095,7 @@
                                             <option value="BANGLADESH">BANGLADESH</option>
                                             <option value="BELGIUM">BELGIUM</option>
                                             <option value="BOLIVIA">BOLIVIA</option>
-                                            <option value="BOSNIA & HERZEGOVINA">BOSNIA & HERZEGOVINA</option>
+                                            <option value="BOSNIA and HERZEGOVINA">BOSNIA and HERZEGOVINA</option>
                                             <option value="BOTSWANA">BOTSWANA</option> 
                                             <option value="BRAZIL">BRAZIL</option>
                                             <option value="BURUNDI">BURUNDI</option>
@@ -4160,7 +4160,7 @@
                                             <option value="BANGLADESH">BANGLADESH</option>
                                             <option value="BELGIUM">BELGIUM</option>
                                             <option value="BOLIVIA">BOLIVIA</option>
-                                            <option value="BOSNIA & HERZEGOVINA">BOSNIA & HERZEGOVINA</option>
+                                            <option value="BOSNIA and HERZEGOVINA">BOSNIA and HERZEGOVINA</option>
                                             <option value="BOTSWANA">BOTSWANA</option> 
                                             <option value="BRAZIL">BRAZIL</option>
                                             <option value="BURUNDI">BURUNDI</option>
@@ -4225,7 +4225,7 @@
                                             <option value="BANGLADESH">BANGLADESH</option>
                                             <option value="BELGIUM">BELGIUM</option>
                                             <option value="BOLIVIA">BOLIVIA</option>
-                                            <option value="BOSNIA & HERZEGOVINA">BOSNIA & HERZEGOVINA</option>
+                                            <option value="BOSNIA and HERZEGOVINA">BOSNIA and HERZEGOVINA</option>
                                             <option value="BOTSWANA">BOTSWANA</option> 
                                             <option value="BRAZIL">BRAZIL</option>
                                             <option value="BURUNDI">BURUNDI</option>
@@ -4946,8 +4946,8 @@
                                 </div><br>
 
                                 <div class="form-group">
-                                    <input type="checkbox" required>&nbsp;&nbsp;
-                                    <label>By submitting this form, I hereby affirm my conformity to all conference rules & regulations and acknowledge that a violation of the same could lead to my expulsion. </label>
+                                    <input type="checkbox" required>andnbsp;andnbsp;
+                                    <label>By submitting this form, I hereby affirm my conformity to all conference rules and regulations and acknowledge that a violation of the same could lead to my expulsion. </label>
                                     
                                 </div>
 
