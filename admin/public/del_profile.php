@@ -189,13 +189,13 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#council"><i class="fa fa-fw fa-bank"></i> Councils <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="council" class="collapse">
                             <li>
-                                <a href="council.php?eb_id=001">UNGA SC</a>
+                                <a href="council.php?eb_id=001">UNSC</a>
                             </li>
                             <li>
                                 <a href="council.php?eb_id=002">UNGA DISEC</a>
                             </li>
                             <li>
-                                <a href="council.php?eb_id=003">UN HRC</a>
+                                <a href="council.php?eb_id=003">UNHRC</a>
                             </li>
                             <li>
                                 <a href="council.php?eb_id=004">IAEA</a>
