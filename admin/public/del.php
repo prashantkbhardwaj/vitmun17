@@ -9,6 +9,13 @@
     confirm_query($name_result);
     $name_title = mysqli_fetch_assoc($name_result);
     $first_name = explode(" ", $name_title['username']);
+    if ($name_title['type']==2) {
+        $index_link = "_del_affairs";
+        $executive_view = "style='display:none;'";
+    } else {
+        $index_link = "";
+        $executive_view = "";
+    }
 ?>
 <?php
     $query = "SELECT * FROM delegates WHERE allot = 0 ORDER BY id DESC";
@@ -33,12 +40,19 @@
     if ($status == 1) {
         $view_note = "";
         $acct_note = '<span>Application accepted and email sent.</span>';
+        $color_ext = "";
     } elseif ($status == 2) {
         $view_note = "";
         $acct_note = '<span style="color:red;">Application rejected and email sent.</span>';
+        $color_ext = "";
+    } elseif ($status == 3) {
+        $view_note = "";
+        $acct_note = '<span>Applicants listed in red are external applicants.</span>';
+        $color_ext = "style='color:red;'";
     } else {
         $view_note = "style='display:none;'";
         $acct_note = "";
+        $color_ext = "";
     }
 ?>
 <!DOCTYPE html>
@@ -89,7 +103,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><span><img src="../../img/small_logo.png" width="15%" height="120%"></span> VITCMUN 2017</a>
+                <a class="navbar-brand" href="index<?php echo $index_link; ?>.php"><span><img src="../../img/small_logo.png" width="15%" height="120%"></span> VITCMUN 2017</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -104,12 +118,12 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index<?php echo $index_link; ?>.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li class="active">
                         <a href="del.php"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
                     </li>
-                    <li >
+                    <li <?php echo $executive_view; ?> >
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
                     </li>
                     <li>
@@ -179,7 +193,11 @@
                                     <?php
                                         while ($title = mysqli_fetch_assoc($result)) { ?>
                                             <tr>
-                                                <td><a href="del_profile.php?del_id=<?php echo urlencode($title['id']); ?>"><?php echo $title['name']; ?></a></td>
+                                                <td>
+                                                    <a href="del_profile.php?del_id=<?php echo urlencode($title['id']); ?>">
+                                                        <span <?php if ($title['in_out']==1) { echo $color_ext; } ?>><?php echo $title['name']; ?></span>
+                                                    </a>
+                                                </td>
                                             </tr>  
                                             <?php
                                         }
@@ -208,7 +226,11 @@
                                     <?php
                                         while ($reject_title = mysqli_fetch_assoc($reject_result)) { ?>
                                             <tr>
-                                                <td><a href="del_profile.php?del_id=<?php echo urlencode($reject_title['id']); ?>"><?php echo $reject_title['name']; ?></a></td>
+                                                <td>
+                                                    <a href="del_profile.php?del_id=<?php echo urlencode($reject_title['id']); ?>">
+                                                        <span <?php if ($reject_title['in_out']==1) { echo $color_ext; } ?> ><?php echo $reject_title['name']; ?></span>
+                                                    </a>
+                                                </td>
                                                 <td><a href="index.php#admins"><?php echo $reject_title['action_by']; ?></a></td>
                                             </tr>  
                                             <?php
@@ -221,7 +243,7 @@
                         </div>     
                     </div>
                     <div class="row">
-                        <div class="col-lg-12">
+                        <div class="col-lg-12" id="allot">
                             <div class="panel panel-green">
                                 <div class="panel-heading">
                                     <h3 class="panel-title text-center"><i class="fa fa-check-square"></i> Accepted</h3>
@@ -241,7 +263,11 @@
                                         <?php
                                             while ($title_accept = mysqli_fetch_assoc($accept_result)) { ?>
                                                 <tr>
-                                                    <td><a href="del_profile.php?del_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['name']; ?></a></td>
+                                                    <td>
+                                                        <a href="del_profile.php?del_id=<?php echo urlencode($title_accept['id']); ?>">
+                                                            <span <?php if ($title_accept['in_out']==1) { echo $color_ext; } ?> ><?php echo $title_accept['name']; ?></span>
+                                                        </a>
+                                                    </td>
                                                     <td><a href="council.php?del_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
                                                     <td><a href="del_profile.php?del_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_country']; ?></a></td>
                                                     <td><a href="index.php#admins"><?php echo $title_accept['action_by']; ?></a></td>

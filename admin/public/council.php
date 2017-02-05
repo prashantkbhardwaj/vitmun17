@@ -18,6 +18,13 @@
         $view_fill = "style='display:none;'>";
         $view_notFill = "";
     }
+    if ($name_title['type']==2) {
+        $index_link = "_del_affairs";
+        $executive_view = "style='display:none;'";
+    } else {
+        $index_link = "";
+        $executive_view = "";
+    }
 ?>
 <?php
     $count_query = "SELECT COUNT(id) FROM eb_apps";
@@ -152,7 +159,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><span><img src="../../img/small_logo.png" width="15%" height="120%"></span> VITCMUN 2017</a>
+                <a class="navbar-brand" href="index<?php echo $index_link; ?>.php"><span><img src="../../img/small_logo.png" width="15%" height="120%"></span> VITCMUN 2017</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -167,12 +174,12 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li>
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index<?php echo $index_link; ?>.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="del.php"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
                     </li>
-                    <li>
+                    <li <?php echo $executive_view; ?>>
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
                     </li>
                     <li class="active">

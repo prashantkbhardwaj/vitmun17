@@ -9,16 +9,8 @@
     confirm_query($name_result);
     $name_title = mysqli_fetch_assoc($name_result);
     $first_name = explode(" ", $name_title['username']);
-    if ($name_title['type']==2) {
-        redirect_to("index_del_affairs.php");
-    }
 ?>
 <?php
-    $count_query = "SELECT COUNT(id) FROM eb_apps";
-    $count_result = mysqli_query($conn, $count_query);
-    $count_eb = mysqli_fetch_array($count_result);
-    $total_eb = $count_eb[0];  
-
     $count_query_del = "SELECT COUNT(id) FROM delegates";
     $count_result_del = mysqli_query($conn, $count_query_del);
     $count_del = mysqli_fetch_array($count_result_del);
@@ -28,30 +20,13 @@
     $count_result_del_ext = mysqli_query($conn, $count_query_del_ext);
     $count_del_ext = mysqli_fetch_array($count_result_del_ext);
     $total_del_ext = $count_del_ext[0];  
-?>
-<?php
-    $count_hotel_query = "SELECT COUNT(id) FROM eb_apps WHERE hotel = 'Yes'";
-    $count_hotel_result = mysqli_query($conn, $count_hotel_query);
-    $count_hotel_eb = mysqli_fetch_array($count_hotel_result);
-    $total_hotel_eb = $count_hotel_eb[0];  
 
-    $count_hotel_query_del = "SELECT COUNT(id) FROM delegates WHERE hotel = 'Yes'";
-    $count_hotel_result_del = mysqli_query($conn, $count_hotel_query_del);
-    $count_hotel_del = mysqli_fetch_array($count_hotel_result_del);
-    $total_hotel_del = $count_hotel_del[0];  
+    $count_query_del_allot = "SELECT COUNT(id) FROM delegates WHERE allot = 1";
+    $count_result_del_allot = mysqli_query($conn, $count_query_del_allot);
+    $count_del_allot = mysqli_fetch_array($count_result_del_allot);
+    $total_del_allot = $count_del_allot[0];  
+?>
 
-    $total_hotel = $total_hotel_eb + $total_hotel_del;
-?>
-<?php
-    $query = "SELECT * FROM users";
-    $result = mysqli_query($conn, $query);
-    confirm_query($result);    
-?>
-<?php
-    $agenda_query = "SELECT * FROM councils WHERE agenda = ''";
-    $agenda_result = mysqli_query($conn, $agenda_query);
-    confirm_query($agenda_result);
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -100,7 +75,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><span><img src="../../img/small_logo.png" width="15%" height="120%"></span> VITCMUN 2017</a>
+                <a class="navbar-brand" href="index_del_affairs.php"><span><img src="../../img/small_logo.png" width="15%" height="120%"></span> VITCMUN 2017</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -115,14 +90,11 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse">
                 <ul class="nav navbar-nav side-nav">
                     <li class="active">
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
+                        <a href="index_del_affairs.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
                     <li>
                         <a href="del.php"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
-                    </li>
-                    <li>
-                        <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
-                    </li>
+                    </li>                    
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#council"><i class="fa fa-fw fa-bank"></i> Councils <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="council" class="collapse">
@@ -220,15 +192,15 @@
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-money fa-4x"></i>
+                                        <i class="fa fa-check-square fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><i class="fa fa-inr"></i> 0</div>
-                                        <div>Amount from delegates</div>
+                                        <div class="huge"> <?php echo $total_del_allot; ?></div>
+                                        <div>Allotted delegates</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="del.php#allot">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -242,15 +214,15 @@
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-hotel fa-4x"></i>
+                                        <i class="fa fa-money fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $total_hotel; ?></div>
-                                        <div>Accomodations required</div>
+                                        <div class="huge">0</div>
+                                        <div>Paid delegates</div>
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="del.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
@@ -260,64 +232,38 @@
                         </div>
                     </div>
                 </div>
-                <!-- /.row -->
-                <?php
-                    while ($agenda_list = mysqli_fetch_assoc($agenda_result)) { ?>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="alert alert-info alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <i class="fa fa-info-circle"></i>  <?php echo "Agenda for ".$agenda_list['name']." not entered. Click <a href='council.php?eb_id=00".$agenda_list['id']."'><strong>here</strong></a> to update it."; ?>
-                                </div>
-                            </div>
-                        </div>    
-                        <?php
-                    }
-                ?>
-                            
-                <div class="row" id="admins">
+                <!-- /.row -->                   
+                <div class="row"><br><hr>
                     <div class="col-lg-12">
-                        <center><h2>Admin List</h2></center>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Username</th>
-                                        <th>Admin Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    while ($title_admin = mysqli_fetch_assoc($result)) { ?>
-                                       <tr>
-                                            <td><?php echo $title_admin['username']; ?></td>
-                                            <td>
-                                                <?php
-                                                    if ($title_admin['type']==1) {
-                                                        echo "Payment Admin";
-                                                    } elseif ($title_admin['type']==2) {
-                                                        echo "Delegate affairs";
-                                                    } elseif ($title_admin['type']==3) {
-                                                        echo "Hospitality";
-                                                    } elseif ($title_admin['type']==4) {
-                                                        echo "Super Admin";
-                                                    } elseif ($title_admin['type']==5) {
-                                                        echo "Viewer Admin";
-                                                    }                                                        
-                                                ?>
-                                                
-                                            </td>
-                                        </tr>  
-                                        <?php 
-                                    }
-                                ?>                                      
-                                </tbody>
-                                
-                            </table>
-                        </div>
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <h3 class="panel-title text-center"><i class="fa fa-info-circle"></i>&nbsp;&nbsp; For any type of technical assitance</h3>
+                            </div>
+                            <div class="panel-body">
+                                <strong>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            Please email to
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <a href="mailto:prashant.bhardwaj2014@vit.ac.in?Subject=Need%20of%20technical%20assitance%20from%20delegate%20affairs" target="_top"><i class="fa fa-envelope"></i> prashant.bhardwaj2014@vit.ac.in</a>
+                                            or <a href="mailto:vitcmun2017@gmail.com?Subject=Need%20of%20technical%20assitance%20from%20delegate%20affairs" target="_top"><i class="fa fa-envelope"></i> vitcmun2017@gmail.com</a>
+                                        </div>
+                                    </div><hr>
+                                    <div class="row">
+                                        <div class="col-lg-6">
+                                            You can call on 
+                                        </div>
+                                        <div class="col-lg-6">
+                                            <a href="tel:+91-9962416408"><i class="fa fa-phone"></i> +91-9962416408</a>
+                                            or <a href="tel:+91-8789925369"><i class="fa fa-phone"></i> +91-8789925369</a>
+                                        </div>
+                                    </div>                                   
+                                </strong>
+                            </div>
+                        </div>                       
                     </div>
-                </div>
-                <!-- /.row -->             
+                </div>  <br><br>             
 
             </div>
             <!-- /.container-fluid -->

@@ -17,7 +17,7 @@
 <body>
 	<form method="post" action="test.php">
 		<select name="ch">
-			<option value="Jean-Louis Bruguière">Jean-Louis Bruguière</option>
+			<option value="Meghan L. O’Sullivan">Meghan L. O’Sullivan</option>
 		</select>
 		<input type="submit" name="submit" value="submit">
 	</form>

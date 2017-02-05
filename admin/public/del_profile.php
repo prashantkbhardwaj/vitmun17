@@ -538,6 +538,7 @@
                             <div class="form-group">
                                 <label>Select council for this applicant</label>
                                 <select id="cl" onchange="country_allot();" name="allot_council" required class="form-control">
+                                    <option disabled selected>Choose your option</option>
                                     <option value="United Nations Security Council">United Nations Security Council</option>
                                     <option value="United Nations General Assembly Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                     <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
