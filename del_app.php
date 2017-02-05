@@ -1064,7 +1064,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of first preference</label>
-                                        <select onchange="toggleDisabilitycouncil13(this);" name="country1_council13" class="council13ch form-control">
+                                        <select onchange="toggleDisabilitycouncil13(this);" name="country2_council13" class="council13ch form-control">
                                             
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
@@ -1129,7 +1129,7 @@
 
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of first preference</label>
-                                        <select onchange="toggleDisabilitycouncil13(this);" name="country1_council13" class="council13ch form-control">
+                                        <select onchange="toggleDisabilitycouncil13(this);" name="country3_council13" class="council13ch form-control">
                                             
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
