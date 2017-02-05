@@ -72,13 +72,13 @@
 
     
     if ($council =="United Nations Security Council") {
-        $abb = "UNGA SC";
+        $abb = "UNSC";
         $logo = "SC";
     } elseif ($council =="United Nations General Assembly Disarmament and International Security Council") {
         $abb = "UNGA DISEC";
         $logo = "DISEC";
     } elseif ($council =="United Nations Human Rights Council") {
-        $abb = "UN HRC";
+        $abb = "UNHRC";
         $logo = "HRC";
     } elseif ($council =="International Atomic Energy Agency") {
         $abb = "IAEA";

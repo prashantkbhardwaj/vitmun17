@@ -233,7 +233,7 @@
                                 <div class="form-group">
                                     <label>Gender</label>
                                     <select name="sex" required class="form-control">
-                                        <option disabled selected>Choose your option</option>
+                                        
                                         <option value="Male">Male</option>
                                         <option value="Female">Female</option>
                                         <option value="Other">Other</option>
@@ -243,7 +243,7 @@
                                 <div class="form-group">
                                     <label>Educational Institution studying in/graduated from</label>
                                     <select id="school_select" onchange="schoolname();" name="school_select" required class="form-control">                                  
-                                        <option disabled selected>Choose your option</option>
+                                        
                                         <option value="VITC">Vellore Institue of Technology, Chennai Campus</option>
                                         <option value="other">Others</option>
                                     </select>
@@ -297,7 +297,7 @@
                                 <div class="form-group">
                                     <label>State your first preference of council</label>
                                     <select id="cl1" onchange="toggleDisabilitycouncil(this);" name="council_ch1" required class="councilch form-control">
-                                        <option disabled selected>Choose your option</option>
+                                        
                                         <option value="United Nations Security Council">United Nations Security Council</option>
                                         <option value="United Nations General Assembly Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                         <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
@@ -311,7 +311,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil11(this);" name="country1_council11" class="council11ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="China (Republic of)">China (Republic of)</option>
                                             <option value="France">France</option>
                                             <option value="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
@@ -338,7 +338,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil11(this);" name="country2_council11" class="council11ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="China (Republic of)">China (Republic of)</option>
                                             <option value="France">France</option>
                                             <option value="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
@@ -365,7 +365,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil11(this);" name="country3_council11" class="council11ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="China (Republic of)">China (Republic of)</option>
                                             <option value="France">France</option>
                                             <option value="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
@@ -394,7 +394,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil12(this);" name="country1_council12" class="council12ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -596,7 +596,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil12(this);" name="country2_council12" class="council12ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -797,7 +797,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil12(this);" name="country3_council12" class="council12ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -1000,7 +1000,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil13(this);" name="country1_council13" class="council13ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
                                             <option value="AMNESTY INTERNATIONAL">AMNESTY INTERNATIONAL</option>
@@ -1065,7 +1065,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil13(this);" name="country1_council13" class="council13ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
                                             <option value="AMNESTY INTERNATIONAL">AMNESTY INTERNATIONAL</option>
@@ -1130,7 +1130,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil13(this);" name="country1_council13" class="council13ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
                                             <option value="AMNESTY INTERNATIONAL">AMNESTY INTERNATIONAL</option>
@@ -1197,7 +1197,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil14(this);" name="country1_council14" class="council14ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Argentina">Argentina</option>
@@ -1278,7 +1278,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil14(this);" name="country2_council14" class="council14ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Argentina">Argentina</option>
@@ -1359,7 +1359,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil14(this);" name="country3_council14" class="council14ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Argentina">Argentina</option>
@@ -1442,7 +1442,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil15(this);" name="country1_council15" class="council15ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Andorra">Andorra</option>
@@ -1516,7 +1516,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil15(this);" name="country2_council15" class="council15ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Andorra">Andorra</option>
@@ -1590,7 +1590,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil15(this);" name="country3_council15" class="council15ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Andorra">Andorra</option>
@@ -1666,7 +1666,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil16(this);" name="country1_council16" class="council16ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
                                             <option value="Admiral Giampaolo Di Paola">Admiral Giampaolo Di Paola</option>
@@ -1724,7 +1724,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil16(this);" name="country2_council16" class="council16ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
                                             <option value="Admiral Giampaolo Di Paola">Admiral Giampaolo Di Paola</option>
@@ -1782,7 +1782,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of first preference</label>
                                         <select onchange="toggleDisabilitycouncil16(this);" name="country3_council16" class="council16ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
                                             <option value="Admiral Giampaolo Di Paola">Admiral Giampaolo Di Paola</option>
@@ -1841,7 +1841,7 @@
                                 <div class="form-group">
                                     <label>State your second preference of council</label>
                                     <select id="cl2" onchange="toggleDisabilitycouncil(this);" name="council_ch2" required class="councilch form-control">
-                                        <option disabled selected>Choose your option</option>
+                                        
                                         <option value="United Nations Security Council">United Nations Security Council</option>
                                         <option value="United Nations General Assembly Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                         <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
@@ -1855,7 +1855,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil21(this);" name="country1_council21" class="council21ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="China (Republic of)">China (Republic of)</option>
                                             <option value="France">France</option>
                                             <option value="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
@@ -1882,7 +1882,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil21(this);" name="country2_council21" class="council21ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="China (Republic of)">China (Republic of)</option>
                                             <option value="France">France</option>
                                             <option value="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
@@ -1909,7 +1909,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil21(this);" name="country3_council21" class="council21ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="China (Republic of)">China (Republic of)</option>
                                             <option value="France">France</option>
                                             <option value="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
@@ -1938,7 +1938,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil22(this);" name="country1_council22" class="council22ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -2140,7 +2140,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil22(this);" name="country2_council22" class="council22ch form-control">
-                                            <option disabled selected>Choose your option</option> 
+                                             
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -2341,7 +2341,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil22(this);" name="country3_council22" class="council22ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -2544,7 +2544,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil23(this);" name="country1_council23" class="council23ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
                                             <option value="AMNESTY INTERNATIONAL">AMNESTY INTERNATIONAL</option>
@@ -2609,7 +2609,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil23(this);" name="country2_council23" class="council23ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
                                             <option value="AMNESTY INTERNATIONAL">AMNESTY INTERNATIONAL</option>
@@ -2674,7 +2674,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil23(this);" name="country3_council23" class="council23ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
                                             <option value="AMNESTY INTERNATIONAL">AMNESTY INTERNATIONAL</option>
@@ -2741,7 +2741,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil24(this);" name="country1_council24" class="council24ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Argentina">Argentina</option>
@@ -2986,7 +2986,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil25(this);" name="country1_council25" class="council25ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Andorra">Andorra</option>
@@ -3060,7 +3060,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil25(this);" name="country2_council25" class="council25ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Andorra">Andorra</option>
@@ -3134,7 +3134,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil25(this);" name="country3_council25" class="council25ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Andorra">Andorra</option>
@@ -3210,7 +3210,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil26(this);" name="country1_council26" class="council26ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
                                             <option value="Admiral Giampaolo Di Paola">Admiral Giampaolo Di Paola</option>
@@ -3268,7 +3268,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil26(this);" name="country2_council26" class="council26ch form-control">
-                                            <option disabled selected>Choose your option</option> 
+                                             
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
                                             <option value="Admiral Giampaolo Di Paola">Admiral Giampaolo Di Paola</option>
@@ -3326,7 +3326,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil26(this);" name="country3_council26" class="council26ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
                                             <option value="Admiral Giampaolo Di Paola">Admiral Giampaolo Di Paola</option>
@@ -3385,7 +3385,7 @@
                                 <div class="form-group">
                                     <label>State your third preference of council</label>
                                     <select id="cl3" onchange="toggleDisabilitycouncil(this);" name="council_ch3" required class="councilch form-control">
-                                        <option disabled selected>Choose your option</option>
+                                        
                                         <option value="United Nations Security Council">United Nations Security Council</option>
                                         <option value="United Nations General Assembly Disarmament and International Security Council">United Nations General Assembly – Disarmament and International Security Council</option>
                                         <option value="United Nations Human Rights Council">United Nations Human Rights Council</option>
@@ -3399,7 +3399,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil31(this);" name="country1_council31" class="council31ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="China (Republic of)">China (Republic of)</option>
                                             <option value="France">France</option>
                                             <option value="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
@@ -3426,7 +3426,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil31(this);" name="country2_council31" class="council31ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="China (Republic of)">China (Republic of)</option>
                                             <option value="France">France</option>
                                             <option value="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
@@ -3453,7 +3453,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil31(this);" name="country3_council31" class="council31ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="China (Republic of)">China (Republic of)</option>
                                             <option value="France">France</option>
                                             <option value="Union of Soviet Socialist Republics">Union of Soviet Socialist Republics</option>
@@ -3482,7 +3482,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil32(this);" name="country1_council32" class="council32ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -3684,7 +3684,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil32(this);" name="country2_council32" class="council32ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -3885,7 +3885,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil32(this);" name="country3_council32" class="council32ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
@@ -4088,7 +4088,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil33(this);" name="country1_council33" class="council33ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
                                             <option value="AMNESTY INTERNATIONAL">AMNESTY INTERNATIONAL</option>
@@ -4153,7 +4153,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil33(this);" name="country2_council33" class="council33ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
                                             <option value="AMNESTY INTERNATIONAL">AMNESTY INTERNATIONAL</option>
@@ -4218,7 +4218,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil33(this);" name="country3_council33" class="council33ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="AFGHANISTAN">AFGHANISTAN</option>
                                             <option value="ALBANIA">ALBANIA</option> 
                                             <option value="AMNESTY INTERNATIONAL">AMNESTY INTERNATIONAL</option>
@@ -4285,7 +4285,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil34(this);" name="country1_council34" class="council34ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Argentina">Argentina</option>
@@ -4366,7 +4366,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil34(this);" name="country2_council34" class="council34ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Argentina">Argentina</option>
@@ -4447,7 +4447,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil34(this);" name="country3_council34" class="council34ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Afghanistan">Afghanistan</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Argentina">Argentina</option>
@@ -4530,7 +4530,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil35(this);" name="country1_council35" class="council35ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Andorra">Andorra</option>
@@ -4604,7 +4604,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil35(this);" name="country2_council35" class="council35ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Andorra">Andorra</option>
@@ -4678,7 +4678,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of second preference</label>
                                         <select onchange="toggleDisabilitycouncil35(this);" name="country3_council35" class="council35ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="Albania">Albania</option>
                                             <option value="Algeria">Algeria</option>
                                             <option value="Andorra">Andorra</option>
@@ -4754,7 +4754,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select first country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil36(this);" name="country1_council36" class="council36ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
                                             <option value="Admiral Giampaolo Di Paola">Admiral Giampaolo Di Paola</option>
@@ -4812,7 +4812,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select second country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil36(this);" name="country2_council36" class="council36ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
                                             <option value="Admiral Giampaolo Di Paola">Admiral Giampaolo Di Paola</option>
@@ -4870,7 +4870,7 @@
                                     <div class="form-group col-lg-4">
                                         <label>Select third country preference for your council of third preference</label>
                                         <select onchange="toggleDisabilitycouncil36(this);" name="country3_council36" class="council36ch form-control">
-                                            <option disabled selected>Choose your option</option>
+                                            
                                             <option value="George Sabra">George Sabra</option>
                                             <option value="Admiral Dennis B. Blair">Admiral Dennis B. Blair</option>
                                             <option value="Admiral Giampaolo Di Paola">Admiral Giampaolo Di Paola</option>
@@ -4934,7 +4934,7 @@
                                 <div class="form-group">
                                     <label>Would you be requiring accommodation?</label>
                                     <select name="hotel" required class="form-control">
-                                        <option disabled selected>Choose your option</option>
+                                        
                                         <option value="Yes">Yes</option>
                                         <option value="No">No</option>
                                     </select>
