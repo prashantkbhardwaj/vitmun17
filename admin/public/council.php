@@ -44,24 +44,34 @@
     confirm_query($result);    
 ?>
 <?php
-    $eb_id = $_GET['eb_id'];
-    if ($eb_id == 001) {
-        $council = "United Nations Security Council";
-    } elseif ($eb_id == 002) {
-        $council = "United Nations General Assembly Disarmament and International Security Council";
-    } elseif ($eb_id == 003) {
-        $council = "United Nations Human Rights Council";
-    } elseif ($eb_id == 004) {
-        $council = "International Atomic Energy Agency";
-    } elseif ($eb_id == 005) {
-        $council = "Organisation for Security and Cooperation in Europe";
-    } elseif ($eb_id == 006) {
-        $council = "The Trilateral Commission";
+    $id_get = $_GET['eb_id'];
+    $e_id = explode("_", $id_get);
+    if ($e_id[1]=="d") {
+        $eb_id = $e_id[0];
+        $council_query = "SELECT allot_council FROM delegates WHERE id = '{$eb_id}' LIMIT 1";
+        $council_result = mysqli_query($conn, $council_query);
+        confirm_query($council_result);
+        $council_list = mysqli_fetch_assoc($council_result);        
     } else {
+        $eb_id = $_GET['eb_id'];
         $council_query = "SELECT allot_council FROM eb_apps WHERE id = '{$eb_id}' LIMIT 1";
         $council_result = mysqli_query($conn, $council_query);
         confirm_query($council_result);
         $council_list = mysqli_fetch_assoc($council_result);
+    }     
+    if ($eb_id == "c1") {
+        $council = "United Nations Security Council";
+    } elseif ($eb_id == "c2") {
+        $council = "United Nations General Assembly Disarmament and International Security Council";
+    } elseif ($eb_id == "c3") {
+        $council = "United Nations Human Rights Council";
+    } elseif ($eb_id == "c4") {
+        $council = "International Atomic Energy Agency";
+    } elseif ($eb_id == "c5") {
+        $council = "Organisation for Security and Cooperation in Europe";
+    } elseif ($eb_id == "c6") {
+        $council = "The Trilateral Commission";
+    } else {        
         $council = $council_list['allot_council'];
     }
     
@@ -186,22 +196,22 @@
                         <a href="javascript:;" data-toggle="collapse" data-target="#council"><i class="fa fa-fw fa-bank"></i> Councils <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="council" class="collapse">
                             <li>
-                                <a href="council.php?eb_id=001">UNSC</a>
+                                <a href="council.php?eb_id=c1">UNSC</a>
                             </li>
                             <li>
-                                <a href="council.php?eb_id=002">UNGA DISEC</a>
+                                <a href="council.php?eb_id=c2">UNGA DISEC</a>
                             </li>
                             <li>
-                                <a href="council.php?eb_id=003">UNHRC</a>
+                                <a href="council.php?eb_id=c3">UNHRC</a>
                             </li>
                             <li>
-                                <a href="council.php?eb_id=004">IAEA</a>
+                                <a href="council.php?eb_id=c4">IAEA</a>
                             </li>
                             <li>
-                                <a href="council.php?eb_id=005">OSCE</a>
+                                <a href="council.php?eb_id=c5">OSCE</a>
                             </li>
                             <li>
-                                <a href="council.php?eb_id=006">TLC</a>
+                                <a href="council.php?eb_id=c6">TLC</a>
                             </li>
                         </ul>
                     </li>                  

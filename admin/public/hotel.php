@@ -18,18 +18,13 @@
     }
 ?>
 <?php
-    $query = "SELECT * FROM delegates WHERE allot = 0 ORDER BY id DESC";
-    $result = mysqli_query($conn, $query);
-    confirm_query($result); 
+    $query_eb = "SELECT * FROM eb_apps WHERE hotel = 'Yes' AND allot = 1 ORDER BY id DESC";
+    $result_eb = mysqli_query($conn, $query_eb);
+    confirm_query($result_eb); 
 
-    $reject_query = "SELECT * FROM delegates WHERE allot = 2 ORDER BY id DESC";
-    $reject_result = mysqli_query($conn, $reject_query);
-    confirm_query($reject_result);    
-?>
-<?php
-    $accept_query = "SELECT * FROM delegates WHERE allot = 1 ORDER BY id DESC";
-    $accept_result = mysqli_query($conn, $accept_query);
-    confirm_query($accept_result);    
+    $query_del = "SELECT * FROM delegates WHERE hotel = 'Yes' AND allot = 1 ORDER BY id DESC";
+    $result_del = mysqli_query($conn, $query_del);
+    confirm_query($result_del); 
 ?>
 <?php
     if (isset($_GET['status'])) {
@@ -162,7 +157,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Delegates <small>Applications and profiles</small>
+                            Accomodations <small>Applications and allottments</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
@@ -182,71 +177,83 @@
                 </div>
 
                <div class="row">
-                    <div class="col-lg-6">
+                    <div class="col-lg-12">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-hourglass-start"></i> Applied</h3>
+                                <h3 class="panel-title text-center"><i class="fa fa-black-tie"></i> Executive Board</h3>
                             </div>
                             <div class="panel-body">
                                 <div class="table-responisve">
                                     <table class="table table-bordered table-hover table-striped">
+                                    <thead>
+                                        <tr>
+                                            <th>Name</th>
+                                            <th>Council</th>
+                                            <th>Post</th>
+                                            <th>Phone Number</th>
+                                            <th>Status</th>
+                                            <th>Rooom No.</th>
+                                            <th>Action</th>
+                                            <th>Allotted By</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
                                     <?php
-                                        while ($title = mysqli_fetch_assoc($result)) { ?>
+                                        while ($eb_list = mysqli_fetch_assoc($result_eb)) { ?>
                                             <tr>
                                                 <td>
-                                                    <a href="del_profile.php?del_id=<?php echo urlencode($title['id']); ?>">
-                                                        <span <?php if ($title['in_out']==1) { echo $color_ext; } ?>><?php echo $title['name']; ?></span>
+                                                    <a href="del_profile.php?del_id=<?php echo urlencode($eb_list['id']); ?>">
+                                                        <?php echo $eb_list['name']; ?>
                                                     </a>
                                                 </td>
-                                            </tr>  
+                                                <td>
+                                                    <a href="council.php?eb_id=<?php echo urlencode($eb_list['id']); ?>">
+                                                        <?php echo $eb_list['allot_council']; ?>                  
+                                                    </a>
+                                                </td>
+                                                <td><?php echo $eb_list['allot_post']; ?></td>
+                                                <td><?php echo $eb_list['phno']; ?></td>
+                                                <td>
+                                                    <?php
+                                                        if ($eb_list['allot_hotel']==1) { ?>
+                                                            <span style="color:green;">Allotted</span>
+                                                            <?php
+                                                        } else { ?>
+                                                            <span style="color:red;">Not allotted</span>
+                                                            <?php
+                                                        }
+                                                    ?>
+                                                </td>
+                                                <td><?php echo $eb_list['room']; ?></td>
+                                                <td>
+                                                    <?php
+                                                        if ($eb_list['allot_hotel']==0) { ?>
+                                                            <a href="eb_hotel.php?eb_id=<?php echo urlencode($eb_list['id']); ?>">
+                                                                Allot
+                                                            </a>
+                                                            <?php
+                                                        } else {
+
+                                                        }
+                                                    ?>
+                                                </td>
+                                                <td><a href="index.php#admins"><?php echo $eb_list['hotel_by']; ?></a></td>
+                                            </tr> 
                                             <?php
                                         }
-                                    ?>                                                      
+                                    ?>  
+                                    </tbody>                                                    
                                     </table>                                       
                                 </div>
                             </div>
                         </div>                       
-                    </div>
+                    </div>                  
                     
-                    <div class="col-lg-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-close"></i> Rejected</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responisve">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Rejected By</th>                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                    <?php
-                                        while ($reject_title = mysqli_fetch_assoc($reject_result)) { ?>
-                                            <tr>
-                                                <td>
-                                                    <a href="del_profile.php?del_id=<?php echo urlencode($reject_title['id']); ?>">
-                                                        <span <?php if ($reject_title['in_out']==1) { echo $color_ext; } ?> ><?php echo $reject_title['name']; ?></span>
-                                                    </a>
-                                                </td>
-                                                <td><a href="index.php#admins"><?php echo $reject_title['action_by']; ?></a></td>
-                                            </tr>  
-                                            <?php
-                                        }
-                                    ?>    
-                                        </tbody>                                                  
-                                    </table>                                       
-                                </div>
-                            </div>
-                        </div>     
-                    </div>
                     <div class="row">
                         <div class="col-lg-12" id="allot">
                             <div class="panel panel-green">
                                 <div class="panel-heading">
-                                    <h3 class="panel-title text-center"><i class="fa fa-check-square"></i> Accepted</h3>
+                                    <h3 class="panel-title text-center"><i class="fa fa-user"></i> Delegates</h3>
                                 </div>
                                 <div class="panel-body">
                                     <div class="table-responisve">
@@ -254,23 +261,56 @@
                                             <thead>
                                                 <tr>
                                                     <th>Name</th>
-                                                    <th>Alloted Council</th>
-                                                    <th>Alloted Country</th>
-                                                    <th>Alloted By</th>
+                                                    <th>Council</th>
+                                                    <th>Country</th>
+                                                    <th>Current Residence</th>
+                                                    <th>College</th>
+                                                    <th>Status</th>
+                                                    <th>Room No.</th>
+                                                    <th>Action</th>
+                                                    <th>Allotted By</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
                                         <?php
-                                            while ($title_accept = mysqli_fetch_assoc($accept_result)) { ?>
+                                            while ($del_list = mysqli_fetch_assoc($result_del)) { ?>
                                                 <tr>
                                                     <td>
-                                                        <a href="del_profile.php?del_id=<?php echo urlencode($title_accept['id']); ?>">
-                                                            <span <?php if ($title_accept['in_out']==1) { echo $color_ext; } ?> ><?php echo $title_accept['name']; ?></span>
+                                                        <a href="del_profile.php?del_id=<?php echo urlencode($del_list['id']); ?>">
+                                                            <?php echo $del_list['name']; ?>
                                                         </a>
                                                     </td>
-                                                    <td><a href="council.php?eb_id=<?php echo urlencode($title_accept['id'].'_d'); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
-                                                    <td><a href="del_profile.php?del_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_country']; ?></a></td>
-                                                    <td><a href="index.php#admins"><?php echo $title_accept['action_by']; ?></a></td>
+                                                    <td><a href="council.php?eb_id=<?php echo urlencode($del_list['id'].'_d'); ?>"><?php echo $del_list['allot_council']; ?></a></td>
+                                                    <td><?php echo $del_list['allot_country']; ?></td>
+                                                    <td><?php echo $del_list['hometown']; ?></td>
+                                                    <td><?php echo $del_list['school']; ?></td>
+                                                    <td>
+                                                        <?php
+                                                            if ($del_list['allot_hotel']==1) { ?>
+                                                                <span style="color:green;">Allotted</span>
+                                                                <?php
+                                                            } else { ?>
+                                                                <span style="color:red;">Not allotted</span>
+                                                                <?php
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                    <td><?php echo $del_list['room']; ?></td>
+                                                    <td>
+                                                        <?php
+                                                            if ($del_list['allot_hotel']==0) { ?>
+                                                                <a href="del_hotel.php?del_id=<?php echo urlencode($del_list['id']); ?>">
+                                                                    Allot
+                                                                </a>
+                                                                <?php
+                                                            } else {
+
+                                                            }
+                                                        ?>
+                                                    </td>
+                                                    <td>
+                                                        <a href="index.php#admins"><?php echo $del_list['hotel_by']; ?></a>
+                                                    </td>                                                    
                                                 </tr>  
                                                 <?php
                                             }
@@ -293,7 +333,7 @@
 
     </div>
     <!-- /#wrapper -->
-
+    
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
