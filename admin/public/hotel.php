@@ -157,7 +157,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Accomodations <small>Applications and allottments</small>
+                            Accomodations <small>Applications and allotments</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
@@ -228,7 +228,7 @@
                                                 <td>
                                                     <?php
                                                         if ($eb_list['allot_hotel']==0) { ?>
-                                                            <a href="eb_hotel.php?eb_id=<?php echo urlencode($eb_list['id']); ?>">
+                                                            <a href="hotel_eb.php?eb_id=<?php echo urlencode($eb_list['id']); ?>">
                                                                 Allot
                                                             </a>
                                                             <?php
@@ -299,7 +299,7 @@
                                                     <td>
                                                         <?php
                                                             if ($del_list['allot_hotel']==0) { ?>
-                                                                <a href="del_hotel.php?del_id=<?php echo urlencode($del_list['id']); ?>">
+                                                                <a href="hotel_del.php?del_id=<?php echo urlencode($del_list['id']); ?>">
                                                                     Allot
                                                                 </a>
                                                                 <?php

@@ -183,28 +183,16 @@
 
                <div class="row">
                     <div class="col-lg-6">
-                        <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-hourglass-start"></i> Applied</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responisve">
-                                    <table class="table table-bordered table-hover table-striped">
+                        <div class="list-group">                            
+                            <a href="#" class="list-group-item active"><i class="fa fa-hourglass-start"></i> Applied</a>
+                            <?php
+                                while ($title = mysqli_fetch_assoc($result)) { ?>
+                                    <a class="list-group-item text-center" href="del_profile.php?del_id=<?php echo urlencode($title['id']); ?>">
+                                        <span <?php if ($title['in_out']==1) { echo $color_ext; } ?>><?php echo $title['name']; ?></span>
+                                    </a>
                                     <?php
-                                        while ($title = mysqli_fetch_assoc($result)) { ?>
-                                            <tr>
-                                                <td>
-                                                    <a href="del_profile.php?del_id=<?php echo urlencode($title['id']); ?>">
-                                                        <span <?php if ($title['in_out']==1) { echo $color_ext; } ?>><?php echo $title['name']; ?></span>
-                                                    </a>
-                                                </td>
-                                            </tr>  
-                                            <?php
-                                        }
-                                    ?>                                                      
-                                    </table>                                       
-                                </div>
-                            </div>
+                                }
+                            ?>      
                         </div>                       
                     </div>
                     

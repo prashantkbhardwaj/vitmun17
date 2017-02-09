@@ -85,15 +85,14 @@
                        <div class="collapse navbar-collapse" id="navbar">
 
                         <ul class="nav navbar-nav navbar-right">
-                          <li >
-                           <a href="#splash-image-wrap">Home</a>
-                       </li>
-                       <li><a href="#page-section">VITCMUN</a></li>
-
-                       <li><a href="#news">Committees</a></li>
-                       <li><a href="team.html">Team</a></li>                      
-                      
-                       <li><a href="#contact">Contact Us </a></li>
+                          <li>
+                       <a href="index.html">HOME</a>
+                    </li>
+                    <li><a href="index.html#intro">VITCMUN</a></li>
+                    <li><a href="index.html#testimonials">SPONSORS</a></li>
+                    <li><a href="index.html#council">COMMITTEES</a></li>
+                    <li><a href="team.html">TEAM</a></li>                                        
+                    <li><a href="index.html#contact">CONTACT US</a></li>
                        
                    </ul>
 

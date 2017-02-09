@@ -183,6 +183,7 @@
                        <a href="index.html">HOME</a>
                     </li>
                     <li><a href="index.html#intro">VITCMUN</a></li>
+                    <li><a href="index.html#testimonials">SPONSORS</a></li>
                     <li><a href="index.html#council">COMMITTEES</a></li>
                     <li><a href="team.html">TEAM</a></li>                                        
                     <li><a href="index.html#contact">CONTACT US</a></li>

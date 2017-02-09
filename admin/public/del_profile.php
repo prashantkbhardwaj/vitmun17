@@ -221,7 +221,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <h1 class="page-header">
-                            Executive Board <small>Applications and profiles</small>
+                            Delegates <small>Applications and profiles</small>
                         </h1>
                         <ol class="breadcrumb">
                             <li class="active">
