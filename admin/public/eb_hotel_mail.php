@@ -96,13 +96,14 @@
 		$content .= "<b>Dear ".ucfirst($name[$i])."</b> ";
 		$content .= "</p><br><br> ";
 		$content .= "<p> ";
-		$content .= "Congratulations! Your request for accommodation has been approved for VITCMUN 2017. You have been allotted room number <b>".$room." in Southern Residency, Kellambakkam, Chennai.</b>.".$mates."<b>".$mate[$i]."</b> We look forward to having you here. :) ";
+		$content .= "Congratulations! Your request for accommodation has been approved for VITCMUN 2017. You have been allotted room number <b>".$room." in Southern Residency, Kellambakkam, Chennai.</b>".$mates."<b>".$mate[$i]."</b> We look forward to having you here. :) ";
 		$content .= "</p><br><br> ";
 		$content .= "<p> ";
 		$content .= "<b>Regards<br>VITCMUN 2017 Team</b> ";
 		$content .= "</p> ";
 		$content .= "</body> ";
 		$content .= "</html>";
+		$email = $email_send[$i];
 
 		// registration bill html ends
 
@@ -118,7 +119,7 @@
 		$mail->SMTPSecure = 'tls';                            
 		$mail->Port = 587;                                    
 		$mail->setFrom('VITCMUN2017@gmail.com', 'VITCMUN 2017');
-		$mail->addAddress("$email[$i]");       
+		$mail->addAddress("$email");       
 		$mail->WordWrap = 50; 
 		$mail->isHTML(true);                                  
 		 

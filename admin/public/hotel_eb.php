@@ -45,7 +45,7 @@
         $ex_in = explode("_", $inmates);
 
         if ($ex_in[1]=="") {
-            $allot_query = "UPDATE eb_apps SET allot_hotel = 1, hotel_by = '{$current_user}' WHERE id = {$eb_id} LIMIT 1";
+            $allot_query = "UPDATE eb_apps SET allot_hotel = 1, room = '{$room}', hotel_by = '{$current_user}' WHERE id = {$eb_id} LIMIT 1";
             $allot_result = mysqli_query($conn, $allot_query);
 
             $allot_query1 = "";
@@ -54,22 +54,22 @@
             $allot_query2 = "";
             $allot_result2 = "";
         } elseif ($ex_in[2]=="") {
-            $allot_query = "UPDATE eb_apps SET allot_hotel = 1, mate1 = '{$mate1}', hotel_by = '{$current_user}' WHERE id = {$eb_id} LIMIT 1";
+            $allot_query = "UPDATE eb_apps SET allot_hotel = 1, room = '{$room}', mate1 = '{$mate1}', hotel_by = '{$current_user}' WHERE id = {$eb_id} LIMIT 1";
             $allot_result = mysqli_query($conn, $allot_query);
 
-            $allot_query1 = "UPDATE eb_apps SET allot_hotel = 1, mate1 = '{$eb_id}', hotel_by = '{$current_user}' WHERE id = {$mate1} LIMIT 1";
+            $allot_query1 = "UPDATE eb_apps SET allot_hotel = 1, room = '{$room}', mate1 = '{$eb_id}', hotel_by = '{$current_user}' WHERE id = {$mate1} LIMIT 1";
             $allot_result1 = mysqli_query($conn, $allot_query1);
 
             $allot_query2 = "";
             $allot_result2 = "";
         } else {
-            $allot_query = "UPDATE eb_apps SET allot_hotel = 1, mate1 = '{$mate1}', mate2 = '{$mate2}', hotel_by = '{$current_user}' WHERE id = {$eb_id} LIMIT 1";
+            $allot_query = "UPDATE eb_apps SET allot_hotel = 1, room = '{$room}', mate1 = '{$mate1}', mate2 = '{$mate2}', hotel_by = '{$current_user}' WHERE id = {$eb_id} LIMIT 1";
             $allot_result = mysqli_query($conn, $allot_query);
 
-            $allot_query1 = "UPDATE eb_apps SET allot_hotel = 1, mate1 = '{$eb_id}', mate2 = '{$mate2}', hotel_by = '{$current_user}' WHERE id = {$mate1} LIMIT 1";
+            $allot_query1 = "UPDATE eb_apps SET allot_hotel = 1, room = '{$room}', mate1 = '{$eb_id}', mate2 = '{$mate2}', hotel_by = '{$current_user}' WHERE id = {$mate1} LIMIT 1";
             $allot_result1 = mysqli_query($conn, $allot_query1);
 
-            $allot_query2 = "UPDATE eb_apps SET allot_hotel = 1, mate1 = '{$eb_id}', mate2 = '{$mate1}', hotel_by = '{$current_user}' WHERE id = {$mate2} LIMIT 1";
+            $allot_query2 = "UPDATE eb_apps SET allot_hotel = 1, room = '{$room}', mate1 = '{$eb_id}', mate2 = '{$mate1}', hotel_by = '{$current_user}' WHERE id = {$mate2} LIMIT 1";
             $allot_result2 = mysqli_query($conn, $allot_query2);
         }
 
