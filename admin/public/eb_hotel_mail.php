@@ -14,21 +14,21 @@
 		$room = $list['room'];
 		$mates = "";
 		$mate[0] = "";
-		$emai_sendl[0] = $list['email'];
+		$email_send[0] = $list['email'];
 
 		$query1 = "";
 		$result1 = "";
 		$list1 = "";
 		$name[1] = "";
 		$mate[1] = "";
-		$emai_sendl[1] = "";
+		$email_send[1] = "";
 
 		$query2 = "";
 		$result2 = "";
 		$list2 = "";
 		$name[2] = "";
 		$mate[2] = "";
-		$emai_sendl[2] = "";
+		$email_send[2] = "";
 	} elseif ($ex_in[2]=="") {
 		$loop = 2;
 		$query = "SELECT * FROM eb_apps WHERE id = {$ex_in[0]} LIMIT 1";
@@ -46,15 +46,15 @@
 		$mate[0] = $list1['name'];
 		$mate[1] = $list['name'];
 
-		$emai_sendl[0] = $list['email'];
-		$emai_sendl[1] = $list1['email'];
+		$email_send[0] = $list['email'];
+		$email_send[1] = $list1['email'];
 		
 		$query2 = "";
 		$result2 = "";
 		$list2 = "";
 		$name[2] = "";
 		$mate[2] = "";
-		$emai_sendl[2] = "";
+		$email_send[2] = "";
 	} else {
 		$loop = 3;
 		$query = "SELECT * FROM eb_apps WHERE id = {$ex_in[0]} LIMIT 1";
@@ -78,9 +78,9 @@
 		$mate[1] = $list['name']." and ".$list2['name'];
 		$mate[2] = $list['name']." and ".$list1['name'];
 
-		$emai_sendl[0] = $list['email'];
-		$emai_sendl[1] = $list1['email'];
-		$emai_sendl[2] = $list2['email'];	
+		$email_send[0] = $list['email'];
+		$email_send[1] = $list1['email'];
+		$email_send[2] = $list2['email'];	
 	}
 
 
