@@ -120,6 +120,9 @@
                         <p class="text-center">
                             <b>"Get ready with your suit, you have successfully registered yourself for VITCMUN 2017. You will be notified on your mail soon."</b>                
                         </p>
+                        <p class="text-center">
+                            Hey! our friend has made this app for a hackathon, please go <strong><a href="https://devpost.com/software/travis-traffic-realtime-assistant-via-internet-service">here</a></strong> and click on the link and hit like and vote button to help him win it! Thanks!
+                        </p>
 
                     </div><!-- col-lg-12 -->
                 </div><!-- row -->
