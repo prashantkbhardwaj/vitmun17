@@ -5,74 +5,26 @@
 <?php 
 	$inmates = $_GET["inmates"];
 	$ex_in = explode("_", $inmates);
-	if ($ex_in[1]=="") {
+	
 		
-		$query = "SELECT * FROM eb_apps WHERE id = {$ex_in[0]} LIMIT 1";
-		$result = mysqli_query($conn, $query);
-		$list = mysqli_fetch_assoc($result);
-		$name = $list['name'];
-		$room = $list['room'];
-		$mates = "";
-		$mate = "";
-		$email = $list['email'];
+	$query = "SELECT * FROM eb_apps WHERE id = {$ex_in[0]} LIMIT 1";
+	$result = mysqli_query($conn, $query);
+	$list = mysqli_fetch_assoc($result);
+	$name = $list['name'];
+	$room = $list['room'];
+	$mates = "Your roommates are ";		
 
-		$query1 = "";
-		$result1 = "";
-		$list1 = "";		
+	$query1 = "SELECT * FROM eb_apps WHERE id = {$ex_in[1]} LIMIT 1";
+	$result1 = mysqli_query($conn, $query1);
+	$list1 = mysqli_fetch_assoc($result1);
+	
 
-		$query2 = "";
-		$result2 = "";
-		$list2 = "";	
+	$query2 = "SELECT * FROM eb_apps WHERE id = {$ex_in[2]} LIMIT 1";
+	$result2 = mysqli_query($conn, $query2);
+	$list2 = mysqli_fetch_assoc($result2);		
 
-		$page = "hotel.php";	
-	} elseif ($ex_in[2]=="") {
-		
-		$query = "SELECT * FROM eb_apps WHERE id = {$ex_in[0]} LIMIT 1";
-		$result = mysqli_query($conn, $query);
-		$list = mysqli_fetch_assoc($result);
-		$name = $list['name'];
-		$room = $list['room'];
-		$mates = "Your roommate is ";		
-
-		$query1 = "SELECT * FROM eb_apps WHERE id = {$ex_in[1]} LIMIT 1";
-		$result1 = mysqli_query($conn, $query1);
-		$list1 = mysqli_fetch_assoc($result1);
-		
-
-		$mate = $list1['name'];		
-		$email = $list['email'];
-		
-		
-		$query2 = "";
-		$result2 = "";
-		$list2 = "";	
-
-		$page = "eb_hotel_mail1.php?inmates=".$inmates;		
-	} else {
-		
-		$query = "SELECT * FROM eb_apps WHERE id = {$ex_in[0]} LIMIT 1";
-		$result = mysqli_query($conn, $query);
-		$list = mysqli_fetch_assoc($result);
-		$name = $list['name'];
-		$room = $list['room'];
-		$mates = "Your roommates are ";		
-
-		$query1 = "SELECT * FROM eb_apps WHERE id = {$ex_in[1]} LIMIT 1";
-		$result1 = mysqli_query($conn, $query1);
-		$list1 = mysqli_fetch_assoc($result1);
-		
-
-		$query2 = "SELECT * FROM eb_apps WHERE id = {$ex_in[2]} LIMIT 1";
-		$result2 = mysqli_query($conn, $query2);
-		$list2 = mysqli_fetch_assoc($result2);		
-
-		$mate = $list1['name']." and ".$list2['name'];
-		$email = $list['email'];
-
-		$page = "eb_hotel_mail2.php?inmates=".$inmates;			
-	}
-
-
+	$mate = $list1['name']." and ".$list2['name'];
+	$email = $list['email'];
 
 	
 	$content = "<!DOCTYPE html> ";
@@ -122,5 +74,5 @@
 	} 
 	
 
-	redirect_to($page);
+	redirect_to("hotel.php");
 ?>
