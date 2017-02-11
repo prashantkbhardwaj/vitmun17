@@ -10,7 +10,7 @@
 	$query = "SELECT * FROM eb_apps WHERE id = {$ex_in[0]} LIMIT 1";
 	$result = mysqli_query($conn, $query);
 	$list = mysqli_fetch_assoc($result);
-	$name = $list['name'];
+	
 	$room = $list['room'];
 	$mates = "Your roommates are ";		
 
@@ -23,8 +23,9 @@
 	$result2 = mysqli_query($conn, $query2);
 	$list2 = mysqli_fetch_assoc($result2);		
 
-	$mate = $list1['name']." and ".$list2['name'];
-	$email = $list['email'];
+	$name = $list2['name'];
+	$mate = $list['name']." and ".$list1['name'];
+	$email = $list2['email'];
 
 	
 	$content = "<!DOCTYPE html> ";
