@@ -66,10 +66,11 @@
 	$content .= "<b>Dear ".ucfirst($name)."</b> ";
 	$content .= "</p><br><br> ";
 	$content .= "<p> ";
-	$content .= "Congratulations! Your request for accommodation has been approved for VITCMUN 2017. You have been allotted room number <b>".$room." in Southern Residency, Kellambakkam, Chennai.</b>".$mates."<b>".$mate."</b> We look forward to having you here. :) ";
+	$content .= "Congratulations! Your request for accommodation has been approved for VITCMUN 2017. You have been allotted room number <b>".$room."</b> in <b><a href='http://www.southernresidency.com/'>Southern Residency, Kellambakkam, Chennai</a>.</b>".$mates."<b>".$mate."</b> We look forward to having you here. :) ";
+	$content .= "<p><div class='pm-button'><a href='https://www.payumoney.com/paybypayumoney/#/A2A8078FDA63CF6B433440BBCE67859C'><img src='https://www.payumoney.com//media/images/payby_payumoney/buttons/213.png' /></a></div></p>";
 	$content .= "</p><br><br> ";
 	$content .= "<p> ";
-	$content .= "<b>Regards<br>VITCMUN 2017 Team</b> ";
+	$content .= "<b>Regards<br>Prashant Bhardwaj<br>Technical Head<br>VITCMUN 2017</b> ";
 	$content .= "</p> ";
 	$content .= "</body> ";
 	$content .= "</html>";		
