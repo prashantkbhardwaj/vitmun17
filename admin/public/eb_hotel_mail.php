@@ -69,7 +69,7 @@
 		$mate = $list1['name']." and ".$list2['name'];
 		$email = $list['email'];
 
-		$page = "eb_hotel_mail2.php?inmates=".$inmates;			
+		$page = "eb_hotel_mail1.php?inmates=".$inmates;			
 	}
 
 
