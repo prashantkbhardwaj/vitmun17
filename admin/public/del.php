@@ -171,6 +171,13 @@
                         </ol>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <a href="../../media/delegates_round1.xlsx">
+                            <button class="btn btn-primary">Download the excel sheet for first round of delegate applications.</button>
+                        </a>
+                    </div>
+                </div><br><hr>
                 <!-- /.row -->    
                 <div <?php echo $view_note; ?> class="row">
                     <div class="col-lg-12">
