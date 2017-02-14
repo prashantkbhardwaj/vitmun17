@@ -18,7 +18,7 @@
     }
 ?>
 <?php
-    $query = "SELECT * FROM delegates WHERE allot = 0 AND id < 298 ORDER BY id DESC";
+    $query = "SELECT * FROM delegates WHERE allot = 0 AND id < 297 ORDER BY id DESC";
     $result = mysqli_query($conn, $query);
     confirm_query($result); 
 
