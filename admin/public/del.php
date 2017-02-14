@@ -18,9 +18,13 @@
     }
 ?>
 <?php
-    $query = "SELECT * FROM delegates WHERE allot = 0 ORDER BY id DESC";
+    $query = "SELECT * FROM delegates WHERE allot = 0 AND id < 298 ORDER BY id DESC";
     $result = mysqli_query($conn, $query);
     confirm_query($result); 
+
+    $query1 = "SELECT * FROM delegates WHERE allot = 0 AND id > 297 ORDER BY id DESC";
+    $result1 = mysqli_query($conn, $query1);
+    confirm_query($result1); 
 
     $reject_query = "SELECT * FROM delegates WHERE allot = 2 ORDER BY id DESC";
     $reject_result = mysqli_query($conn, $reject_query);
@@ -191,7 +195,7 @@
                <div class="row">
                     <div class="col-lg-6">
                         <div class="list-group">                            
-                            <a href="#" class="list-group-item active"><i class="fa fa-hourglass-start"></i> Applied</a>
+                            <a href="#" class="list-group-item active"><i class="fa fa-hourglass-start"></i> Applied for round 1</a>
                             <?php
                                 while ($title = mysqli_fetch_assoc($result)) { ?>
                                     <a class="list-group-item text-center" href="del_profile.php?del_id=<?php echo urlencode($title['id']); ?>">
@@ -204,38 +208,17 @@
                     </div>
                     
                     <div class="col-lg-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <h3 class="panel-title"><i class="fa fa-close"></i> Rejected</h3>
-                            </div>
-                            <div class="panel-body">
-                                <div class="table-responisve">
-                                    <table class="table table-bordered table-hover table-striped">
-                                        <thead>
-                                            <tr>
-                                                <th>Name</th>
-                                                <th>Rejected By</th>                                                
-                                            </tr>
-                                        </thead>
-                                        <tbody>
+                        <div class="list-group">                            
+                            <a href="#" class="list-group-item active"><i class="fa fa-hourglass-start"></i> Applied for round 2</a>
+                            <?php
+                                while ($title1 = mysqli_fetch_assoc($result1)) { ?>
+                                    <a class="list-group-item text-center" href="del_profile.php?del_id=<?php echo urlencode($title1['id']); ?>">
+                                        <span <?php if ($title1['in_out']==1) { echo $color_ext; } ?>><?php echo $title1['name']; ?></span>
+                                    </a>
                                     <?php
-                                        while ($reject_title = mysqli_fetch_assoc($reject_result)) { ?>
-                                            <tr>
-                                                <td>
-                                                    <a href="del_profile.php?del_id=<?php echo urlencode($reject_title['id']); ?>">
-                                                        <span <?php if ($reject_title['in_out']==1) { echo $color_ext; } ?> ><?php echo $reject_title['name']; ?></span>
-                                                    </a>
-                                                </td>
-                                                <td><a href="index.php#admins"><?php echo $reject_title['action_by']; ?></a></td>
-                                            </tr>  
-                                            <?php
-                                        }
-                                    ?>    
-                                        </tbody>                                                  
-                                    </table>                                       
-                                </div>
-                            </div>
-                        </div>     
+                                }
+                            ?>      
+                        </div>    
                     </div>
                     <div class="row">
                         <div class="col-lg-12" id="allot">
