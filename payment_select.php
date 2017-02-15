@@ -1,10 +1,76 @@
+<?php require_once("includes/session.php");?>
+<?php require_once("includes/db_connection.php");?>
+<?php require_once("includes/functions.php");?>
+<?php    
+    $del_id = $_GET['del_id'];
+    $name_query = "SELECT * FROM delegates WHERE id = {$del_id} LIMIT 1";
+    $name_result = mysqli_query($conn, $name_query);
+    confirm_query($name_result);
+    $name_title = mysqli_fetch_assoc($name_result);
+    $first_name = explode(" ", $name_title['name']);
+?>
+<?php
+    $MERCHANT_KEY = "eA0dOuuq";
+    $SALT = "6XG2QugoqF";
+    $PAYU_BASE_URL = "https://secure.payu.in";
+    $action = '';
+    $posted = array();
+
+    if(!empty($_POST)) {    
+        foreach($_POST as $key => $value) {    
+            $posted[$key] = $value;     
+        }
+    }
+
+    $formError = 0;
+
+    if(empty($posted['txnid'])) {  
+        $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
+    } else {
+        $txnid = $posted['txnid'];
+    }
+    
+    $hash = '';
+
+    $hashSequence = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
+    if(empty($posted['hash']) && sizeof($posted) > 0) {
+        if(
+            empty($posted['key'])
+            || empty($posted['txnid'])
+            || empty($posted['amount'])
+            || empty($posted['firstname'])
+            || empty($posted['email'])
+            || empty($posted['phone'])
+            || empty($posted['productinfo'])
+            || empty($posted['surl'])
+            || empty($posted['furl'])
+            || empty($posted['service_provider'])
+        ) {
+            $formError = 1;
+        } else {    
+            $hashVarsSeq = explode('|', $hashSequence);
+            $hash_string = '';  
+            foreach($hashVarsSeq as $hash_var) {
+                $hash_string .= isset($posted[$hash_var]) ? $posted[$hash_var] : '';
+                $hash_string .= '|';
+            }
+
+            $hash_string .= $SALT;
+            $hash = strtolower(hash('sha512', $hash_string));
+            $action = $PAYU_BASE_URL . '/_payment';
+        }
+    } elseif(!empty($posted['hash'])) {
+        $hash = $posted['hash'];
+        $action = $PAYU_BASE_URL . '/_payment';
+    }
+?>
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VITC Inter MUN 2017 | Payment Selection</title>
+    <title>VITCMUN 2017 | Online Payment</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="VIT chennai inter MUN applications" />
+    <meta name="description" content="VIT chennai inter MUN" />
     <meta name="keywords" content="VIT chennai, MUN, VIT chennai inter MUN" />
     <meta name="author" content="Prashant Bhardwaj" />
     <link rel="shortcut icon" href="img/favicon.ico">
@@ -37,10 +103,19 @@
     <link rel="stylesheet" href="inc/font-awesome/css/font-awesome.min.css">        
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/colors.css">
-
+    <script type="text/javascript">
+        var hash = '<?php echo $hash ?>';
+        function submitPayuForm() {
+          if(hash == '') {
+            return;
+          }
+          var payuForm = document.forms.payuForm;
+          payuForm.submit();
+        }
+    </script> 
 
 </head>
-<body>
+<body onload="submitPayuForm()">
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -67,9 +142,7 @@
                               <a href="index.html">
                                   <img height="35%" width="35%" src="img/small_logo.png"> <span style="color:white;"><b>VITCMUN 2017</b></span>
                               </a>
-                          </div><!-- l-logo -->
-
-
+                          </div><!-- l-logo -->                            
 
                           <!-- Brand and toggle get grouped for better mobile display -->
                           <div class="navbar-header">
@@ -95,10 +168,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12"><br>
-                        <h2 class="text-center">We understand you!</h2>
+                        <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            "Hello there, we understand that some of you may have the class of paying it online and some may want to pay it in cash. Choose your payment method by clicking on the relevant button."                
+                            "Click on the button below which will take you to the payment portal and thus confirm your participation."                
                         </p>
 
                     </div><!-- col-lg-12 -->
@@ -107,33 +180,31 @@
                 <div class="separator"></div><!-- separator -->
 
                 <div class="row">
-                <center>
+                    <center>                    
 
-                    <div class="col-lg-6 col-md-6 col-sm-6 text-center">
-
-                        <img src="img/responsive.png" alt="icon" class="round-icon"  />
-                        <h5>Online</h5>                                
-                        <p>                                    
-                            You will be redirected to our online payment gateway.                                 
-                        </p>
-                        <div class="pm-button"><a href="https://www.payumoney.com/paybypayumoney/#/10654A86C916D4167C24B2451D232E1D"><img src="https://www.payumoney.com//media/images/payby_payumoney/buttons/213.png" /></a></div>
-
-
-                    </div><!-- col-lg-4 -->
-
-                    <div class="col-lg-6 col-md-6 col-sm-6 text-center">
-
-                        <a href="offline_payment.php">
-                            <img src="img/dollar.png" alt="icon" class="round-icon"  />
-                        </a>                                                                
-                        <a href="offline_payment.php"><h5>Offline</h5> </a>                               
-                        <p>                                    
-                            You can pay the amount to our payment admins who will be sitting in portico in our college campus.
-                        </p>
-
-                    </div><!-- col-lg-4 -->     
-                    </center>             
-
+                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
+                            <div class="col-md-4"></div>
+                            <form action="<?php echo $action; ?>" method="post" name="payuForm">
+                                <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
+                                <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
+                                <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
+                                <input type="hidden" name="amount" value="2" />
+                                <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
+                                <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
+                                <input type="hidden" name="phone" value="9962416408" />
+                                <textarea style="display:none;" name="productinfo" value="delegate fee"></textarea>
+                                <input type="hidden" name="surl" value="http://vitcmun.com/del_pay_success.php" />
+                                <input type="hidden" name="furl" value="http://vitcmun.com/del_pay_fail.php" />
+                                <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
+                                <?php if(!$hash) { ?>
+                                    <strong>
+                                        <input type="submit" value="Pay Now" style="font-size:24px;" class="btn btn-primary col-md-4">
+                                    </strong>                                
+                                <?php } ?>       
+                            </form>                            
+                            <div class="col-md-4"></div>
+                        </div><!-- col-lg-4 -->     
+                    </center>
                 </div><!-- row -->
 
             </div><!-- container -->                    
@@ -241,7 +312,12 @@
 <script src="inc/form-validator/dist/jquery.validate.js"></script>
 
 <!-- script calling -->
-<script src="inc/js/common.js"></script>        
+<script src="inc/js/common.js"></script>       
 
 </body>   
 </html>
+<?php
+if (isset ($conn)){
+    mysqli_close($conn);
+}
+?>

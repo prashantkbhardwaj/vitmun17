@@ -1,12 +1,12 @@
 <?php
 // Merchant key here as provided by Payu
-$MERCHANT_KEY = "JBZaLc";
+$MERCHANT_KEY = "eA0dOuuq";
 
 // Merchant Salt as provided by Payu
-$SALT = "GQs7yium";
+$SALT = "6XG2QugoqF";
 
 // End point - change to https://secure.payu.in for LIVE mode
-$PAYU_BASE_URL = "https://test.payu.in";
+$PAYU_BASE_URL = "https://secure.payu.in";
 
 $action = '';
 
@@ -125,49 +125,7 @@ if(empty($posted['hash']) && sizeof($posted) > 0) {
 
         <tr>
           <td><b>Optional Parameters</b></td>
-        </tr>
-        <tr>
-          <td>Last Name: </td>
-          <td><input name="lastname" id="lastname" value="<?php echo (empty($posted['lastname'])) ? '' : $posted['lastname']; ?>" /></td>
-          <td>Cancel URI: </td>
-          <td><input name="curl" value="" /></td>
-        </tr>
-        <tr>
-          <td>Address1: </td>
-          <td><input name="address1" value="<?php echo (empty($posted['address1'])) ? '' : $posted['address1']; ?>" /></td>
-          <td>Address2: </td>
-          <td><input name="address2" value="<?php echo (empty($posted['address2'])) ? '' : $posted['address2']; ?>" /></td>
-        </tr>
-        <tr>
-          <td>City: </td>
-          <td><input name="city" value="<?php echo (empty($posted['city'])) ? '' : $posted['city']; ?>" /></td>
-          <td>State: </td>
-          <td><input name="state" value="<?php echo (empty($posted['state'])) ? '' : $posted['state']; ?>" /></td>
-        </tr>
-        <tr>
-          <td>Country: </td>
-          <td><input name="country" value="<?php echo (empty($posted['country'])) ? '' : $posted['country']; ?>" /></td>
-          <td>Zipcode: </td>
-          <td><input name="zipcode" value="<?php echo (empty($posted['zipcode'])) ? '' : $posted['zipcode']; ?>" /></td>
-        </tr>
-        <tr>
-          <td>UDF1: </td>
-          <td><input name="udf1" value="<?php echo (empty($posted['udf1'])) ? '' : $posted['udf1']; ?>" /></td>
-          <td>UDF2: </td>
-          <td><input name="udf2" value="<?php echo (empty($posted['udf2'])) ? '' : $posted['udf2']; ?>" /></td>
-        </tr>
-        <tr>
-          <td>UDF3: </td>
-          <td><input name="udf3" value="<?php echo (empty($posted['udf3'])) ? '' : $posted['udf3']; ?>" /></td>
-          <td>UDF4: </td>
-          <td><input name="udf4" value="<?php echo (empty($posted['udf4'])) ? '' : $posted['udf4']; ?>" /></td>
-        </tr>
-        <tr>
-          <td>UDF5: </td>
-          <td><input name="udf5" value="<?php echo (empty($posted['udf5'])) ? '' : $posted['udf5']; ?>" /></td>
-          <td>PG: </td>
-          <td><input name="pg" value="<?php echo (empty($posted['pg'])) ? '' : $posted['pg']; ?>" /></td>
-        </tr>
+        </tr>        
         <tr>
           <?php if(!$hash) { ?>
             <td colspan="4"><input type="submit" value="Submit" /></td>

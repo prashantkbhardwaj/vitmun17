@@ -1,10 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VITC Inter MUN 2017 | EB Applications</title>
+    <title>VITCMUN 2017 | Online Payment</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-    <meta name="description" content="VIT chennai inter MUN applications" />
+    <meta name="description" content="VIT chennai inter MUN" />
     <meta name="keywords" content="VIT chennai, MUN, VIT chennai inter MUN" />
     <meta name="author" content="Prashant Bhardwaj" />
     <link rel="shortcut icon" href="img/favicon.ico">
@@ -116,10 +116,10 @@
             <div class="container">
                 <div class="row">
                     <div class="col-lg-12"><br>
-                        <h2 class="text-center">Opps!</h2>
+                        <h2 class="text-center">Congratulations!</h2>
 
                         <p class="text-center">
-                            <b>"The transaction failed due to some reason. For completing the transaction, click on the pay now button again."</b>                
+                            <b>"Get ready with your suit, you have successfully paid the participation fee for VITCMUN 2017. We look forward to see you in the council."</b>                
                         </p>
 
                     </div><!-- col-lg-12 -->
@@ -132,7 +132,7 @@
 
                     <div class="col-lg-12 col-md-12 col-sm-12 text-center">
 
-                        <img src="img/opps.png" style="height:10%; width:10%;" alt="icon" class="round-icon"  />                        
+                        <img src="img/tick.png" alt="icon" class="round-icon"  />                        
 
                     </div><!-- col-lg-4 -->
                     

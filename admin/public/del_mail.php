@@ -13,6 +13,11 @@ $email = $title['email'];
 $name = $title['name'];
 $allot_council = $title['allot_council'];
 $allot_country = $title['allot_country'];
+if ($title['in_out']==0) {
+	$in_out = "Since you are an internal delegate, you have to pay the fee of Rs. 1300 on our payment desks around the campus.";
+} elseif ($title['in_out']==1) {
+	$in_out = "Click <a href='http://vitcmun.com/payment_select.php?del_id=".$del_id."'><b>here</b></a> to pay the delegate fee of Rs. 1330 inclusive of all taxes and confirm your seat.";
+}
 
 
 // registration bill html code starts
@@ -27,7 +32,7 @@ $content .= "<p> ";
 $content .= "<b>Dear ".ucfirst($name)."</b> ";
 $content .= "</p><br><br> ";
 $content .= "<p> ";
-$content .= "Congratulations! You have been allotted <b>".$allot_council."</b> as <b>".$allot_country."</b>. You will get the payment details soon.<br>We look forward to see you in the council. :) ";
+$content .= "Congratulations! You have been allotted <b>".$allot_council."</b> as <b>".$allot_country."</b>. ".$in_out."<br>We look forward to see you in the council. :) ";
 $content .= "</p><br><br> ";
 $content .= "<p> ";
 $content .= "<b>Regards<br>VITCMUN 2017 Team</b> ";

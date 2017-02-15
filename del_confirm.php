@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>VITC Inter MUN 2017 | Delegate Applications</title>
+    <title>VITCMUN 2017 | Delegate Applications</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <meta name="description" content="VIT chennai inter MUN applications" />
