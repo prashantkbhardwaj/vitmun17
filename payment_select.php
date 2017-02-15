@@ -192,7 +192,7 @@
                                 <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
                                 <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
                                 <input type="hidden" name="phone" value="9962416408" />
-                                <textarea style="display:none;" name="productinfo" value="delegate fee"></textarea>
+                                <textarea style="display:none;" name="productinfo" >delegate fee</textarea>
                                 <input type="hidden" name="surl" value="http://vitcmun.com/del_pay_success.php" />
                                 <input type="hidden" name="furl" value="http://vitcmun.com/del_pay_fail.php" />
                                 <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
