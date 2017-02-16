@@ -30,7 +30,7 @@
         	$update_result = mysqli_query($conn, $update_query);
         	confirm_query($update_result);
         	if ($update_result) {
-        		redirect_to("del_pay_conf_land.php");
+        		redirect_to("del_pay_conf_mail.php?del_id=$firstname");
         	}
         }              
 	}     
