@@ -382,7 +382,9 @@
                                             <?php
                                                 while ($del_list = mysqli_fetch_assoc($del_result)) { ?>
                                                     <tr>
-                                                        <td><?php echo $del_list['name']; ?></td>
+                                                        <td>                                                            
+                                                            <a href="del_profile.php?del_id=<?php echo urlencode($del_list['id']); ?>"><?php echo $del_list['name']; ?></a>   
+                                                        </td>
                                                         <td><?php echo $del_list['allot_country']; ?></td>
                                                         <td><?php echo $del_list['phno']; ?></td>
                                                         <td>
