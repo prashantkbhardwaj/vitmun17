@@ -38,7 +38,7 @@ $content .= "</html>";
 
 // registration bill html ends
 
-require 'PHPMailer-master/PHPMailerAutoload.php';
+require 'admin/public/PHPMailer-master/PHPMailerAutoload.php';
 
 $mail = new PHPMailer;
  

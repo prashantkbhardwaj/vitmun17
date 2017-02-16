@@ -190,7 +190,7 @@
                                 <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
                                 <input type="hidden" name="amount" value="2" />
                                 <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
-                                <input type="hidden" name="email" id="email" value="<?php echo $name_title['email']; ?>" />
+                                <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
                                 <input type="hidden" name="phone" value="<?php echo $name_title['phno']; ?>" />
                                 <textarea style="display:none;" name="productinfo" >delegate fee</textarea>
                                 <input type="hidden" name="surl" value="http://vitcmun.com/del_pay_success.php" />
