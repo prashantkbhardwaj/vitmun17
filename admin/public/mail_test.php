@@ -9,6 +9,11 @@
 $content = "<!DOCTYPE html> ";
 $content .= "<html> ";
 $content .= "<head> ";
+$content .= "<meta charset='utf-8'>
+    <meta http-equiv='X-UA-Compatible' content='IE=edge'>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <meta name='description' content=''>
+    <meta name='author' content='Prashant Bhardwaj'> ";
 $content .= "<title>VITC MUN | Ticket</title> ";	
 $content .= "<link href='http://vitcmun.com/admin/public/css/bootstrap.min.css' rel='stylesheet'> ";
 $content .= "<link href='http://vitcmun.com/admin/public/css/sb-admin.css' rel='stylesheet'>  ";
