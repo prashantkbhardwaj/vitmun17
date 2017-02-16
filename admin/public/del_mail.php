@@ -16,7 +16,7 @@ $allot_country = $title['allot_country'];
 if ($title['in_out']==0) {
 	$in_out = "Since you are an internal delegate, you have to pay the fee of Rs. 1300 on our payment desks around the campus.";
 } elseif ($title['in_out']==1) {
-	$in_out = "Click <a href='http://vitcmun.com/payment_select.php?del_id=".$del_id."'><b>here</b></a> to pay the delegate fee of Rs. 1330 inclusive of all taxes and confirm your seat.";
+	$in_out = "Click <a href='http://vitcmun.com/payment_select.php?del_id=".$del_id."'><b>here</b></a> to pay the delegate fee of Rs. 1330 inclusive of all taxes and confirm your seat. Please <b>DO NOT</b> change the email given in the payment portal. Let it be as pkpbhardwaj729@gmail.com.";
 }
 
 
