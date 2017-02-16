@@ -14,7 +14,7 @@ $name = $title['name'];
 $allot_council = $title['allot_council'];
 $allot_country = $title['allot_country'];
 if ($title['in_out']==0) {
-	$in_out = "Since you are an internal delegate, you have to pay the fee of Rs. 1300 on our payment desks around the campus.";
+	$in_out = "Click <a href='http://vitcmun.com/payment_select.php?del_id=".$del_id."'><b>here</b></a> to pay the delegate fee of Rs. 1330 inclusive of all taxes and confirm your seat. Please <b>DO NOT</b> change the email given in the payment portal. Let it be as pkpbhardwaj729@gmail.com. Since you are an internal delegate, you also have an option to pay the fee of Rs. 1300 on our payment desks around the campus.";
 } elseif ($title['in_out']==1) {
 	$in_out = "Click <a href='http://vitcmun.com/payment_select.php?del_id=".$del_id."'><b>here</b></a> to pay the delegate fee of Rs. 1330 inclusive of all taxes and confirm your seat. Please <b>DO NOT</b> change the email given in the payment portal. Let it be as pkpbhardwaj729@gmail.com.";
 }
@@ -32,7 +32,7 @@ $content .= "<p> ";
 $content .= "<b>Dear ".ucfirst($name)."</b> ";
 $content .= "</p><br><br> ";
 $content .= "<p> ";
-$content .= "Congratulations! You have been allotted <b>".$allot_council."</b> as <b>".$allot_country."</b>. ".$in_out."<br>We look forward to see you in the council. :) ";
+$content .= "Congratulations! You have been allotted <b>".$allot_council."</b> as <b>".$allot_country."</b>. ".$in_out."<br>The last day of fee payment is 21st of February. Please complete your payment before the deadline to confirm your participation.<br>We look forward to see you in the council. :) ";
 $content .= "</p><br><br> ";
 $content .= "<p> ";
 $content .= "<b>Regards<br>Prashant Bhardwaj<br>Technical Head<br>VITCMUN 2017</b> ";
