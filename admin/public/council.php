@@ -121,6 +121,21 @@
         redirect_to("council.php?eb_id=$eb_id");
     }
 ?>
+<?php
+    $count_query_del_ext = "SELECT COUNT(id) FROM delegates WHERE in_out = 1 AND allot_council = '{$council}'";
+    $count_result_del_ext = mysqli_query($conn, $count_query_del_ext);
+    $count_del_ext = mysqli_fetch_array($count_result_del_ext);
+    $total_del_ext = $count_del_ext[0];  
+
+    $count_query_del_int = "SELECT COUNT(id) FROM delegates WHERE in_out = 0 AND allot_council = '{$council}'";
+    $count_result_del_int = mysqli_query($conn, $count_query_del_int);
+    $count_del_int = mysqli_fetch_array($count_result_del_int);
+    $total_del_int = $count_del_int[0];  
+
+    $del_query = "SELECT * FROM delegates WHERE allot = 1 AND allot_council = '{$council}'";
+    $del_result = mysqli_query($conn, $del_query);
+    confirm_query($del_result);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -245,7 +260,7 @@
                 
 
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="panel panel-primary">
                             <div class="panel-heading">
                                 <div class="row">
@@ -253,14 +268,14 @@
                                         <i class="fa fa-globe fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
+                                        <div class="huge"><?php echo $total_del_ext; ?></div>
                                         <div>External Delegates</div>
                                     </div>
                                 </div>
                             </div>                           
                         </div>
                     </div>
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-6 col-md-6">
                         <div class="panel panel-green">
                             <div class="panel-heading">
                                 <div class="row">
@@ -268,45 +283,13 @@
                                         <i class="fa fa-home fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $total_eb; ?></div>
+                                        <div class="huge"><?php echo $total_del_int; ?></div>
                                         <div>Internal Delegates</div>
                                     </div>
                                 </div>
                             </div>                           
                         </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-hotel fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge">0</div>
-                                        <div>Accomodated</div>
-                                        <div>Required: 24</div>
-                                    </div>
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-certificate fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $total_hotel_eb; ?></div>
-                                        <div>Strength: 23</div>
-                                        <div>Rank a/c strength</div>
-                                    </div>
-                                </div>
-                            </div>                            
-                        </div>
-                    </div>
+                    </div>                    
                 </div><hr>
                 <!-- /.row -->
 
@@ -391,60 +374,41 @@
                                                 <th>Name</th>
                                                 <th>Country</th>
                                                 <th>Phone Number</th>
-                                                <th>Accomodation Status</th>
+                                                <th>Payment Mode</th>
                                                 <th>Payment Status</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            <tr>
-                                                <td>Prashant Kumar Bhardwaj</td>
-                                                <td>India</td>
-                                                <td>9962416408</td>
-                                                <td>Required - Approved</td>
-                                                <td style="color:green;">Paid</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Prashant Kumar Bhardwaj</td>
-                                                <td>Pakistan</td>
-                                                <td>9962416408</td>
-                                                <td>Required - Denied</td>
-                                                <td style="color:red;">Not Paid</td>
-                                            </tr>  
-                                            <tr>
-                                                <td>Prashant Kumar Bhardwaj</td>
-                                                <td>Pakistan</td>
-                                                <td>9962416408</td>
-                                                <td>Required - Denied</td>
-                                                <td style="color:red;">Not Paid</td>
-                                            </tr>  
-                                            <tr>
-                                                <td>Prashant Kumar Bhardwaj</td>
-                                                <td>China</td>
-                                                <td>9962416408</td>
-                                                <td>Not Required</td>
-                                                <td style="color:red;">Not Paid</td>
-                                            </tr>  
-                                            <tr>
-                                                <td>Prashant Kumar Bhardwaj</td>
-                                                <td>China</td>
-                                                <td>9962416408</td>
-                                                <td>Required - Denied</td>
-                                                <td style="color:red;">Not Paid</td>
-                                            </tr>   
-                                            <tr>
-                                                <td>Prashant Kumar Bhardwaj</td>
-                                                <td>India</td>
-                                                <td>9962416408</td>
-                                                <td>Required - Approved</td>
-                                                <td style="color:green;">Paid</td>
-                                            </tr>
-                                            <tr>
-                                                <td>Prashant Kumar Bhardwaj</td>
-                                                <td>India</td>
-                                                <td>9962416408</td>
-                                                <td>Required - Approved</td>
-                                                <td style="color:green;">Paid</td>
-                                            </tr>                                         
+                                            <?php
+                                                while ($del_list = mysqli_fetch_assoc($del_result)) { ?>
+                                                    <tr>
+                                                        <td><?php echo $del_list['name']; ?></td>
+                                                        <td><?php echo $del_list['allot_country']; ?></td>
+                                                        <td><?php echo $del_list['phno']; ?></td>
+                                                        <td>
+                                                            <?php
+                                                                if ($del_list['pay_type']==1) {
+                                                                    echo "Online";
+                                                                } elseif ($del_list['pay_type']==2) {
+                                                                    echo "Offline";
+                                                                } elseif ($del_list['pay_type']==0) {
+                                                                    echo "";
+                                                                }
+                                                            ?>                               
+                                                        </td>
+                                                        <td>
+                                                            <?php
+                                                                if ($del_list['pay_status']==1) {
+                                                                    echo "<span style='color:green;'>Paid</span>";
+                                                                } else {
+                                                                    echo "<span style='color:red;'>Not Paid</span>";
+                                                                }
+                                                            ?>                            
+                                                        </td>
+                                                    </tr>
+                                                    <?php
+                                                }
+                                            ?>                                                                          
                                         </tbody>                                                     
                                     </table>                           
                                 </div>

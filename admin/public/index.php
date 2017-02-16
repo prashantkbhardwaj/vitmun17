@@ -43,11 +43,10 @@
     $total_hotel = $total_hotel_eb + $total_hotel_del;
 ?>
 <?php
-    $money_query = "SELECT COUNT(id) FROM delegates WHERE allot = 1 AND pay_status = 1";
-    $money_result = mysqli_query($conn, $money_query);
-    $money_list = mysqli_fetch_array($money_result);
-    $money_ar = $money_list[0];
-    $total_money = $money_ar*1300;
+    $allot_query = "SELECT COUNT(id) FROM delegates WHERE allot = 1 ";
+    $allot_result = mysqli_query($conn, $allot_query);
+    $allot_list = mysqli_fetch_array($allot_result);
+    $total_allot = $allot_list[0];    
 ?>
 <?php
     $query = "SELECT * FROM users";
@@ -227,11 +226,11 @@
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
-                                        <i class="fa fa-money fa-4x"></i>
+                                        <i class="fa fa-check-square-o fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><i class="fa fa-inr"></i> <?php echo $total_money; ?></div>
-                                        <div>Amount from delegates</div>
+                                        <div class="huge"> <?php echo $total_allot; ?></div>
+                                        <div>Allotments done</div>
                                     </div>
                                 </div>
                             </div>
