@@ -43,6 +43,13 @@
     $total_hotel = $total_hotel_eb + $total_hotel_del;
 ?>
 <?php
+    $money_query = "SELECT COUNT(id) FROM delegates WHERE allot = 1 AND pay_status = 1";
+    $money_result = mysqli_query($conn, $money_query);
+    $money_list = mysqli_fetch_array($money_result);
+    $money_ar = $money_list[0];
+    $total_money = $money_ar*1300;
+?>
+<?php
     $query = "SELECT * FROM users";
     $result = mysqli_query($conn, $query);
     confirm_query($result);    
@@ -223,7 +230,7 @@
                                         <i class="fa fa-money fa-4x"></i>
                                     </div>
                                     <div class="col-xs-9 text-right">
-                                        <div class="huge"><i class="fa fa-inr"></i> 0</div>
+                                        <div class="huge"><i class="fa fa-inr"></i> <?php echo $total_money; ?></div>
                                         <div>Amount from delegates</div>
                                     </div>
                                 </div>
