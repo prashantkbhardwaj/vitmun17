@@ -98,10 +98,11 @@ $mail->Port = 587;
 $mail->setFrom('VITCMUN2017@gmail.com', 'VITCMUN 2017');
 $mail->addAddress("$email");       
 $mail->WordWrap = 50; 
+$mail->Body    = $content;
 $mail->isHTML(true);                                  
  
 $mail->Subject = 'Regarding your application for VITCMUN 2017';
-$mail->Body    = $content;
+
 $mail->AltBody = 'This is the body in plain text for non-HTML mail clients';
 
 if(!$mail->send()) {
