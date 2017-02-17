@@ -235,6 +235,7 @@
                                                     <th>Alloted Council</th>
                                                     <th>Alloted Country</th>
                                                     <th>Alloted By</th>
+                                                    <th>Payment Status</th>
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -249,6 +250,15 @@
                                                     <td><a href="council.php?eb_id=<?php echo urlencode($title_accept['id'].'_d'); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
                                                     <td><a href="del_profile.php?del_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_country']; ?></a></td>
                                                     <td><a href="index.php#admins"><?php echo $title_accept['action_by']; ?></a></td>
+                                                    <td>
+                                                        <?php
+                                                            if ($title_accept['pay_status']==1) {
+                                                                echo "<span style='color:green;'>Paid</span>";
+                                                            } else {
+                                                                echo "<span style='color:red;'>Not Paid</span>";
+                                                            }
+                                                        ?>   
+                                                    </td>
                                                 </tr>  
                                                 <?php
                                             }
