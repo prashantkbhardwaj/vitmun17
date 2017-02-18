@@ -197,7 +197,7 @@
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
                                 <img style="height:60%; width:60%;" src="img/qr.png"><br>
-                                <form action="payment_select.php" method="post">
+                                <form action="payment_select.php?del_id=<?php echo $del_id; ?>" method="post">
                                     <input type="hidden" name="id" value="<?php echo $del_id; ?>">             
                                     <input type="submit" name="paytm" value="Submit" style="font-size:24px;" class="btn btn-primary">
                                 </form>
