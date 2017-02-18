@@ -173,7 +173,8 @@
                         <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            <strong>"Please scan the QR code in Paytm by entering the amount of Rs. 1330. Please make a note of it that amount less than 1330 will be not be considered and that may lead to the cancellation of your application. You will get the confirmation email by 20th of February, 2017."</strong>                
+                            <strong>"Please scan the QR code in Paytm by entering the amount of Rs. 1330. Please make a note of it that amount less than 1330 will be not be considered and that may lead to the cancellation of your application. You will get the confirmation email by 20th of February, 2017."</strong>
+                            <br><strong>Please enter your name in the description section of Paytm.</strong>                
                         </p>
 
                     </div><!-- col-lg-12 -->
