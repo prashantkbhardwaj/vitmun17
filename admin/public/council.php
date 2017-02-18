@@ -395,6 +395,8 @@
                                                                     echo "Offline";
                                                                 } elseif ($del_list['pay_type']==0) {
                                                                     echo "";
+                                                                } elseif ($del_list['pay_type']==3) {
+                                                                    echo "Paytm";
                                                                 }
                                                             ?>                               
                                                         </td>

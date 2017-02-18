@@ -10,6 +10,16 @@
     $first_name = explode(" ", $name_title['name']);
 ?>
 <?php
+    if (isset($_POST['paytm'])) {
+        $update_query = "UPDATE delegates SET pay_status = 1, pay_type = 3 WHERE id = {$del_id} LIMIT 1";
+        $update_result = mysqli_query($conn, $update_query);
+        confirm_query($update_result);
+        if ($update_result) {
+            redirect_to("del_pay_conf_mail.php?del_id=$del_id");
+        }
+    }
+?>
+<?php
     $MERCHANT_KEY = "eA0dOuuq";
     $SALT = "6XG2QugoqF";
     $PAYU_BASE_URL = "https://secure.payu.in";
@@ -172,7 +182,7 @@
                         <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            "Click on the button below which will take you to the payment portal and thus confirm your participation."                
+                            <strong>"Please scan the QR code in Paytm by entering the amount of Rs. 1330 and press the submit button once your payment is done."</strong>                
                         </p>
 
                     </div><!-- col-lg-12 -->
@@ -185,24 +195,31 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                             <div class="col-md-4"></div>
-                            <form action="<?php echo $action; ?>" method="post" name="payuForm">
-                                <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
-                                <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
-                                <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
-                                <input type="hidden" name="amount" value="1330" />
-                                <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
-                                <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
-                                <input type="hidden" name="phone" value="<?php echo $name_title['phno']; ?>" />
-                                <textarea style="display:none;" name="productinfo" >delegate fee</textarea>
-                                <input type="hidden" name="surl" value="http://vitcmun.com/del_pay_success.php" />
-                                <input type="hidden" name="furl" value="http://vitcmun.com/del_pay_fail.php" />
-                                <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
-                                <?php if(!$hash) { ?>
-                                    <strong>
-                                        <input type="submit" value="Pay Now" style="font-size:24px;" class="btn btn-primary col-md-4">
-                                    </strong>                                
-                                <?php } ?>       
-                            </form>                            
+                            <div class="col-md-4">
+                                <img style="height:60%; width:60%;" src="img/qr.png"><br>
+                                <form action="payment_select.php" method="post">
+                                    <input type="hidden" name="id" value="<?php echo $del_id; ?>">             
+                                    <input type="submit" name="paytm" value="Submit" style="font-size:24px;" class="btn btn-primary">
+                                </form>
+                            </div>
+                                <form action="<?php echo $action; ?>" method="post" name="payuForm">
+                                    <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
+                                    <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
+                                    <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
+                                    <input type="hidden" name="amount" value="1330" />
+                                    <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
+                                    <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
+                                    <input type="hidden" name="phone" value="<?php echo $name_title['phno']; ?>" />
+                                    <textarea style="display:none;" name="productinfo" >delegate fee</textarea>
+                                    <input type="hidden" name="surl" value="http://vitcmun.com/del_pay_success.php" />
+                                    <input type="hidden" name="furl" value="http://vitcmun.com/del_pay_fail.php" />
+                                    <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
+                                    <?php if(!$hash) { ?>
+                                        <strong>
+                                            <input type="submit" value="Pay Now" style="font-size:24px; display:none;" class="btn btn-primary col-md-4">
+                                        </strong>                                
+                                    <?php } ?>       
+                                </form>                            
                             <div class="col-md-4"></div>
                         </div><!-- col-lg-4 -->     
                     </center>
