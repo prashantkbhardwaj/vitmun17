@@ -9,16 +9,7 @@
     $name_title = mysqli_fetch_assoc($name_result);
     $first_name = explode(" ", $name_title['name']);
 ?>
-<?php
-    if (isset($_POST['paytm'])) {
-        $update_query = "UPDATE delegates SET pay_status = 1, pay_type = 3 WHERE id = {$del_id} LIMIT 1";
-        $update_result = mysqli_query($conn, $update_query);
-        confirm_query($update_result);
-        if ($update_result) {
-            redirect_to("del_pay_conf_mail.php?del_id=$del_id");
-        }
-    }
-?>
+
 <?php
     $MERCHANT_KEY = "eA0dOuuq";
     $SALT = "6XG2QugoqF";
@@ -182,7 +173,7 @@
                         <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            <strong>"Please scan the QR code in Paytm by entering the amount of Rs. 1330 and press the submit button once your payment is done."</strong>                
+                            <strong>"Please scan the QR code in Paytm by entering the amount of Rs. 1330. Please make a note of it that amount less than 1330 will be not be considered and that may lead to the cancellation of your application."</strong>                
                         </p>
 
                     </div><!-- col-lg-12 -->
@@ -196,11 +187,7 @@
                         <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                             <div class="col-md-4"></div>
                             <div class="col-md-4">
-                                <img style="height:60%; width:60%;" src="img/qr.png"><br>
-                                <form action="payment_select.php?del_id=<?php echo $del_id; ?>" method="post">
-                                    <input type="hidden" name="id" value="<?php echo $del_id; ?>">             
-                                    <input type="submit" name="paytm" value="Submit" style="font-size:24px;" class="btn btn-primary">
-                                </form>
+                                <img style="height:50%; width:50%;" src="img/qr.png">                                
                             </div>
                                 <form action="<?php echo $action; ?>" method="post" name="payuForm">
                                     <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
