@@ -173,7 +173,7 @@
                         <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            <strong>"Please scan the QR code in Paytm to pay the delegate fee of Rs. 1330. Please enter the amount as rs. 1330 only, any amount lesser than that may lead to rejection of your application."</strong>
+                            <strong>"Please scan the QR code in Paytm to pay the delegate fee of Rs. 1330. Please enter the amount as Rs. 1330 only, any amount lesser than that may lead to rejection of your application. The confirmation email for your payment shall be sent shortly."</strong>
                             <br><strong>Please enter your name in the description section of Paytm.</strong>                
                         </p>
 
