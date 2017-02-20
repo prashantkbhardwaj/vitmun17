@@ -46,7 +46,7 @@
             || empty($posted['surl'])
             || empty($posted['furl'])
             || empty($posted['service_provider'])
-            
+            || $posted['amount'] != "1330"
         ) {
             $formError = 1;
         } else {    
@@ -194,7 +194,7 @@
                                     <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
                                     <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
                                     <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
-                                    <input type="hidden" name="amount" value="500" />
+                                    <input type="hidden" name="amount" value="1330" />
                                     <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
                                     <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
                                     <input type="hidden" name="phone" value="<?php echo $name_title['phno']; ?>" />
@@ -204,7 +204,7 @@
                                     <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
                                     <?php if(!$hash) { ?>
                                         <strong>
-                                            <input type="submit" value="Pay Now" style="font-size:24px; " class="btn btn-primary col-md-4">
+                                            <input type="submit" value="Pay Now" style="font-size:24px; display:none;" class="btn btn-primary col-md-4">
                                         </strong>                                
                                     <?php } ?>       
                                 </form>                            
