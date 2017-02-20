@@ -204,7 +204,7 @@
                                     <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
                                     <?php if(!$hash) { ?>
                                         <strong>
-                                            <input type="submit" value="Pay Now" style="font-size:24px; display:none;" class="btn btn-primary col-md-4">
+                                            <input type="submit" value="Pay Now" style="font-size:24px; " class="btn btn-primary col-md-4">
                                         </strong>                                
                                     <?php } ?>       
                                 </form>                            
