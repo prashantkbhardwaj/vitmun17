@@ -173,8 +173,7 @@
                         <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            <strong>"Please scan the QR code in Paytm to pay the delegate fee of Rs. 1330. Please enter the amount as Rs. 1330 only, any amount lesser than that may lead to rejection of your application. The confirmation email for your payment shall be sent shortly."</strong>
-                            <br><strong>Please enter your name in the description section of Paytm.</strong>                
+                            <strong>"Please click on the button to pay the delegate fee of &nbsp;<i class="fa fa-inr"></i> 1330."</strong>                                            
                         </p>
 
                     </div><!-- col-lg-12 -->
@@ -187,7 +186,7 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                             <div class="col-md-4"></div>
-                            <div class="col-md-4">
+                            <div style="display:none;" class="col-md-4">
                                 <img style="height:50%; width:50%;" src="img/qr.png">                                
                             </div>
                                 <form action="<?php echo $action; ?>" method="post" name="payuForm">
@@ -204,7 +203,7 @@
                                     <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
                                     <?php if(!$hash) { ?>
                                         <strong>
-                                            <input type="submit" value="Pay Now" style="font-size:24px; display:none;" class="btn btn-primary col-md-4">
+                                            <input type="submit" value="Pay Now" style="font-size:24px;" class="btn btn-primary col-md-4">
                                         </strong>                                
                                     <?php } ?>       
                                 </form>                            
