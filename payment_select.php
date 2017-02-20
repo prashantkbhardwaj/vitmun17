@@ -173,8 +173,8 @@
                         <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            <strong>"We are really sorry, due to some technical issue, we are not accepting the payments right now."</strong>
-                            <br><strong>Please drop us a mail at vitcmun2017@gmail.com and we will let you know as soon as the portal begins again.</strong>                
+                            <strong>"Please scan the QR code in Paytm to pay the delegate fee of Rs. 1330. Please enter the amount as rs. 1330 only, any amount lesser than that may lead to rejection of your application."</strong>
+                            <br><strong>Please enter your name in the description section of Paytm.</strong>                
                         </p>
 
                     </div><!-- col-lg-12 -->
@@ -187,7 +187,7 @@
 
                         <div class="col-lg-12 col-md-12 col-sm-12 text-center">
                             <div class="col-md-4"></div>
-                            <div style="display:none;" class="col-md-4">
+                            <div class="col-md-4">
                                 <img style="height:50%; width:50%;" src="img/qr.png">                                
                             </div>
                                 <form action="<?php echo $action; ?>" method="post" name="payuForm">
