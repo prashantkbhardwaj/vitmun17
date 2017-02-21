@@ -46,7 +46,7 @@
             || empty($posted['surl'])
             || empty($posted['furl'])
             || empty($posted['service_provider'])
-            || $posted['amount'] != "1330"
+            || $posted['amount'] != "1341.2"
         ) {
             $formError = 1;
         } else {    
@@ -173,7 +173,7 @@
                         <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            <strong>"Please click on the button to pay the delegate fee of &nbsp;<i class="fa fa-inr"></i> 1330."</strong>                                            
+                            <strong>"Please click on the button to pay the delegate fee of &nbsp;<i class="fa fa-inr"></i> 1330 + &nbsp;<i class="fa fa-inr"></i> 11.2 online tax."</strong>                                            
                         </p>
 
                     </div><!-- col-lg-12 -->
@@ -193,7 +193,7 @@
                                     <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
                                     <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
                                     <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
-                                    <input type="hidden" name="amount" value="1330" />
+                                    <input type="hidden" name="amount" value="1341.2" />
                                     <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
                                     <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
                                     <input type="hidden" name="phone" value="<?php echo $name_title['phno']; ?>" />
