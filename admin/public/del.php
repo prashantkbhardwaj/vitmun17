@@ -206,13 +206,13 @@
                     <div class="col-lg-6 text-center">
                         
                         <button class="btn btn-success" data-toggle="modal" data-target="#paid" >
-                            <i class="fa fa-check-square"></i> List of paid delegates (<?php echo $total_del_paid; ?>)
+                            <i class="fa fa-check-square"></i> List of paid delegates
                         </button>
                         
                     </div>
                     <div class="col-lg-6 text-center">
                         <button class="btn btn-danger" data-toggle="modal" data-target="#unpaid" >
-                            <i class="fa fa-close"></i> List of unpaid delegates (<?php echo $total_del_unpaid; ?>)
+                            <i class="fa fa-close"></i> List of unpaid delegates
                         </button>
                     </div>
                 </div><br><hr>
