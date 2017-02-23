@@ -33,7 +33,15 @@
 <?php
     $accept_query = "SELECT * FROM delegates WHERE allot = 1 ORDER BY id DESC";
     $accept_result = mysqli_query($conn, $accept_query);
-    confirm_query($accept_result);    
+    confirm_query($accept_result); 
+
+    $paid_query = "SELECT * FROM delegates WHERE allot = 1 AND pay_status = 1 ORDER BY id DESC";
+    $paid_result = mysqli_query($conn, $paid_query);
+    confirm_query($paid_result);
+
+    $unpaid_query = "SELECT * FROM delegates WHERE allot = 1 AND pay_status = 0 ORDER BY id DESC";
+    $unpaid_result = mysqli_query($conn, $unpaid_query);
+    confirm_query($unpaid_result);    
 ?>
 <?php
     if (isset($_GET['status'])) {
@@ -181,6 +189,20 @@
                             <button class="btn btn-primary">Download the excel sheet for first round of delegate applications.</button>
                         </a>
                     </div>
+                </div><hr>
+                <div class="row">
+                    <div class="col-lg-6 text-center">
+                        
+                        <button class="btn btn-success" data-toggle="modal" data-target="#paid" >
+                            <i class="fa fa-check-square"></i> List of paid delegates
+                        </button>
+                        
+                    </div>
+                    <div class="col-lg-6 text-center">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#unpaid" >
+                            <i class="fa fa-close"></i> List of unpaid delegates
+                        </button>
+                    </div>
                 </div><br><hr>
                 <!-- /.row -->    
                 <div <?php echo $view_note; ?> class="row">
@@ -281,7 +303,119 @@
 
     </div>
     <!-- /#wrapper -->
+    <div class="modal fade" id="paid" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-check-square"></i> List of paid delegates</h4>
+                </div>
+                <div class="modal-body">
+                    <p>                            
+                        <div class="table-responisve">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Alloted Council</th>
+                                        <th>Alloted Country</th>
+                                        <th>Phone Number</th>
+                                        <th>Payment Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            <?php
+                                while ($title_paid = mysqli_fetch_assoc($paid_result)) { ?>
+                                    <tr>
+                                        <td>
+                                            <a href="del_profile.php?del_id=<?php echo urlencode($title_paid['id']); ?>">
+                                                <span <?php if ($title_paid['in_out']==1) { echo $color_ext; } ?> ><?php echo $title_paid['name']; ?></span>
+                                            </a>
+                                        </td>
+                                        <td><a href="council.php?eb_id=<?php echo urlencode($title_paid['id'].'_d'); ?>"><?php echo $title_paid['allot_council']; ?></a></td>
+                                        <td><a href="del_profile.php?del_id=<?php echo urlencode($title_paid['id']); ?>"><?php echo $title_paid['allot_country']; ?></a></td>
+                                        <td><?php echo $title_paid['phno']; ?></td>
+                                        <td>
+                                            <?php
+                                                if ($title_paid['pay_status']==1) {
+                                                    echo "<span style='color:green;'>Paid</span>";
+                                                } else {
+                                                    echo "<span style='color:red;'>Not Paid</span>";
+                                                }
+                                            ?>   
+                                        </td>
+                                    </tr>  
+                                    <?php
+                                }
+                            ?> 
+                                </tbody>                                                     
+                            </table>                           
+                        </div>                            
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>          
+        </div>
+    </div>
 
+    <div class="modal fade" id="unpaid" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-close"></i> List of unpaid delegates</h4>
+                </div>
+                <div class="modal-body">
+                    <p>                            
+                        <div class="table-responisve">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Alloted Council</th>
+                                        <th>Alloted Country</th>
+                                        <th>Phone Number</th>
+                                        <th>Payment Status</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            <?php
+                                while ($title_unpaid = mysqli_fetch_assoc($unpaid_result)) { ?>
+                                    <tr>
+                                        <td>
+                                            <a href="del_profile.php?del_id=<?php echo urlencode($title_unpaid['id']); ?>">
+                                                <span <?php if ($title_unpaid['in_out']==1) { echo $color_ext; } ?> ><?php echo $title_unpaid['name']; ?></span>
+                                            </a>
+                                        </td>
+                                        <td><a href="council.php?eb_id=<?php echo urlencode($title_unpaid['id'].'_d'); ?>"><?php echo $title_unpaid['allot_council']; ?></a></td>
+                                        <td><a href="del_profile.php?del_id=<?php echo urlencode($title_unpaid['id']); ?>"><?php echo $title_unpaid['allot_country']; ?></a></td>
+                                        <td><?php echo $title_unpaid['phno']; ?></td>
+                                        <td>
+                                            <?php
+                                                if ($title_unpaid['pay_status']==1) {
+                                                    echo "<span style='color:green;'>Paid</span>";
+                                                } else {
+                                                    echo "<span style='color:red;'>Not Paid</span>";
+                                                }
+                                            ?>   
+                                        </td>
+                                    </tr>  
+                                    <?php
+                                }
+                            ?> 
+                                </tbody>                                                     
+                            </table>                           
+                        </div>                             
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>          
+        </div>
+    </div>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
