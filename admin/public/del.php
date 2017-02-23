@@ -49,7 +49,7 @@
     $unpaid_result = mysqli_query($conn, $unpaid_query);
     confirm_query($unpaid_result);    
 
-    $unpaid_count_query = "SELECT COUNT(id) FROM delegates WHERE allot = 1 AND pay_status = 1 ORDER BY id DESC";
+    $unpaid_count_query = "SELECT COUNT(id) FROM delegates WHERE allot = 1 AND pay_status = 0 ORDER BY id DESC";
     $unpaid_count_result = mysqli_query($conn, $unpaid_count_query);
     confirm_query($unpaid_count_result);
     $count_unpaid_del = mysqli_fetch_array($unpaid_count_result);
