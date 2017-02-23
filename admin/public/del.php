@@ -39,9 +39,21 @@
     $paid_result = mysqli_query($conn, $paid_query);
     confirm_query($paid_result);
 
+    $paid_count_query = "SELECT COUNT(id) FROM delegates WHERE allot = 1 AND pay_status = 1 ORDER BY id DESC";
+    $paid_count_result = mysqli_query($conn, $paid_count_query);
+    confirm_query($paid_count_result);
+    $count_paid_del = mysqli_fetch_array($paid_count_result);
+    $total_del_paid = $count_paid_del[0]; 
+
     $unpaid_query = "SELECT * FROM delegates WHERE allot = 1 AND pay_status = 0 ORDER BY id DESC";
     $unpaid_result = mysqli_query($conn, $unpaid_query);
     confirm_query($unpaid_result);    
+
+    $unpaid_count_query = "SELECT COUNT(id) FROM delegates WHERE allot = 1 AND pay_status = 1 ORDER BY id DESC";
+    $unpaid_count_result = mysqli_query($conn, $unpaid_count_query);
+    confirm_query($unpaid_count_result);
+    $count_unpaid_del = mysqli_fetch_array($unpaid_count_result);
+    $total_del_unpaid = $count_unpaid_del[0]; 
 ?>
 <?php
     if (isset($_GET['status'])) {
@@ -194,13 +206,13 @@
                     <div class="col-lg-6 text-center">
                         
                         <button class="btn btn-success" data-toggle="modal" data-target="#paid" >
-                            <i class="fa fa-check-square"></i> List of paid delegates
+                            <i class="fa fa-check-square"></i> List of paid delegates (<?php echo $total_del_paid; ?>)
                         </button>
                         
                     </div>
                     <div class="col-lg-6 text-center">
                         <button class="btn btn-danger" data-toggle="modal" data-target="#unpaid" >
-                            <i class="fa fa-close"></i> List of unpaid delegates
+                            <i class="fa fa-close"></i> List of unpaid delegates (<?php echo $total_del_unpaid; ?>)
                         </button>
                     </div>
                 </div><br><hr>
