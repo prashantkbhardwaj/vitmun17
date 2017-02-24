@@ -22,9 +22,23 @@
     $result_eb = mysqli_query($conn, $query_eb);
     confirm_query($result_eb); 
 
+    $query_eb_count = "SELECT COUNT(id) FROM eb_apps WHERE hotel = 'Yes' AND allot_hotel = 1 ORDER BY id DESC";
+    $result_eb_count = mysqli_query($conn, $query_eb_count);
+    confirm_query($result_eb_count); 
+    $count_eb = mysqli_fetch_array($result_eb_count);
+    $total_eb = $count_eb[0];  
+
     $query_del = "SELECT * FROM delegates WHERE hotel = 'Yes' AND allot = 1 ORDER BY id DESC";
     $result_del = mysqli_query($conn, $query_del);
     confirm_query($result_del); 
+
+    $query_del_count = "SELECT COUNT(id) FROM delegates WHERE hotel = 'Yes' AND allot_hotel = 1 ORDER BY id DESC";
+    $result_del_count = mysqli_query($conn, $query_del_count);
+    confirm_query($result_del_count); 
+    $count_del = mysqli_fetch_array($result_del_count);
+    $total_del = $count_del[0];  
+
+    $left = 75 - ($total_del+$total_eb);
 ?>
 <?php
     if (isset($_GET['status'])) {
@@ -40,10 +54,6 @@
         $view_note = "";
         $acct_note = '<span style="color:red;">Application rejected and email sent.</span>';
         $color_ext = "";
-    } elseif ($status == 3) {
-        $view_note = "";
-        $acct_note = '<span>Applicants listed in red are external applicants.</span>';
-        $color_ext = "style='color:red;'";
     } else {
         $view_note = "style='display:none;'";
         $acct_note = "";
@@ -166,6 +176,11 @@
                         </ol>
                     </div>
                 </div>
+                <div class="row">
+                    <div class="col-lg-12 text-center">
+                        <h1><?php echo $left; ?> seats left</h1>
+                    </div>
+                </div>
                 <!-- /.row -->    
                 <div <?php echo $view_note; ?> class="row">
                     <div class="col-lg-12">
@@ -191,8 +206,7 @@
                                             <th>Council</th>
                                             <th>Post</th>
                                             <th>Phone Number</th>
-                                            <th>Status</th>
-                                            <th>Rooom No.</th>
+                                            <th>Status</th>                                            
                                             <th>Action</th>
                                             <th>Allotted By</th>
                                         </tr>
@@ -223,12 +237,11 @@
                                                             <?php
                                                         }
                                                     ?>
-                                                </td>
-                                                <td><?php echo $eb_list['room']; ?></td>
+                                                </td>                                                
                                                 <td>
                                                     <?php
                                                         if ($eb_list['allot_hotel']==0) { ?>
-                                                            <a href="hotel_eb.php?eb_id=<?php echo urlencode($eb_list['id']); ?>">
+                                                            <a onclick="return confirm('Are you sure you want to accept this application?');" href="eb_hotel_mail.php?eb_id=<?php echo urlencode($eb_list['id']); ?>">
                                                                 Allot
                                                             </a>
                                                             <?php
