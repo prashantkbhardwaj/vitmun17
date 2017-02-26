@@ -18,11 +18,11 @@
     }
 ?>
 <?php
-    $query = "SELECT * FROM delegates WHERE allot = 0 AND id < 297 ORDER BY id DESC";
+    $query = "SELECT * FROM delegates WHERE allot = 0 AND id < 510 ORDER BY id DESC";
     $result = mysqli_query($conn, $query);
     confirm_query($result); 
 
-    $query1 = "SELECT * FROM delegates WHERE allot = 0 AND id >= 297 ORDER BY id DESC";
+    $query1 = "SELECT * FROM delegates WHERE allot = 0 AND id >= 510 ORDER BY id DESC";
     $result1 = mysqli_query($conn, $query1);
     confirm_query($result1); 
 
@@ -197,8 +197,8 @@
                 </div>
                 <div class="row">
                     <div class="col-lg-12 text-center">
-                        <a href="../../media/delegates_round1.xlsx">
-                            <button class="btn btn-primary">Download the excel sheet for first round of delegate applications.</button>
+                        <a href="../../media/delegates_round2.xlsx">
+                            <button class="btn btn-primary">Download the excel sheet for second round of delegate applications.</button>
                         </a>
                     </div>
                 </div><hr>
@@ -229,7 +229,7 @@
                <div class="row">
                     <div class="col-lg-6">
                         <div class="list-group">                            
-                            <a href="#" class="list-group-item active"><i class="fa fa-hourglass-start"></i> Applied for round 1</a>
+                            <a href="#" class="list-group-item active"><i class="fa fa-hourglass-start"></i> Applied for round 2</a>
                             <?php
                                 while ($title = mysqli_fetch_assoc($result)) { ?>
                                     <a class="list-group-item text-center" href="del_profile.php?del_id=<?php echo urlencode($title['id']); ?>">
@@ -243,7 +243,7 @@
                     
                     <div class="col-lg-6">
                         <div class="list-group">                            
-                            <a href="#" class="list-group-item active"><i class="fa fa-hourglass-start"></i> Applied for round 2</a>
+                            <a href="#" class="list-group-item active"><i class="fa fa-hourglass-start"></i> Applied for round 3</a>
                             <?php
                                 while ($title1 = mysqli_fetch_assoc($result1)) { ?>
                                     <a class="list-group-item text-center" href="del_profile.php?del_id=<?php echo urlencode($title1['id']); ?>">
