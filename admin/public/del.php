@@ -381,7 +381,8 @@
                                         <th>Name</th>
                                         <th>Alloted Council</th>
                                         <th>Alloted Country</th>
-                                        <th>Phone Number</th>                                        
+                                        <th>Phone Number</th>   
+                                        <th>College</th>                                     
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -395,7 +396,8 @@
                                         </td>
                                         <td><a href="council.php?eb_id=<?php echo urlencode($title_unpaid['id'].'_d'); ?>"><?php echo $title_unpaid['allot_council']; ?></a></td>
                                         <td><a href="del_profile.php?del_id=<?php echo urlencode($title_unpaid['id']); ?>"><?php echo $title_unpaid['allot_country']; ?></a></td>
-                                        <td><?php echo $title_unpaid['phno']; ?></td>                                        
+                                        <td><?php echo $title_unpaid['phno']; ?></td>      
+                                        <td><?php echo $title_unpaid['school']; ?></td>                                  
                                     </tr>  
                                     <?php
                                 }
