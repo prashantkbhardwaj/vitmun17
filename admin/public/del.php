@@ -104,6 +104,7 @@
     <!-- Custom Fonts -->
     <link href="font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
     <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <script type='text/javascript' src="http://codeinnovators.meximas.com/pdfexport/jspdf.debug.js"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -268,6 +269,7 @@
                                                     <th>Name</th>
                                                     <th>Alloted Council</th>
                                                     <th>Alloted Country</th>
+                                                    <th>College</th>
                                                     <th>Alloted By</th>
                                                     <th>Payment Status</th>
                                                 </tr>
@@ -283,6 +285,7 @@
                                                     </td>
                                                     <td><a href="council.php?eb_id=<?php echo urlencode($title_accept['id'].'_d'); ?>"><?php echo $title_accept['allot_council']; ?></a></td>
                                                     <td><a href="del_profile.php?del_id=<?php echo urlencode($title_accept['id']); ?>"><?php echo $title_accept['allot_country']; ?></a></td>
+                                                    <td><?php echo $title_accept['school']; ?></td>
                                                     <td><a href="index.php#admins"><?php echo $title_accept['action_by']; ?></a></td>
                                                     <td>
                                                         <?php
@@ -331,8 +334,7 @@
                                         <th>Name</th>
                                         <th>Alloted Council</th>
                                         <th>Alloted Country</th>
-                                        <th>Phone Number</th>
-                                        <th>Payment Status</th>
+                                        <th>Phone Number</th>                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -346,16 +348,7 @@
                                         </td>
                                         <td><a href="council.php?eb_id=<?php echo urlencode($title_paid['id'].'_d'); ?>"><?php echo $title_paid['allot_council']; ?></a></td>
                                         <td><a href="del_profile.php?del_id=<?php echo urlencode($title_paid['id']); ?>"><?php echo $title_paid['allot_country']; ?></a></td>
-                                        <td><?php echo $title_paid['phno']; ?></td>
-                                        <td>
-                                            <?php
-                                                if ($title_paid['pay_status']==1) {
-                                                    echo "<span style='color:green;'>Paid</span>";
-                                                } else {
-                                                    echo "<span style='color:red;'>Not Paid</span>";
-                                                }
-                                            ?>   
-                                        </td>
+                                        <td><?php echo $title_paid['phno']; ?></td>                                        
                                     </tr>  
                                     <?php
                                 }
@@ -381,15 +374,14 @@
                 </div>
                 <div class="modal-body">
                     <p>                            
-                        <div class="table-responisve">
+                        <div id="htmlexportPDF" class="table-responisve">
                             <table class="table table-bordered table-hover table-striped">
                                 <thead>
                                     <tr>
                                         <th>Name</th>
                                         <th>Alloted Council</th>
                                         <th>Alloted Country</th>
-                                        <th>Phone Number</th>
-                                        <th>Payment Status</th>
+                                        <th>Phone Number</th>                                        
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -403,16 +395,7 @@
                                         </td>
                                         <td><a href="council.php?eb_id=<?php echo urlencode($title_unpaid['id'].'_d'); ?>"><?php echo $title_unpaid['allot_council']; ?></a></td>
                                         <td><a href="del_profile.php?del_id=<?php echo urlencode($title_unpaid['id']); ?>"><?php echo $title_unpaid['allot_country']; ?></a></td>
-                                        <td><?php echo $title_unpaid['phno']; ?></td>
-                                        <td>
-                                            <?php
-                                                if ($title_unpaid['pay_status']==1) {
-                                                    echo "<span style='color:green;'>Paid</span>";
-                                                } else {
-                                                    echo "<span style='color:red;'>Not Paid</span>";
-                                                }
-                                            ?>   
-                                        </td>
+                                        <td><?php echo $title_unpaid['phno']; ?></td>                                        
                                     </tr>  
                                     <?php
                                 }
@@ -423,6 +406,7 @@
                     </p>
                 </div>
                 <div class="modal-footer">
+                    <button onclick="javascript:htmltopdf();" type="button" class="btn btn-lg btn-primary">Download  <i class="fa fa-download"></i></button>
                     <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>          
@@ -438,6 +422,34 @@
     <script src="js/plugins/morris/raphael.min.js"></script>
     <script src="js/plugins/morris/morris.min.js"></script>
     <script src="js/plugins/morris/morris-data.js"></script>
+    <script type='text/javascript'>
+    function htmltopdf() {
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#htmlexportPDF')[0];
+        specialElementHandlers = {
+            '#bypassme': function(element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+        pdf.fromHTML(
+            source,
+            margins.left,
+            margins.top, {
+                'width': margins.width,
+                'elementHandlers': specialElementHandlers
+            },
+
+            function(dispose) {
+                pdf.save('unpaid_list.pdf');
+            }, margins);
+    }
+    </script>
 
 </body>
 
