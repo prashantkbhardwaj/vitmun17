@@ -25,6 +25,11 @@
         $index_link = "";
         $executive_view = "";
     }
+    if ($user_type==4||$current_user=="akanksha"||$current_user=="tanmay") {
+        $perm_view = "";
+    } else {
+        $perm_view = "style='display:none;'";
+    }
 ?>
 <?php
     $count_query = "SELECT COUNT(id) FROM eb_apps";
@@ -73,6 +78,21 @@
         $council = "The Trilateral Commission";
     } else {        
         $council = $council_list['allot_council'];
+    }
+
+    if (isset($_GET['status'])) {
+        $status = $_GET['status'];
+    } else {
+        $status = "0";
+    }
+    if ($status == 1) {
+        $view_note = "";
+        $acct_note = '<span>Payment confimed and email sent.</span>';
+        $color_ext = "";
+    } else {
+        $view_note = "style='display:none;'";
+        $acct_note = "";
+        $color_ext = "";
     }
     
 
@@ -257,7 +277,14 @@
                     </div>
                 </div>
                 <!-- /.row -->             
-                
+                <div <?php echo $view_note; ?> class="row">
+                    <div class="col-lg-12">
+                        <div class="alert alert-info alert-dismissable">
+                            <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+                            <i class="fa fa-info-circle"></i>  <strong><?php echo $acct_note; ?></strong> 
+                        </div>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div class="col-lg-6 col-md-6">
@@ -373,9 +400,9 @@
                                             <tr>
                                                 <th>Name</th>
                                                 <th>Country</th>
-                                                <th>Phone Number</th>
-                                                <th>Payment Mode</th>
+                                                <th>Phone Number</th>                                                
                                                 <th>Payment Status</th>
+                                                <th <?php echo $perm_view; ?> >Action</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -386,20 +413,7 @@
                                                             <a href="del_profile.php?del_id=<?php echo urlencode($del_list['id']); ?>"><?php echo $del_list['name']; ?></a>   
                                                         </td>
                                                         <td><?php echo $del_list['allot_country']; ?></td>
-                                                        <td><?php echo $del_list['phno']; ?></td>
-                                                        <td>
-                                                            <?php
-                                                                if ($del_list['pay_type']==1) {
-                                                                    echo "Online";
-                                                                } elseif ($del_list['pay_type']==2) {
-                                                                    echo "Offline";
-                                                                } elseif ($del_list['pay_type']==0) {
-                                                                    echo "";
-                                                                } elseif ($del_list['pay_type']==3) {
-                                                                    echo "Paytm";
-                                                                }
-                                                            ?>                               
-                                                        </td>
+                                                        <td><?php echo $del_list['phno']; ?></td>               
                                                         <td>
                                                             <?php
                                                                 if ($del_list['pay_status']==1) {
@@ -408,6 +422,11 @@
                                                                     echo "<span style='color:red;'>Not Paid</span>";
                                                                 }
                                                             ?>                            
+                                                        </td>
+                                                        <td <?php echo $perm_view; ?> >
+                                                            <a onclick="return confirm('Are you sure you want to confirm payment for this delegate?');" href="del_pay_off.php?del_id=<?php echo urlencode($del_list['id']); ?>&page_id=<?php echo urlencode($id_get); ?>" >
+                                                                Pay
+                                                            </a>                             
                                                         </td>
                                                     </tr>
                                                     <?php

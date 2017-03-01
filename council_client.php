@@ -167,9 +167,14 @@
                             </div>
                         </div><hr>
                         <div class="row">
-                            <div class="col-lg-12 text-center">
+                            <div class="col-lg-6 text-center">
                                 <a href="media/<?php echo $cid; ?>.pdf">
                                     <button class="btn btn-primary">Download the <?php echo $bttn_text; ?> list for this council</button>
+                                </a>
+                            </div>
+                            <div class="col-lg-6 text-center">
+                                <a href="media/<?php echo $cid."bg"; ?>.pdf">
+                                    <button class="btn btn-primary">Download the background guide for this council</button>
                                 </a>
                             </div>
                         </div>
