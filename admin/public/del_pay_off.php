@@ -1,7 +1,7 @@
 <?php require_once("../../includes/session.php");?>
 <?php require_once("../../includes/db_connection.php");?>
 <?php require_once("../../includes/functions.php");?>
-
+<?php confirm_logged_in(); ?>
 <?php 
 	$del_id = $_GET["del_id"];
 	//$page_id = $_GET["page_id"];
