@@ -424,9 +424,13 @@
                                                             ?>                            
                                                         </td>
                                                         <td <?php echo $perm_view; ?> >
-                                                            <a onclick="return confirm('Are you sure you want to confirm payment for this delegate?');" href="del_pay_off.php?del_id=<?php echo urlencode($del_list['id']); ?>&page_id=<?php echo urlencode($id_get); ?>" >
-                                                                Pay
-                                                            </a>                             
+                                                            <a href="del_pay_off.php?del_id=<?php echo urlencode($del_list["id"]); ?>&page_id=<?php echo urlencode($id_get); ?>" onclick="return confirm('Are you sure?');"><?php
+                                                                if ($del_list['pay_status']==0) {
+                                                                    echo "Pay";
+                                                                } else {
+                                                                    
+                                                                } ?>
+                                                            </a>                           
                                                         </td>
                                                     </tr>
                                                     <?php
