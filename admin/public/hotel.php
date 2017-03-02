@@ -28,7 +28,7 @@
     $count_eb = mysqli_fetch_array($result_eb_count);
     $total_eb = $count_eb[0];  
 
-    $query_del = "SELECT * FROM delegates WHERE hotel = 'Yes' AND allot = 1 ORDER BY id DESC";
+    $query_del = "SELECT * FROM delegates WHERE hotel = 'Yes' AND allot = 1 AND pay_status = 1 ORDER BY id DESC";
     $result_del = mysqli_query($conn, $query_del);
     confirm_query($result_del); 
 
@@ -278,10 +278,8 @@
                                                     <th>Country</th>
                                                     <th>Current Residence</th>
                                                     <th>College</th>
-                                                    <th>Status</th>
-                                                    <th>Room No.</th>
-                                                    <th>Action</th>
-                                                    <th>Allotted By</th>
+                                                    <th>Status</th>                                                    
+                                                    <th>Action</th>                                                    
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -307,23 +305,23 @@
                                                                 <?php
                                                             }
                                                         ?>
-                                                    </td>
-                                                    <td><?php echo $del_list['room']; ?></td>
+                                                    </td>                                                    
                                                     <td>
                                                         <?php
                                                             if ($del_list['allot_hotel']==0) { ?>
                                                                 <a href="hotel_del.php?del_id=<?php echo urlencode($del_list['id']); ?>">
                                                                     Allot
                                                                 </a>
+                                                                &nbsp;|&nbsp;
+                                                                <a href="hotel_del.php?del_id=<?php echo urlencode($del_list['id']); ?>">
+                                                                    <span style="color:red;">Reject</span>
+                                                                </a>
                                                                 <?php
                                                             } else {
 
                                                             }
                                                         ?>
-                                                    </td>
-                                                    <td>
-                                                        <a href="index.php#admins"><?php echo $del_list['hotel_by']; ?></a>
-                                                    </td>                                                    
+                                                    </td>                      
                                                 </tr>  
                                                 <?php
                                             }
