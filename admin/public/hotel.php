@@ -16,6 +16,11 @@
         $index_link = "";
         $executive_view = "";
     }
+    if ($user_type==4||$current_user=="tanmay") {
+        $perm_view = "";
+    } else {
+        $perm_view = "style='display:none;'";
+    }
 ?>
 <?php
     $query_eb = "SELECT * FROM eb_apps WHERE hotel = 'Yes' AND allot = 1 ORDER BY id DESC";
@@ -207,8 +212,7 @@
                                             <th>Post</th>
                                             <th>Phone Number</th>
                                             <th>Status</th>                                            
-                                            <th>Action</th>
-                                            <th>Allotted By</th>
+                                            <th>Action</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -249,8 +253,7 @@
 
                                                         }
                                                     ?>
-                                                </td>
-                                                <td><a href="index.php#admins"><?php echo $eb_list['hotel_by']; ?></a></td>
+                                                </td>                                                
                                             </tr> 
                                             <?php
                                         }
@@ -279,7 +282,9 @@
                                                     <th>Current Residence</th>
                                                     <th>College</th>
                                                     <th>Status</th>                                                    
-                                                    <th>Action</th>                                                    
+                                                    <th>Action</th>  
+                                                    <th>Payment</th>
+                                                    <th <?php echo $perm_view; ?>>Pay</th>                                                  
                                                 </tr>
                                             </thead>
                                             <tbody>
@@ -321,7 +326,25 @@
 
                                                             }
                                                         ?>
-                                                    </td>                      
+                                                    </td>  
+                                                    <td>
+                                                        <?php
+                                                            if ($del_list['hotel_pay_status']==1) {
+                                                                echo "<span style='color:green;'>Paid</span>";
+                                                            } else {
+                                                                echo "<span style='color:red;'>Not Paid</span>";
+                                                            }
+                                                        ?>
+                                                    </td>  
+                                                    <td <?php echo $perm_view; ?>>
+                                                        <a href="del_pay_off.php?del_id=<?php echo urlencode($del_list["id"]); ?>" onclick="return confirm('Are you sure?');"><?php
+                                                            if ($del_list['hotel_pay_status']==0) {
+                                                                echo "Pay";
+                                                            } else {
+                                                                
+                                                            } ?>
+                                                        </a>        
+                                                    </td>                  
                                                 </tr>  
                                                 <?php
                                             }
