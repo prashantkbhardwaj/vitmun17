@@ -1,3 +1,23 @@
+<?php require_once("includes/session.php");?>
+<?php require_once("includes/db_connection.php");?>
+<?php require_once("includes/functions.php");?>
+<?php    
+    
+    if (isset($_POST['submit'])) {
+        $email = $_POST['email'];
+
+        $query = "SELECT id FROM delegates WHERE email = '{$email}' LIMIT 1";
+        $result = mysqli_query($conn, $query);
+        confirm_query($result);
+        $title = mysqli_fetch_assoc($result);
+        if ($title['id']=="") {
+            $nf = "Email ID not found";
+        } else {
+            $nf = "";
+            redirect_to("payment_select.php?del_id=".$title['id']);
+        }
+    }    
+?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -84,9 +104,9 @@
                                                             <strong>Where delegacy ends, war begins.<br>Delegate applications open now.</strong>
                                                         </p>
                                                     </div><!-- splash-text -->
-
+                                                    <strong><h3 style="color:red;"><?php echo $nf; ?></h3></strong>
                                                     <a href="del_app.php" class="btn second-btn"><strong>Delegate Application</strong></a>
-                                                   <!-- <a href="eb_app.php" class="btn second-btn"><strong>Want to be on the EB?</strong></a> -->
+                                                    <a href="#" data-toggle="modal" data-target="#pay" class="btn second-btn"><strong>Already applied? Pay the fee here.</strong></a>
                                                 </div><!-- splash-centering -->
                                             </div><!-- span12 -->
 
@@ -118,12 +138,10 @@
                         <div class="container-fluid">
 
                             <div class="l-logo">
-                              <a href="index.html">
+                              <a href="index.php">
                                   <img height="35%" width="35%" src="img/small_logo.png"> <span style="color:white;"><b>VITCMUN 2017</b></span>                                  
                               </a>
                           </div><!-- l-logo -->
-
-
 
                           <!-- Brand and toggle get grouped for better mobile display -->
                           <div class="navbar-header">
@@ -138,7 +156,7 @@
 
                         <ul class="nav navbar-nav navbar-right">
                           <li class="active">
-                           <a href="index.html">Home</a>
+                           <a href="index.php">Home</a>
                        </li>
                        <li><a href="#intro">VITCMUN</a></li>
 
@@ -593,6 +611,34 @@
 
 </div><!-- l-wrapper -->
 
+<div class="modal fade" id="pay" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Please enter your registered email ID to go to the payment page.</h4>
+                </div>
+                <div class="modal-body">
+                    <p>                            
+                        <form action="index.php" method="post" role="form">
+                            <div class="form-group">
+                                <label>Enter your registered Email ID here</label>
+                                <strong>
+                                    <input style="background-color:#d9dde2; color:black;" type="email" name="email" class="form-control" required>
+                                </strong>
+                            </div>              
+                            <input type="submit" name="submit" value="Submit" class="btn btn-lg btn-success">&nbsp; 
+                            <button type="reset" class="btn btn-lg btn-warning">Reset</button>
+                        </form>                               
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>          
+        </div>
+    </div>
+
 
 <!-- LOAD SCRIPTS -->
 
@@ -635,3 +681,8 @@
 
 </body>   
 </html>
+<?php
+if (isset ($conn)){
+    mysqli_close($conn);
+}
+?>

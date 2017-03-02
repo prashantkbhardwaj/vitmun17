@@ -68,7 +68,7 @@
                         <div class="container-fluid">
 
                             <div class="l-logo">
-                              <a href="index.html">
+                              <a href="index.php">
                                   <img height="35%" width="35%" src="img/small_logo.png"> <span style="color:white;"><b>VITCMUN 2017</b></span>
                               </a>
                           </div><!-- l-logo -->

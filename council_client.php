@@ -103,7 +103,7 @@
                         <div class="container-fluid">
 
                             <div class="l-logo">
-                              <a href="index.html">
+                              <a href="index.php">
                                   <img height="35%" width="35%" src="img/small_logo.png"> <span style="color:white;"><b>VITCMUN 2017</b></span>
                               </a>
                             </div><!-- l-logo -->
@@ -121,14 +121,14 @@
 
                                 <ul class="nav navbar-nav navbar-right">
                                     <li >
-                                       <a href="index.html">Home</a>
+                                       <a href="index.php">Home</a>
                                    </li>
-                                   <li><a href="index.html#intro">VITCMUN</a></li>
+                                   <li><a href="index.php#intro">VITCMUN</a></li>
 
-                                   <li><a href="index.html#council">Committees</a></li>
+                                   <li><a href="index.php#council">Committees</a></li>
                                    <li><a href="team.html">Team</a></li>                      
                                   
-                                   <li><a href="index.html#contact">Contact Us </a></li>                                   
+                                   <li><a href="index.php#contact">Contact Us </a></li>                                   
                                 </ul>
                             </div>
                         </div><!-- /.container-fluid -->

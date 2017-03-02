@@ -171,7 +171,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.html">
+                <a class="navbar-brand" href="index.php">
                     <span><img src="img/small_logo.png" width="15%" height="120%"></span>
                     <span style="color:white;"> VITCMUN 2017</span>
                 </a>
@@ -180,13 +180,13 @@
             <div class="collapse navbar-collapse navbar-ex1-collapse" style="color:#edeeef;">
                 <ul class="nav navbar-right top-nav">
                     <li>
-                       <a href="index.html">HOME</a>
+                       <a href="index.php">HOME</a>
                     </li>
-                    <li><a href="index.html#intro">VITCMUN</a></li>
-                    <li><a href="index.html#testimonials">SPONSORS</a></li>
-                    <li><a href="index.html#council">COMMITTEES</a></li>
+                    <li><a href="index.php#intro">VITCMUN</a></li>
+                    <li><a href="index.php#testimonials">SPONSORS</a></li>
+                    <li><a href="index.php#council">COMMITTEES</a></li>
                     <li><a href="team.html">TEAM</a></li>                                        
-                    <li><a href="index.html#contact">CONTACT US</a></li>
+                    <li><a href="index.php#contact">CONTACT US</a></li>
                 </ul>
             </div>
             
