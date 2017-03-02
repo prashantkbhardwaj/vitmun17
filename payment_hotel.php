@@ -46,7 +46,7 @@
             || empty($posted['surl'])
             || empty($posted['furl'])
             || empty($posted['service_provider'])
-            || $posted['amount'] != "1"
+            || $posted['amount'] != "1241.2"
         ) {
             $formError = 1;
         } else {    
@@ -193,7 +193,7 @@
                                     <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
                                     <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
                                     <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
-                                    <input type="hidden" name="amount" value="1" />
+                                    <input type="hidden" name="amount" value="1241.2" />
                                     <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
                                     <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
                                     <input type="hidden" name="phone" value="<?php echo $name_title['phno']; ?>" />

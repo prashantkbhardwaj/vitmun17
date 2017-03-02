@@ -130,6 +130,9 @@
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
                     </li>
                     <li>
+                        <a href="hotel.php"><i class="fa fa-fw fa-hotel"></i> Accommodation</a>
+                    </li>
+                    <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#council"><i class="fa fa-fw fa-bank"></i> Councils <i class="fa fa-fw fa-caret-down"></i></a>
                         <ul id="council" class="collapse">
                             <li>
@@ -256,7 +259,7 @@
                                     </div>
                                 </div>
                             </div>
-                            <a href="#">
+                            <a href="hotel.php">
                                 <div class="panel-footer">
                                     <span class="pull-left">View Details</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>

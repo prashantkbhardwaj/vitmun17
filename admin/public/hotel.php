@@ -130,11 +130,14 @@
                     <li>
                         <a href="index<?php echo $index_link; ?>.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
                     </li>
-                    <li class="active">
+                    <li >
                         <a href="del.php"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
                     </li>
                     <li <?php echo $executive_view; ?> >
                         <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
+                    </li>
+                    <li class="active">
+                        <a href="hotel.php"><i class="fa fa-fw fa-hotel"></i> Accommodation</a>
                     </li>
                     <li>
                         <a href="javascript:;" data-toggle="collapse" data-target="#council"><i class="fa fa-fw fa-bank"></i> Councils <i class="fa fa-fw fa-caret-down"></i></a>
@@ -212,7 +215,7 @@
                                             <th>Post</th>
                                             <th>Phone Number</th>
                                             <th>Status</th>                                            
-                                            <th>Action</th>                                            
+                                            <th <?php echo $perm_view; ?>>Action</th>                                            
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -242,7 +245,7 @@
                                                         }
                                                     ?>
                                                 </td>                                                
-                                                <td>
+                                                <td <?php echo $perm_view; ?>>
                                                     <?php
                                                         if ($eb_list['allot_hotel']==0) { ?>
                                                             <a onclick="return confirm('Are you sure you want to accept this application?');" href="eb_hotel_mail.php?eb_id=<?php echo urlencode($eb_list['id']); ?>">
@@ -282,7 +285,7 @@
                                                     <th>Current Residence</th>
                                                     <th>College</th>
                                                     <th>Status</th>                                                    
-                                                    <th>Action</th>  
+                                                    <th <?php echo $perm_view; ?>>Action</th>  
                                                     <th>Payment</th>
                                                     <th <?php echo $perm_view; ?>>Pay</th>                                                  
                                                 </tr>
@@ -311,7 +314,7 @@
                                                             }
                                                         ?>
                                                     </td>                                                    
-                                                    <td>
+                                                    <td <?php echo $perm_view; ?>>
                                                         <?php
                                                             if ($del_list['allot_hotel']==0) { ?>
                                                                 <a onclick="return confirm('Are you sure?');" href="hotel_del_mail.php?del_id=<?php echo urlencode($del_list['id']); ?>">

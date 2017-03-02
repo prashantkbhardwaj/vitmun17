@@ -28,7 +28,7 @@ $content .= "<p> ";
 $content .= "<b>Dear ".ucfirst($name)."</b> ";
 $content .= "</p><br><br> ";
 $content .= "<p> ";
-$content .= "Congratulations! Your request for accommodation has been approved for VITCMUN 2017. You have been allotted in <b><a href='http://www.southernresidency.com/'>Southern Residency, Kellambakkam, Chennai</a>.</b> Your payment and participation has been <b>confirmed</b>. <br>We look forward to see you in the council. :) ";
+$content .= "Congratulations! Your request for accommodation has been approved for VITCMUN 2017. You have been allotted in <b><a href='http://www.southernresidency.com/'>Southern Residency, Kellambakkam, Chennai</a>.</b> Your payment and accommodation has been <b>confirmed</b>. <br>We look forward to see you in the council. :) ";
 $content .= "</p><br><br> ";
 $content .= "<p> ";
 $content .= "<b>Regards<br>Prashant Bhardwaj<br>Technical Head<br>VITCMUN 2017</b> ";
