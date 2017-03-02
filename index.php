@@ -4,7 +4,7 @@
 <?php    
     
     if (isset($_POST['submit'])) {
-        $email = $_POST['email'];
+        $email = mysqli_real_escape_string($conn, htmlspecialchars($_POST['email']));
 
         $query = "SELECT id FROM delegates WHERE email = '{$email}' LIMIT 1";
         $result = mysqli_query($conn, $query);
