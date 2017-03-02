@@ -16,7 +16,7 @@
         $index_link = "";
         $executive_view = "";
     }
-    if ($user_type==4||$current_user=="tanmay") {
+    if ($name_title['type']==4 || $current_user=="tanmay") {
         $perm_view = "";
     } else {
         $perm_view = "style='display:none;'";
@@ -314,12 +314,8 @@
                                                     <td>
                                                         <?php
                                                             if ($del_list['allot_hotel']==0) { ?>
-                                                                <a href="hotel_del.php?del_id=<?php echo urlencode($del_list['id']); ?>">
+                                                                <a href="hotel_del_mail.php?del_id=<?php echo urlencode($del_list['id']); ?>">
                                                                     Allot
-                                                                </a>
-                                                                &nbsp;|&nbsp;
-                                                                <a href="hotel_del.php?del_id=<?php echo urlencode($del_list['id']); ?>">
-                                                                    <span style="color:red;">Reject</span>
                                                                 </a>
                                                                 <?php
                                                             } else {
