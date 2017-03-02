@@ -314,7 +314,7 @@
                                                     <td>
                                                         <?php
                                                             if ($del_list['allot_hotel']==0) { ?>
-                                                                <a href="hotel_del_mail.php?del_id=<?php echo urlencode($del_list['id']); ?>">
+                                                                <a onclick="return confirm('Are you sure?');" href="hotel_del_mail.php?del_id=<?php echo urlencode($del_list['id']); ?>">
                                                                     Allot
                                                                 </a>
                                                                 <?php
