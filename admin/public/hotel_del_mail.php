@@ -27,7 +27,7 @@
 		$content .= "<b>Dear ".ucfirst($name)."</b> ";
 		$content .= "</p><br><br> ";
 		$content .= "<p> ";
-		$content .= "Congratulations! Your request for accommodation has been approved for VITCMUN 2017. You have been allotted in <b><a href='http://www.southernresidency.com/'>Southern Residency, Kellambakkam, Chennai</a>.</b> <br>Click <a href='http://vitcmun.com/payment_hotel.php?del_id=".$del_id."'><b>here</b></a> to pay the delegate fee of Rs. 1241.2 inclusive of all taxes and confirm your seat. Please <b>DO NOT</b> change the email given in the payment portal. Let it be as pkpbhardwaj729@gmail.com. <br> We look forward to having you here. :) ";	
+		$content .= "Congratulations! Your request for accommodation has been approved for VITCMUN 2017. You have been allotted in <b><a href='http://www.southernresidency.com/'>Southern Residency, Kellambakkam, Chennai</a>.</b> <br>You have to pay on spot for your accommodation. The fee is Rs.1200 <br> We look forward to having you here. :) ";	
 		$content .= "</p><br><br> ";
 		$content .= "<p> ";
 		$content .= "<b>Regards<br>Prashant Bhardwaj<br>Technical Head<br>VITCMUN 2017</b> ";
