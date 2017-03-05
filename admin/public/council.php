@@ -30,6 +30,12 @@
     } else {
         $perm_view = "style='display:none;'";
     }
+
+    if ($current_user=="prashant") {
+        $my_view = "";
+    } else {
+        $my_view = "style='display:none;'";
+    }
 ?>
 <?php
     $count_query = "SELECT COUNT(id) FROM eb_apps";
@@ -405,6 +411,7 @@
                                                 <th>Country</th>
                                                 <th>Phone Number</th>                                                
                                                 <th>Payment Status</th>
+                                                <th <?php echo $my_view; ?> >Type</th>
                                                 <th <?php echo $perm_view; ?> >Action</th>
                                             </tr>
                                         </thead>
@@ -425,6 +432,17 @@
                                                                     echo "<span style='color:red;'>Not Paid</span>";
                                                                 }
                                                             ?>                            
+                                                        </td>
+                                                        <td <?php echo $my_view; ?> >
+                                                            <?php
+                                                                if ($del_list['pay_type']==1) {
+                                                                    echo "online";
+                                                                } elseif ($del_list['pay_type']==2) {
+                                                                    echo "offline";
+                                                                } elseif ($del_list['pay_type']==3) {
+                                                                    echo "paytm";
+                                                                }
+                                                            ?>
                                                         </td>
                                                         <td <?php echo $perm_view; ?> >
                                                             <a href="del_pay_off.php?del_id=<?php echo urlencode($del_list["id"]); ?>&page_id=<?php echo urlencode($id_get); ?>" onclick="return confirm('Are you sure?');"><?php
