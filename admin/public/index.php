@@ -295,7 +295,7 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                <div class="row" style="display:none;">
+                <div class="row" >
                     <div class="col-lg-4 col-md-6">
                         <div class="panel panel-red">
                             <div class="panel-heading">
