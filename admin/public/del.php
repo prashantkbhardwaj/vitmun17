@@ -29,6 +29,10 @@
     $reject_query = "SELECT * FROM delegates WHERE allot = 2 ORDER BY id DESC";
     $reject_result = mysqli_query($conn, $reject_query);
     confirm_query($reject_result);    
+
+    $first_query = "SELECT * FROM delegates WHERE allot = 1 AND in_out = 0 AND pay_status = 0 ORDER BY id DESC";
+    $first_result = mysqli_query($conn, $first_query);
+    confirm_query($first_result);    
 ?>
 <?php
     $accept_query = "SELECT * FROM delegates WHERE allot = 1 ORDER BY id DESC";
@@ -207,14 +211,19 @@
                     </div>
                 </div><hr>
                 <div class="row">
-                    <div class="col-lg-6 text-center">
+                    <div class="col-lg-4 text-center">
                         
                         <button class="btn btn-success" data-toggle="modal" data-target="#paid" >
                             <i class="fa fa-check-square"></i> List of paid delegates
                         </button>
                         
                     </div>
-                    <div class="col-lg-6 text-center">
+                    <div class="col-lg-4 text-center">
+                        <button class="btn btn-primary" data-toggle="modal" data-target="#unpaidin" >
+                            <i class="fa fa-close"></i> List of unpaid internal delegates
+                        </button>
+                    </div>
+                    <div class="col-lg-4 text-center">
                         <button class="btn btn-danger" data-toggle="modal" data-target="#unpaid" >
                             <i class="fa fa-close"></i> List of unpaid delegates
                         </button>
@@ -417,6 +426,55 @@
             </div>          
         </div>
     </div>
+     <div class="modal fade" id="unpaidin" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-close"></i> List of unpaid internal delegates</h4>
+                </div>
+                <div class="modal-body">
+                    <p>                            
+                        <div id="htmlexportPDFin" class="table-responisve">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>
+                                        <th>Alloted Council</th>
+                                        <th>Alloted Country</th>
+                                        <th>Phone Number</th>   
+                                        <th>Grad. Year</th>                                     
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            <?php
+                                while ($title_unpaid = mysqli_fetch_assoc($unpaid_result)) { ?>
+                                    <tr>
+                                        <td>
+                                            <a href="del_profile.php?del_id=<?php echo urlencode($title_unpaid['id']); ?>">
+                                                <span <?php if ($title_unpaid['in_out']==1) { echo $color_ext; } ?> ><?php echo $title_unpaid['name']; ?></span>
+                                            </a>
+                                        </td>
+                                        <td><a href="council.php?eb_id=<?php echo urlencode($title_unpaid['id'].'_d'); ?>"><?php echo $title_unpaid['allot_council']; ?></a></td>
+                                        <td><a href="del_profile.php?del_id=<?php echo urlencode($title_unpaid['id']); ?>"><?php echo $title_unpaid['allot_country']; ?></a></td>
+                                        <td><?php echo $title_unpaid['phno']; ?></td>      
+                                        <td><?php echo $title_unpaid['grad_year']; ?></td>                                  
+                                    </tr>  
+                                    <?php
+                                }
+                            ?> 
+                                </tbody>                                                     
+                            </table>                           
+                        </div>                             
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="javascript:htmltopdfin();" type="button" class="btn btn-lg btn-primary">Download  <i class="fa fa-download"></i></button>
+                    <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>          
+        </div>
+    </div>
     <!-- jQuery -->
     <script src="js/jquery.js"></script>
 
@@ -452,6 +510,32 @@
 
             function(dispose) {
                 pdf.save('unpaid_list.pdf');
+            }, margins);
+    }
+    function htmltopdfin() {
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#htmlexportPDFin')[0];
+        specialElementHandlers = {
+            '#bypassme': function(element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+        pdf.fromHTML(
+            source,
+            margins.left,
+            margins.top, {
+                'width': margins.width,
+                'elementHandlers': specialElementHandlers
+            },
+
+            function(dispose) {
+                pdf.save('internal_unpaid_list.pdf');
             }, margins);
     }
     </script>
