@@ -448,17 +448,17 @@
                                 </thead>
                                 <tbody>
                             <?php
-                                while ($title_unpaid = mysqli_fetch_assoc($unpaid_result)) { ?>
+                                while ($title_inunpaid = mysqli_fetch_assoc($first_result)) { ?>
                                     <tr>
                                         <td>
-                                            <a href="del_profile.php?del_id=<?php echo urlencode($title_unpaid['id']); ?>">
-                                                <span <?php if ($title_unpaid['in_out']==1) { echo $color_ext; } ?> ><?php echo $title_unpaid['name']; ?></span>
+                                            <a href="del_profile.php?del_id=<?php echo urlencode($title_inunpaid['id']); ?>">
+                                                <span <?php if ($title_inunpaid['in_out']==1) { echo $color_ext; } ?> ><?php echo $title_inunpaid['name']; ?></span>
                                             </a>
                                         </td>
-                                        <td><a href="council.php?eb_id=<?php echo urlencode($title_unpaid['id'].'_d'); ?>"><?php echo $title_unpaid['allot_council']; ?></a></td>
-                                        <td><a href="del_profile.php?del_id=<?php echo urlencode($title_unpaid['id']); ?>"><?php echo $title_unpaid['allot_country']; ?></a></td>
-                                        <td><?php echo $title_unpaid['phno']; ?></td>      
-                                        <td><?php echo $title_unpaid['grad_year']; ?></td>                                  
+                                        <td><a href="council.php?eb_id=<?php echo urlencode($title_inunpaid['id'].'_d'); ?>"><?php echo $title_inunpaid['allot_council']; ?></a></td>
+                                        <td><a href="del_profile.php?del_id=<?php echo urlencode($title_inunpaid['id']); ?>"><?php echo $title_inunpaid['allot_country']; ?></a></td>
+                                        <td><?php echo $title_inunpaid['phno']; ?></td>      
+                                        <td><?php echo $title_inunpaid['grad_year']; ?></td>                                  
                                     </tr>  
                                     <?php
                                 }
