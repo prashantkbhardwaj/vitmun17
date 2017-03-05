@@ -30,12 +30,9 @@
     } else {
         $perm_view = "style='display:none;'";
     }
+    $my_view = "style='display:none;'";
+    
 
-    if ($current_user=="prashant") {
-        $my_view = "";
-    } else {
-        $my_view = "style='display:none;'";
-    }
 ?>
 <?php
     $count_query = "SELECT COUNT(id) FROM eb_apps";

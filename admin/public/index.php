@@ -14,6 +14,31 @@
     }
 ?>
 <?php
+    $total_query = "SELECT COUNT(id) FROM delegates WHERE pay_status = 1";
+    $total_result = mysqli_query($conn, $total_query);
+    confirm_query($total_result);
+    $total = mysqli_fetch_array($total_result);
+    //$total[0];  
+
+    $online_query = "SELECT COUNT(id) FROM delegates WHERE pay_status = 1 AND pay_type = 1";
+    $online_result = mysqli_query($conn, $online_query);
+    confirm_query($online_result);
+    $online = mysqli_fetch_array($online_result);
+    //$online[0];  
+
+    $paytm_query = "SELECT COUNT(id) FROM delegates WHERE pay_status = 1 AND pay_type = 3";
+    $paytm_result = mysqli_query($conn, $paytm_query);
+    confirm_query($paytm_result);
+    $paytm = mysqli_fetch_array($paytm_result);
+    //$paytm[0];  
+
+    $offline_query = "SELECT COUNT(id) FROM delegates WHERE pay_status = 1 AND pay_type = 2";
+    $offline_result = mysqli_query($conn, $offline_query);
+    confirm_query($offline_result);
+    $offline = mysqli_fetch_array($offline_result);
+    //$offline[0];
+?>
+<?php
     $count_query = "SELECT COUNT(id) FROM eb_apps";
     $count_result = mysqli_query($conn, $count_query);
     $count_eb = mysqli_fetch_array($count_result);
@@ -270,6 +295,68 @@
                     </div>
                 </div>
                 <!-- /.row -->
+                <div class="row" style="display:none;">
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-money fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php echo $total[0]; ?></div>
+                                        <div>Total Payments</div>
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="panel-footer">
+                                <span class="pull-left">Amount</span>
+                                <span class="pull-right"><i class="fa fa-inr"></i> <?php echo $total[0]*1300; ?></span>
+                                <div class="clearfix"></div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-money fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php echo $online[0]+1; ?></div>
+                                        <div>Online Payments</div>
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="panel-footer">
+                                <span class="pull-left">Amount</span>
+                                <span class="pull-right"><i class="fa fa-inr"></i> <?php echo ($online[0]+1)*1300; ?></span>
+                                <div class="clearfix"></div>
+                            </div>                            
+                        </div>
+                    </div>
+                    <div class="col-lg-4 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-money fa-4x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php echo $offline[0]+($paytm[0]-1); ?></div>
+                                        <div>Offline Payments</div>
+                                    </div>
+                                </div>
+                            </div>                            
+                            <div class="panel-footer">
+                                <span class="pull-left">Amount</span>
+                                <span class="pull-right"><i class="fa fa-inr"></i> <?php echo ($offline[0]+($paytm[0]-1))*1300; ?></span>
+                                <div class="clearfix"></div>
+                            </div>                            
+                        </div>
+                    </div>
+                </div>
                 <?php
                     while ($agenda_list = mysqli_fetch_assoc($agenda_result)) { ?>
                         <div class="row">
