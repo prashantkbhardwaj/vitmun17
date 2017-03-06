@@ -12,6 +12,11 @@
     if ($name_title['type']==2) {
         redirect_to("index_del_affairs.php");
     }
+    if ($current_user=="sai_anand"||$current_user=="tanmay"||$current_user=="prashant") {
+        $perm_view = "";
+    } else {
+        $perm_view = "style='display:none;'";
+    }
 ?>
 <?php
     $total_query = "SELECT COUNT(id) FROM delegates WHERE pay_status = 1";
@@ -295,7 +300,7 @@
                     </div>
                 </div>
                 <!-- /.row -->
-                <div class="row" >
+                <div class="row" <?php echo $perm_view; ?>>
                     <div class="col-lg-4 col-md-6">
                         <div class="panel panel-red">
                             <div class="panel-heading">
