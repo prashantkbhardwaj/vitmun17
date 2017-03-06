@@ -10,62 +10,6 @@
     $first_name = explode(" ", $name_title['name']);
 ?>
 
-<?php
-    $MERCHANT_KEY = "eA0dOuuq";
-    $SALT = "6XG2QugoqF";
-    $PAYU_BASE_URL = "https://secure.payu.in";
-    $action = '';
-    $posted = array();
-
-    if(!empty($_POST)) {    
-        foreach($_POST as $key => $value) {    
-            $posted[$key] = $value;     
-        }
-    }
-
-    $formError = 0;
-
-    if(empty($posted['txnid'])) {  
-        $txnid = substr(hash('sha256', mt_rand() . microtime()), 0, 20);
-    } else {
-        $txnid = $posted['txnid'];
-    }
-    
-    $hash = '';
-
-    $hashSequence = "key|txnid|amount|productinfo|firstname|email|udf1|udf2|udf3|udf4|udf5|udf6|udf7|udf8|udf9|udf10";
-    if(empty($posted['hash']) && sizeof($posted) > 0) {
-        if(
-            empty($posted['key'])
-            || empty($posted['txnid'])
-            || empty($posted['amount'])
-            || empty($posted['firstname'])
-            || empty($posted['email'])
-            || empty($posted['phone'])
-            || empty($posted['productinfo'])
-            || empty($posted['surl'])
-            || empty($posted['furl'])
-            || empty($posted['service_provider'])
-            || $posted['amount'] != "1341.2"
-        ) {
-            $formError = 1;
-        } else {    
-            $hashVarsSeq = explode('|', $hashSequence);
-            $hash_string = '';  
-            foreach($hashVarsSeq as $hash_var) {
-                $hash_string .= isset($posted[$hash_var]) ? $posted[$hash_var] : '';
-                $hash_string .= '|';
-            }
-
-            $hash_string .= $SALT;
-            $hash = strtolower(hash('sha512', $hash_string));
-            $action = $PAYU_BASE_URL . '/_payment';
-        }
-    } elseif(!empty($posted['hash'])) {
-        $hash = $posted['hash'];
-        $action = $PAYU_BASE_URL . '/_payment';
-    }
-?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -104,20 +48,10 @@
 
     <link rel="stylesheet" href="inc/font-awesome/css/font-awesome.min.css">        
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="css/colors.css">
-    <script type="text/javascript">
-        var hash = '<?php echo $hash ?>';
-        function submitPayuForm() {
-          if(hash == '') {
-            return;
-          }
-          var payuForm = document.forms.payuForm;
-          payuForm.submit();
-        }
-    </script> 
+    <link rel="stylesheet" href="css/colors.css">    
 
 </head>
-<body onload="submitPayuForm()">
+<body>
 
     <script>
         (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
@@ -173,44 +107,14 @@
                         <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            <strong>"Please click on the button to pay the delegate fee of &nbsp;<i class="fa fa-inr"></i> 1330 + &nbsp;<i class="fa fa-inr"></i> 11.2 online tax."</strong>                                            
+                            <strong>"We have closed the online payments as of now, however to pay the delegate fee and confirm your allotment, you can either pay on spot or call us at 9176472987 or 9962416408. The fee is &nbsp;<i class="fa fa-inr"></i> 1300."</strong>                                            
                         </p>
 
                     </div><!-- col-lg-12 -->
                 </div><!-- row -->
 
                 <div class="separator"></div><!-- separator -->
-
-                <div class="row">
-                    <center>                    
-
-                        <div class="col-lg-12 col-md-12 col-sm-12 text-center">
-                            <div class="col-md-4"></div>
-                            <div style="display:none;" class="col-md-4">
-                                <img style="height:50%; width:50%;" src="img/qr.png">                                
-                            </div>
-                                <form action="<?php echo $action; ?>" method="post" name="payuForm">
-                                    <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
-                                    <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
-                                    <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
-                                    <input type="hidden" name="amount" value="1341.2" />
-                                    <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
-                                    <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
-                                    <input type="hidden" name="phone" value="<?php echo $name_title['phno']; ?>" />
-                                    <textarea style="display:none;" name="productinfo" >delegate fee</textarea>
-                                    <input type="hidden" name="surl" value="http://vitcmun.com/del_pay_success.php" />
-                                    <input type="hidden" name="furl" value="http://vitcmun.com/del_pay_fail.php" />
-                                    <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
-                                    <?php if(!$hash) { ?>
-                                        <strong>
-                                            <input type="submit" value="Pay Now" style="font-size:24px;" class="btn btn-primary col-md-4">
-                                        </strong>                                
-                                    <?php } ?>       
-                                </form>                            
-                            <div class="col-md-4"></div>
-                        </div><!-- col-lg-4 -->     
-                    </center>
-                </div><!-- row -->
+                
 
             </div><!-- container -->                    
 

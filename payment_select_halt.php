@@ -46,7 +46,7 @@
             || empty($posted['surl'])
             || empty($posted['furl'])
             || empty($posted['service_provider'])
-            || $posted['amount'] != "1241.2"
+            || $posted['amount'] != "1341.2"
         ) {
             $formError = 1;
         } else {    
@@ -173,7 +173,7 @@
                         <h2 class="text-center">Hey <?php echo htmlentities(ucfirst($first_name[0])); ?></h2>
 
                         <p class="text-center">
-                            <strong>"Please click on the button to pay the accommodation fee of &nbsp;<i class="fa fa-inr"></i> 1230 + &nbsp;<i class="fa fa-inr"></i> 11.2 online tax."</strong>                                            
+                            <strong>"We have closed the online payments as of now, however to pay the delegate fee and confirm your allotment, you can either pay on spot or call us at 9176472987 or 9962416408. The fee is &nbsp;<i class="fa fa-inr"></i> 1300."</strong>                                            
                         </p>
 
                     </div><!-- col-lg-12 -->
@@ -193,13 +193,13 @@
                                     <input type="hidden" name="key" value="<?php echo $MERCHANT_KEY ?>" />
                                     <input type="hidden" name="hash" value="<?php echo $hash ?>"/>
                                     <input type="hidden" name="txnid" value="<?php echo $txnid ?>" />
-                                    <input type="hidden" name="amount" value="1241.2" />
+                                    <input type="hidden" name="amount" value="1341.2" />
                                     <input type="hidden" name="firstname" id="firstname" value="<?php echo $del_id; ?>" />
                                     <input type="hidden" name="email" id="email" value="pkpbhardwaj729@gmail.com" />
                                     <input type="hidden" name="phone" value="<?php echo $name_title['phno']; ?>" />
                                     <textarea style="display:none;" name="productinfo" >delegate fee</textarea>
-                                    <input type="hidden" name="surl" value="http://vitcmun.com/hotel_pay_success.php" />
-                                    <input type="hidden" name="furl" value="http://vitcmun.com/hotel_pay_fail.php" />
+                                    <input type="hidden" name="surl" value="http://vitcmun.com/del_pay_success.php" />
+                                    <input type="hidden" name="furl" value="http://vitcmun.com/del_pay_fail.php" />
                                     <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
                                     <?php if(!$hash) { ?>
                                         <strong>
