@@ -43,7 +43,7 @@
     $count_del = mysqli_fetch_array($result_del_count);
     $total_del = $count_del[0];  
 
-    $left = 75 - ($total_del+$total_eb);
+    $left = 90 - ($total_del+$total_eb);
 ?>
 <?php
     if (isset($_GET['status'])) {
