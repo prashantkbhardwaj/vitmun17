@@ -27,7 +27,7 @@
    	echo "offline collection: ".$offline[0];  
 	
 	$names_query = "SELECT name FROM delegates WHERE pay_status = 1 AND pay_type = 3";
-	$names_result = mysqli_query($conn, $names_result);
+	$names_result = mysqli_query($conn, $names_query);
 	confirm_query($names_result);
 	while ($list = mysqli_fetch_assoc($names_result)) {
 		echo $list['name']."<br>";
