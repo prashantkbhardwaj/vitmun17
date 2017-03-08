@@ -32,7 +32,11 @@
 
     $first_query = "SELECT * FROM delegates WHERE allot = 1 AND in_out = 0 AND pay_status = 0 ORDER BY id DESC";
     $first_result = mysqli_query($conn, $first_query);
-    confirm_query($first_result);    
+    confirm_query($first_result);   
+
+    $on_query = "SELECT * FROM delegates WHERE pay_status = 1 AND pay_type = 1 ORDER BY id DESC";
+    $on_result = mysqli_query($conn, $on_query);
+    confirm_query($on_result);    
 ?>
 <?php
     $accept_query = "SELECT * FROM delegates WHERE allot = 1 ORDER BY id DESC";
@@ -226,6 +230,11 @@
                     <div class="col-lg-4 text-center">
                         <button class="btn btn-danger" data-toggle="modal" data-target="#unpaid" >
                             <i class="fa fa-close"></i> List of unpaid delegates
+                        </button>
+                    </div>
+                    <div style="display:none;" class="col-lg-4 text-center">
+                        <button class="btn btn-danger" data-toggle="modal" data-target="#onpaid" >
+                            <i class="fa fa-close"></i> List of onpaid delegates
                         </button>
                     </div>
                 </div><br><hr>
@@ -426,7 +435,7 @@
             </div>          
         </div>
     </div>
-     <div class="modal fade" id="unpaidin" role="dialog">
+    <div class="modal fade" id="unpaidin" role="dialog">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -470,6 +479,45 @@
                 </div>
                 <div class="modal-footer">
                     <button onclick="javascript:htmltopdfin();" type="button" class="btn btn-lg btn-primary">Download  <i class="fa fa-download"></i></button>
+                    <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
+                </div>
+            </div>          
+        </div>
+    </div>
+    <div class="modal fade" id="onpaid" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title"><i class="fa fa-close"></i> List of onpaid delegates</h4>
+                </div>
+                <div class="modal-body">
+                    <p>                            
+                        <div id="htmlexportPDFon" class="table-responisve">
+                            <table class="table table-bordered table-hover table-striped">
+                                <thead>
+                                    <tr>
+                                        <th>Name</th>                                                                           
+                                    </tr>
+                                </thead>
+                                <tbody>
+                            <?php
+                                while ($title_onpaid = mysqli_fetch_assoc($on_result)) { ?>
+                                    <tr>
+                                        <td>
+                                            <?php echo $title_onpaid['name']; ?>
+                                        </td>                                                                        
+                                    </tr>  
+                                    <?php
+                                }
+                            ?> 
+                                </tbody>                                                     
+                            </table>                           
+                        </div>                             
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button onclick="javascript:htmltopdfon();" type="button" class="btn btn-lg btn-primary">Download  <i class="fa fa-download"></i></button>
                     <button type="button" class="btn btn-lg btn-danger" data-dismiss="modal">Close</button>
                 </div>
             </div>          
@@ -536,6 +584,32 @@
 
             function(dispose) {
                 pdf.save('internal_unpaid_list.pdf');
+            }, margins);
+    }
+    function htmltopdfon() {
+        var pdf = new jsPDF('p', 'pt', 'letter');
+        source = $('#htmlexportPDFon')[0];
+        specialElementHandlers = {
+            '#bypassme': function(element, renderer) {
+                return true
+            }
+        };
+        margins = {
+            top: 80,
+            bottom: 60,
+            left: 40,
+            width: 522
+        };
+        pdf.fromHTML(
+            source,
+            margins.left,
+            margins.top, {
+                'width': margins.width,
+                'elementHandlers': specialElementHandlers
+            },
+
+            function(dispose) {
+                pdf.save('online_paid_list.pdf');
             }, margins);
     }
     </script>
