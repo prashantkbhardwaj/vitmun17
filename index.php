@@ -548,6 +548,17 @@
                             </div>
                         </div>
                     </li>
+                    <li class="text-center">
+                        <div class="container opacity">
+                            <div class="col-lg-6">
+                                <img src="img/subway.png" style="height:50%; width:50%; " alt="avatar" />                                
+                            </div>
+                            <div class="col-lg-6">
+                                <img src="img/lenskart.png" style="height:35%; width:35%; " alt="avatar" />                                
+                            </div>
+                            
+                        </div>
+                    </li>
                 </ul>
             </div>
         </div>
