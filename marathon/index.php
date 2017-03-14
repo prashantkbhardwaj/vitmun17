@@ -27,7 +27,7 @@
 
         $check_query = "SELECT id FROM marathon WHERE email = '{$email}'";
         $check_result = mysqli_query($conn, $check_query);
-        confirm_query($check_result);
+        //confirm_query($check_result);
         $checklist = mysqli_fetch_assoc($check_result);
         if ($checklist['id']=="") {
             $query = "INSERT INTO marathon (fname, lname, email, phno, regno, college, city, rcno, ptime) VALUES ('{$fname}', '{$lname}', '{$email}', '{$phno}', '{$regno}', '{$college}', '{$city}', '{$rcno}', '{$ptime}')";
