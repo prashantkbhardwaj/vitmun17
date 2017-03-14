@@ -5,20 +5,20 @@
     $view_note = "style='display:none;'";
     $acct_note = '';
     if (isset($_POST['submit'])) {
-        $fname = $_POST['fname'];
-        $lname = $_POST['lname'];
-        $email = $_POST['email'];
-        $phno = $_POST['phno'];
-        $regno = $_POST['regno'];
+        $fname = mysqli_real_escape_string($conn, htmlspecialchars($_POST['fname']));
+        $lname = mysqli_real_escape_string($conn, htmlspecialchars($_POST['lname']));
+        $email = mysqli_real_escape_string($conn, htmlspecialchars($_POST['email']));
+        $phno = mysqli_real_escape_string($conn, htmlspecialchars($_POST['phno']));
+        $regno = mysqli_real_escape_string($conn, htmlspecialchars($_POST['regno']));
         if ($_POST['school_select']=="VIT") {
             $college = "VIT University";
         } else {
-            $college = $_POST['college'];
+            $college = mysqli_real_escape_string($conn, htmlspecialchars($_POST['college']));
         }
         if ($_POST['city_select']=="Chennai") {
             $city = "Chennai";
         } else {
-            $city = $_POST['city'];
+            $city = mysqli_real_escape_string($conn, htmlspecialchars($_POST['city']));
         }
 
         $rcno = rand();
@@ -194,7 +194,7 @@
                                             <label>Enter the name of your city</label>
                                             <input id="ciname" type="text" name="city" class="form-control">                                  
                                         </div> <br>             
-                                        <input type="submit" name="submit" value="Submit and proceed to payment" class="btn btn-lg btn-success col-lg-12">&nbsp;
+                                        <input type="submit" name="submit" value="Submit and proceed to payment" class="btn btn-lg btn-success col-lg-12">&nbsp;&nbsp;
                                     </form>                               
                                 </p>
                             </div>
