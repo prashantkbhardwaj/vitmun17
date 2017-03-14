@@ -83,7 +83,8 @@
                             <div class="modal-body">
                                 <p>
                                     <div class="text-center"><img src="img/tick.png"></div>                            
-                                    <h3 class="text-center">Congratulations! You have successfully registered and paid for Marathon in Vibrance 2017. Please check your email for the same.</h3>                        
+                                    <h3 class="text-center">Congratulations! You have successfully registered and paid for Marathon in Vibrance 2017. Please check your email for the same.</h3><br>
+                                    <div class="text-center">Please check your spam folder if you don't get the email in your inbox.</div>                        
                                 </p>
                             </div>
                             
