@@ -11,7 +11,7 @@ confirm_query($result);
 $title = mysqli_fetch_assoc($result);
 $email = $title['email'];
 $name = $title['fname'];
-$rcno = $title['rcno']
+$rcno = $title['rcno'];
 
 // registration bill html code starts
 
