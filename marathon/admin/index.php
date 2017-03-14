@@ -41,8 +41,8 @@ if (isset($_POST['submit'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"> 
 		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
         <title>VITC MUN | Admin</title>
-        <meta name="description" content="VITC MUN 2017" />
-        <meta name="keywords" content="VITCMUN17, VIT MUN, VIT Chennai Model United Nations" />
+        <meta name="description" content="Vibrance 2017" />
+        <meta name="keywords" content="Vibrance" />
         <meta name="author" content="Prashant Bhardwaj" />
         <link rel="shortcut icon" href="../favicon.ico"> 
         <link rel="stylesheet" type="text/css" href="css/style.css" />
@@ -51,7 +51,7 @@ if (isset($_POST['submit'])) {
 		<style>
 			@import url(http://fonts.googleapis.com/css?family=Ubuntu:400,700);
 			body {
-				background: #563c55 url(images/admin_bg.jpg) no-repeat center top;
+				background: #563c55 url(images/blurred.jpg) no-repeat center top;
 				-webkit-background-size: cover;
 				-moz-background-size: cover;
 				background-size: cover;
@@ -68,8 +68,8 @@ if (isset($_POST['submit'])) {
 			
 			<header>
 			
-				<h1>VITC MUN'17 <strong>ADMIN</strong></h1>
-				<h2>Enter your details</h2>
+				<h1>Vibrance 2017 <strong>ADMIN</strong></h1>
+				<h2>Marathon Registraions</h2>
 
 				<div class="support-note">
 					<span class="note-ie">Sorry, only modern browsers.</span>

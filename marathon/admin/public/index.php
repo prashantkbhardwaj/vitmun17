@@ -9,85 +9,18 @@
     confirm_query($name_result);
     $name_title = mysqli_fetch_assoc($name_result);
     $first_name = explode(" ", $name_title['username']);
-    if ($name_title['type']==2) {
-        redirect_to("index_del_affairs.php");
-    }
-    if ($current_user=="sai_anand"||$current_user=="tanmay"||$current_user=="prashant") {
-        $perm_view = "";
-    } else {
-        $perm_view = "style='display:none;'";
-    }
 ?>
 <?php
-    $total_query = "SELECT COUNT(id) FROM delegates WHERE pay_status = 1";
+    $total_query = "SELECT COUNT(id) FROM marathon WHERE pay_status = 1";
     $total_result = mysqli_query($conn, $total_query);
     confirm_query($total_result);
-    $total = mysqli_fetch_array($total_result);
-    //$total[0];  
+    $total = mysqli_fetch_array($total_result);    //$total[0];  
 
-    $online_query = "SELECT COUNT(id) FROM delegates WHERE pay_status = 1 AND pay_type = 1";
-    $online_result = mysqli_query($conn, $online_query);
-    confirm_query($online_result);
-    $online = mysqli_fetch_array($online_result);
-    //$online[0];  
-
-    $paytm_query = "SELECT COUNT(id) FROM delegates WHERE pay_status = 1 AND pay_type = 3";
-    $paytm_result = mysqli_query($conn, $paytm_query);
-    confirm_query($paytm_result);
-    $paytm = mysqli_fetch_array($paytm_result);
-    //$paytm[0];  
-
-    $offline_query = "SELECT COUNT(id) FROM delegates WHERE pay_status = 1 AND pay_type = 2";
-    $offline_result = mysqli_query($conn, $offline_query);
-    confirm_query($offline_result);
-    $offline = mysqli_fetch_array($offline_result);
-    //$offline[0];
-?>
-<?php
-    $count_query = "SELECT COUNT(id) FROM eb_apps";
-    $count_result = mysqli_query($conn, $count_query);
-    $count_eb = mysqli_fetch_array($count_result);
-    $total_eb = $count_eb[0];  
-
-    $count_query_del = "SELECT COUNT(id) FROM delegates";
-    $count_result_del = mysqli_query($conn, $count_query_del);
-    $count_del = mysqli_fetch_array($count_result_del);
-    $total_del = $count_del[0];  
-
-    $count_query_del_ext = "SELECT COUNT(id) FROM delegates WHERE in_out = 1";
-    $count_result_del_ext = mysqli_query($conn, $count_query_del_ext);
-    $count_del_ext = mysqli_fetch_array($count_result_del_ext);
-    $total_del_ext = $count_del_ext[0];  
-?>
-<?php
-    $count_hotel_query = "SELECT COUNT(id) FROM eb_apps WHERE hotel = 'Yes'";
-    $count_hotel_result = mysqli_query($conn, $count_hotel_query);
-    $count_hotel_eb = mysqli_fetch_array($count_hotel_result);
-    $total_hotel_eb = $count_hotel_eb[0];  
-
-    $count_hotel_query_del = "SELECT COUNT(id) FROM delegates WHERE hotel = 'Yes'";
-    $count_hotel_result_del = mysqli_query($conn, $count_hotel_query_del);
-    $count_hotel_del = mysqli_fetch_array($count_hotel_result_del);
-    $total_hotel_del = $count_hotel_del[0];  
-
-    $total_hotel = $total_hotel_eb + $total_hotel_del;
-?>
-<?php
-    $allot_query = "SELECT COUNT(id) FROM delegates WHERE allot = 1 ";
-    $allot_result = mysqli_query($conn, $allot_query);
-    $allot_list = mysqli_fetch_array($allot_result);
-    $total_allot = $allot_list[0];    
-?>
-<?php
-    $query = "SELECT * FROM users";
+    $query = "SELECT * FROM marathon WHERE pay_status = 1 ORDER BY id DESC";
     $result = mysqli_query($conn, $query);
     confirm_query($result);    
 ?>
-<?php
-    $agenda_query = "SELECT * FROM councils WHERE agenda = ''";
-    $agenda_result = mysqli_query($conn, $agenda_query);
-    confirm_query($agenda_result);
-?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -99,7 +32,7 @@
     <meta name="description" content="">
     <meta name="author" content="Prashant Bhardwaj">
 
-    <title>VITC MUN | Admin</title>
+    <title>Vibrance 2017 | Admin</title>
 
     <!-- Bootstrap Core CSS -->
     <link href="css/bootstrap.min.css" rel="stylesheet">
@@ -124,7 +57,7 @@
 
 <body>
 
-    <div id="wrapper">
+    <div>
 
         <!-- Navigation -->
         <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -136,7 +69,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand" href="index.php"><span><img src="../../img/small_logo.png" width="15%" height="120%"></span> VITCMUN 2017</a>
+                <a class="navbar-brand" href="index.php"> Vibrance 2017</a>
             </div>
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
@@ -147,47 +80,7 @@
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> <?php echo htmlentities($first_name[0]); ?> </a>
                 </li>
             </ul>
-            <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div class="collapse navbar-collapse navbar-ex1-collapse">
-                <ul class="nav navbar-nav side-nav">
-                    <li class="active">
-                        <a href="index.php"><i class="fa fa-fw fa-dashboard"></i> Dashboard</a>
-                    </li>
-                    <li>
-                        <a href="del.php"><i class="fa fa-fw fa-file-text"></i> Delegates</a>
-                    </li>
-                    <li>
-                        <a href="eb.php"><i class="fa fa-fw fa-black-tie"></i> Executive Board</a>
-                    </li>
-                    <li>
-                        <a href="hotel.php"><i class="fa fa-fw fa-hotel"></i> Accommodation</a>
-                    </li>
-                    <li>
-                        <a href="javascript:;" data-toggle="collapse" data-target="#council"><i class="fa fa-fw fa-bank"></i> Councils <i class="fa fa-fw fa-caret-down"></i></a>
-                        <ul id="council" class="collapse">
-                            <li>
-                                <a href="council.php?eb_id=c1">UNSC</a>
-                            </li>
-                            <li>
-                                <a href="council.php?eb_id=c2">UNGA DISEC</a>
-                            </li>
-                            <li>
-                                <a href="council.php?eb_id=c3">UNHRC</a>
-                            </li>
-                            <li>
-                                <a href="council.php?eb_id=c4">IAEA</a>
-                            </li>
-                            <li>
-                                <a href="council.php?eb_id=c5">OSCE</a>
-                            </li>
-                            <li>
-                                <a href="council.php?eb_id=c6">TLC</a>
-                            </li>
-                        </ul>
-                    </li>                             
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+            
         </nav>
 
         <div id="page-wrapper">
@@ -199,110 +92,14 @@
                     <div class="col-lg-12">
                         <h1 class="page-header">
                             Dashboard <small>Statistics Overview</small>
-                        </h1>
-                        <ol class="breadcrumb">
-                            <li class="active">
-                                <i class="fa fa-info-circle"></i> Dashboard
-                            </li>
-                        </ol>
+                        </h1>                        
                     </div>
                 </div>
                 <!-- /.row -->            
 
                 <div class="row">
-                    <div class="col-lg-3 col-md-6">
+                    <div class="col-lg-12 col-md-12">
                         <div class="panel panel-primary">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-file-text fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $total_del; ?></div>
-                                        <div>Delegate applications</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="del.php">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-green">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-black-tie fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $total_del_ext; ?></div>
-                                        <div>External delegates</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="del.php?status=3">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-yellow">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-check-square-o fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"> <?php echo $total_allot; ?></div>
-                                        <div>Allotments done</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="del.php#allot">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-lg-3 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-hotel fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $total_hotel; ?></div>
-                                        <div>Accomodations required</div>
-                                    </div>
-                                </div>
-                            </div>
-                            <a href="hotel.php">
-                                <div class="panel-footer">
-                                    <span class="pull-left">View Details</span>
-                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
-                                    <div class="clearfix"></div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
-                </div>
-                <!-- /.row -->
-                <div class="row" <?php echo $perm_view; ?>>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-red">
                             <div class="panel-heading">
                                 <div class="row">
                                     <div class="col-xs-3">
@@ -310,114 +107,63 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><?php echo $total[0]; ?></div>
-                                        <div>Total Payments</div>
+                                        <div>Confirmed Participants</div>
                                     </div>
                                 </div>
                             </div>                            
                             <div class="panel-footer">
                                 <span class="pull-left">Amount</span>
-                                <span class="pull-right"><i class="fa fa-inr"></i> <?php echo $total[0]*1300; ?></span>
+                                <span class="pull-right"><i class="fa fa-inr"></i> <?php echo $total[0]*200; ?></span>
                                 <div class="clearfix"></div>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-money fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $online[0]+1; ?></div>
-                                        <div>Online Payments</div>
-                                    </div>
-                                </div>
-                            </div>                            
-                            <div class="panel-footer">
-                                <span class="pull-left">Amount</span>
-                                <span class="pull-right"><i class="fa fa-inr"></i> <?php echo ($online[0]+1)*1300; ?></span>
-                                <div class="clearfix"></div>
-                            </div>                            
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-md-6">
-                        <div class="panel panel-red">
-                            <div class="panel-heading">
-                                <div class="row">
-                                    <div class="col-xs-3">
-                                        <i class="fa fa-money fa-4x"></i>
-                                    </div>
-                                    <div class="col-xs-9 text-right">
-                                        <div class="huge"><?php echo $offline[0]+($paytm[0]-1); ?></div>
-                                        <div>Offline Payments</div>
-                                    </div>
-                                </div>
-                            </div>                            
-                            <div class="panel-footer">
-                                <span class="pull-left">Amount</span>
-                                <span class="pull-right"><i class="fa fa-inr"></i> <?php echo ($offline[0]+($paytm[0]-1))*1300; ?></span>
-                                <div class="clearfix"></div>
-                            </div>                            
-                        </div>
-                    </div>
-                </div>
-                <?php
-                    while ($agenda_list = mysqli_fetch_assoc($agenda_result)) { ?>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div class="alert alert-info alert-dismissable">
-                                    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-                                    <i class="fa fa-info-circle"></i>  <?php echo "Agenda for ".$agenda_list['name']." not entered. Click <a href='council.php?eb_id=00".$agenda_list['id']."'><strong>here</strong></a> to update it."; ?>
-                                </div>
                             </div>
-                        </div>    
-                        <?php
-                    }
-                ?>
                             
-                <div class="row" id="admins">
-                    <div class="col-lg-12">
-                        <center><h2>Admin List</h2></center>
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-hover table-striped">
-                                <thead>
-                                    <tr>
-                                        <th>Username</th>
-                                        <th>Admin Type</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                <?php
-                                    while ($title_admin = mysqli_fetch_assoc($result)) { ?>
-                                       <tr>
-                                            <td><?php echo $title_admin['username']; ?></td>
-                                            <td>
+                        </div>
+                    </div>                    
+                </div>
+                <!-- /.row -->                
+                     
+                <div class="row">
+                        <div class="col-lg-12" id="allot">
+                            <div class="panel panel-green">
+                                <div class="panel-heading">
+                                    <h3 class="panel-title text-center"><i class="fa fa-check-square"></i> Confirmed Participants</h3>
+                                </div>
+                                <div class="panel-body">
+                                    <div class="table-responisve">
+                                        <table class="table table-bordered table-hover table-striped">
+                                            <thead>
+                                                <tr>
+                                                    <th>Name</th>
+                                                    <th>Email</th>
+                                                    <th>Phone No.</th>
+                                                    <th>College</th>
+                                                    <th>Reg. No.</th>
+                                                    <th>City</th>
+                                                    <th>Bill No.</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                        <?php
+                                            while ($list = mysqli_fetch_assoc($result)) { ?>
+                                                <tr>
+                                                    <td><?php $list['fname']." ".$list['lname']; ?></td>
+                                                    <td><?php echo $list['email']; ?></td>
+                                                    <td><?php echo $list['phno']; ?></td>
+                                                    <td><?php echo $list['college']; ?></td>
+                                                    <td><?php echo $list['regno']; ?></td>
+                                                    <td><?php echo $list['city']; ?></td>
+                                                    <td><?php echo $list['rcno']; ?></td>
+                                                </tr>  
                                                 <?php
-                                                    if ($title_admin['type']==1) {
-                                                        echo "Payment Admin";
-                                                    } elseif ($title_admin['type']==2) {
-                                                        echo "Delegate affairs";
-                                                    } elseif ($title_admin['type']==3) {
-                                                        echo "Hospitality";
-                                                    } elseif ($title_admin['type']==4) {
-                                                        echo "Super Admin";
-                                                    } elseif ($title_admin['type']==5) {
-                                                        echo "Viewer Admin";
-                                                    }                                                        
-                                                ?>
-                                                
-                                            </td>
-                                        </tr>  
-                                        <?php 
-                                    }
-                                ?>                                      
-                                </tbody>
-                                
-                            </table>
+                                            }
+                                        ?> 
+                                            </tbody>                                                     
+                                        </table>                           
+                                    </div>
+                                </div>
+                            </div>                       
                         </div>
                     </div>
-                </div>
                 <!-- /.row -->             
 
             </div>

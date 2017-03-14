@@ -2,7 +2,7 @@
 <?php require_once("../../includes/db_connection.php"); ?>
 <?php require_once("../../includes/functions.php"); ?>
 <?php require_once("../../includes/validation_functions.php"); ?>
-<?php confirm_logged_in(); ?>
+<?php // confirm_logged_in(); ?>
 
 <?php
     $current_user = $_SESSION["username"];
@@ -12,11 +12,6 @@
     $name_title = mysqli_fetch_assoc($name_result);    
 ?>
 
-<?php
-	if ($current_user!=="prashant") {
-		redirect_to('e404.php');
-	}
-?>
 
 <?php
 if(isset($_POST['submit'])){
@@ -34,8 +29,8 @@ if(isset($_POST['submit'])){
 		$hashed_password = password_encrypt($_POST['password']);
 					
 
-		$query = "INSERT INTO users (username, type, hashed_password)";
-		$query .= " VALUES ('{$username}', {$type}, '{$hashed_password}')";
+		$query = "INSERT INTO users (username, hashed_password)";
+		$query .= " VALUES ('{$username}', '{$hashed_password}')";
 		$result = mysqli_query($conn, $query);
 
         if ($result) {
@@ -69,19 +64,7 @@ if(isset($_POST['submit'])){
 		   			<tr>
 		   				<td>Username</td>
 		   				<td><input type="text" name="username" value="" required /></td>
-		   			</tr>
-		   			<tr>
-		   				<td>Select Admin Type</td>
-		   				<td>
-		   					<select name="type" required>
-		   						<option value="1">Payment Admin</option>
-		   						<option value="2">Delegate Affairs Admin</option>
-		   						<option value="3">Hospitality Admin</option>
-		   						<option value="4">Super Admin</option>
-		   						<option value="5">Viewer Admin</option>
-		   					</select>
-		   				</td>
-		   			</tr>
+		   			</tr>		   			
 		   			<tr>
 		   				<td>Password</td>
 		   				<td><input type="password" name="password" id="txtNewPassword" value="" required /></td>
