@@ -146,7 +146,7 @@
                                         <?php
                                             while ($list = mysqli_fetch_assoc($result)) { ?>
                                                 <tr>
-                                                    <td><?php $list['fname']." ".$list['lname']; ?></td>
+                                                    <td><?php echo $list['fname']." ".$list['lname']; ?></td>
                                                     <td><?php echo $list['email']; ?></td>
                                                     <td><?php echo $list['phno']; ?></td>
                                                     <td><?php echo $list['college']; ?></td>
