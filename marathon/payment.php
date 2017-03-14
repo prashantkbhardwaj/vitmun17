@@ -170,8 +170,8 @@
                                         <input type="hidden" name="email" id="email" value="<?php echo $email; ?>" />
                                         <input type="hidden" name="phone" value="<?php echo $idList['phno']; ?>" />
                                         <textarea style="display:none;" name="productinfo" >marathon fee</textarea>
-                                        <input type="hidden" name="surl" value="http://35.154.143.210/marathon/pay_success.php" />
-                                        <input type="hidden" name="furl" value="http://35.154.143.210/marathon/pay_fail.php" />
+                                        <input type="hidden" name="surl" value="http://vitcmun.com/marathon/pay_success.php" />
+                                        <input type="hidden" name="furl" value="http://vitcmun.com/marathon/pay_fail.php" />
                                         <input type="hidden" name="service_provider" value="payu_paisa" size="64" />        
                                         <?php if(!$hash) { ?>
                                             <strong>
