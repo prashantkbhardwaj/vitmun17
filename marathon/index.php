@@ -47,10 +47,11 @@
         } else {
             $view_note = "";
             $acct_note = '<span style="color:red;">This email is already used to register.</span>';
-        }
-
-        
+        }        
     }
+    $del_query = "DELETE FROM marathon WHERE pay_status = 0";
+    $del_result = mysqli_query($conn, $del_query);
+    confirm_query($del_result);
 ?>
 
 <!DOCTYPE html>
