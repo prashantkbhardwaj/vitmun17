@@ -25,7 +25,7 @@
         date_default_timezone_set('Asia/Calcutta');
         $ptime = date("Y-m-d H:i:s");        
 
-        $check_query = "SELECT id FROM marathon WHERE email = '{$email}'";
+        $check_query = "SELECT id FROM marathon WHERE email = '{$email}' AND pay_status =1";
         $check_result = mysqli_query($conn, $check_query);
         confirm_query($check_result);
         $checklist = mysqli_fetch_assoc($check_result);
@@ -49,9 +49,9 @@
             $acct_note = '<span style="color:red;">This email is already used to register.</span>';
         }        
     }
-    $del_query = "DELETE FROM marathon WHERE pay_status = 0";
+    /*$del_query = "DELETE FROM marathon WHERE pay_status = 0";
     $del_result = mysqli_query($conn, $del_query);
-    confirm_query($del_result);
+    confirm_query($del_result);*/
 ?>
 
 <!DOCTYPE html>
